@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.app.json",
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compodoc": {
+    "disablePrivate": true,
+    "disableProtected": true,
+    "disableInternal": true,
+    "disableLifeCycleHooks": true,
+    "disableCoverage": true,
+    "theme": "laravel",
+    "name": "My project documentation",
+    "output": "documentation",
+    "exportFormat": "html",
+    "hideGenerator": true,
+    "toggleMenuItems": [
+      "all"
+    ],
+  }
+}

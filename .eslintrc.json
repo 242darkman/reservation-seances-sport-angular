@@ -1,0 +1,80 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["tsconfig.*?.json"],
+        "createDefaultProgram": true
+      },
+      "settings": {
+          "import/resolver": {
+          "typescript": {}
+        }
+      },
+      "plugins": ["@typescript-eslint", "import", "jsdoc", "@angular-eslint", "eslint-plugin-prefer-arrow", "unicorn"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:jsdoc/recommended",
+        "plugin:unicorn/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/naming-convention": "error",
+        "@typescript-eslint/no-empty-interface": "off",
+        "import/order": "error",
+        "jsdoc/no-types": "error",
+        "prefer-arrow/prefer-arrow-functions": "error",
+        "unicorn/filename-case": [
+          "error",
+          {
+            "case": "kebabCase"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    },
+    {
+      "files": ["src/main.ts"],
+      "rules": {
+        "unicorn/prefer-top-level-await": "off",
+        "unicorn/catch-error-name": "off",
+        "unicorn/prevent-abbreviations": "off"
+      }
+    }
+  ]
+}

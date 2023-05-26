@@ -1,0 +1,19 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier",
+    "tslint-config-security"
+  ],
+  "jsRules": {},
+  "rules": {
+    "no-console": true,
+    "no-debugger": true,
+    "no-unused-variable": true,
+    "triple-equals": true,
+    "unified-signatures": true,
+    "prefer-for-of": true,
+    "no-inferrable-types": [true, "ignore-params"]
+  },
+  "rulesDirectory": []
+}

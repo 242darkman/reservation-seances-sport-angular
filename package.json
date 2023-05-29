@@ -1,6 +1,7 @@
 {
   "name": "sport-resa",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -25,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^16.0.3",
     "@angular/router": "^16.0.3",
     "@types/node": "^20.2.5",
+    "angular-in-memory-web-api": "^0.16.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

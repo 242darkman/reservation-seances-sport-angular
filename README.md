@@ -7,6 +7,7 @@
 2. KEITA Lansana
 3. ATINHOUNON Nalvac
 
+#### Password app: `passer123`
 
 ## Development server
 

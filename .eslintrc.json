@@ -50,7 +50,17 @@
           }
         ],
         "@typescript-eslint/member-ordering": "error",
-        "@typescript-eslint/naming-convention": "error",
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+              "selector": "property",
+              "format": ["camelCase"],
+              "filter": {
+                "regex": "^Content-Type$|^Authorization$",
+                "match": false
+              }
+            }
+        ],
         "@typescript-eslint/no-empty-interface": "off",
         "import/order": "error",
         "jsdoc/no-types": "error",

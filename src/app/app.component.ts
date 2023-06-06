@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sport-resa';
+
+  connexion() {
+    console.log('Connexion');
+  }
+
+  deconnexion() {
+    console.log('Déconnexion');
+  }
 }

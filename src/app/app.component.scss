@@ -1,0 +1,22 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+$highlight-color: darkred;
+$highlight-hover-color: darken($highlight-color, 20%);
+
+.highlight {
+  background-color: $highlight-color;
+  color: white;
+  &:hover {
+    background-color: $highlight-hover-color;
+  }
+
+  .auth {
+    color: whitesmoke;
+  }
+}

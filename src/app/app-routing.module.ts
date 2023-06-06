@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'users', loadChildren: () => import('@/app/user/user.module').then((module) => module.UserModule) },
+  {
+    path: '',
+    loadChildren: () => import('@/app/home/home.module').then((module) => module.HomeModule),
+    pathMatch: 'full',
+  },
+  { path: 'users/list', loadChildren: () => import('@/app/user/user.module').then((module) => module.UserModule) },
 ];
 
 @NgModule({

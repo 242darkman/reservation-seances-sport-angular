@@ -17,11 +17,11 @@ export class UserListComponent {
   createUser(): User {
     return {
       id: 4,
+      userName: 'f.torres',
       firstName: 'Torres',
       lastName: 'Ferran',
       email: 'ftorres@gmail.com',
       password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
-      token: 'sport-resaMRclj1J36-nyP9573r6S!boMDgfxCSPvT7T?O0xBXmwYqbLxKhl9Gb',
     };
   }
 

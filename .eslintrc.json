@@ -5,15 +5,23 @@
       "files": ["*.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "project": ["tsconfig.*?.json"],
-        "createDefaultProgram": true
+        "project": ["tsconfig.*?.json", "tsconfig.eslint.json"],
+        "createDefaultProgram": true,
+        "exclude": [".eslintrc.json"]
       },
       "settings": {
-          "import/resolver": {
+        "import/resolver": {
           "typescript": {}
         }
       },
-      "plugins": ["@typescript-eslint", "import", "jsdoc", "@angular-eslint", "eslint-plugin-prefer-arrow", "unicorn"],
+      "plugins": [
+        "@typescript-eslint",
+        "import",
+        "jsdoc",
+        "@angular-eslint",
+        "eslint-plugin-prefer-arrow",
+        "unicorn"
+      ],
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
@@ -26,6 +34,8 @@
         "prettier"
       ],
       "rules": {
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -51,15 +61,15 @@
         ],
         "@typescript-eslint/member-ordering": "error",
         "@typescript-eslint/naming-convention": [
-            "error",
-            {
-              "selector": "property",
-              "format": ["camelCase"],
-              "filter": {
-                "regex": "^Content-Type$|^Authorization$",
-                "match": false
-              }
+          "error",
+          {
+            "selector": "property",
+            "format": ["camelCase"],
+            "filter": {
+              "regex": "^Content-Type$|^Authorization$",
+              "match": false
             }
+          }
         ],
         "@typescript-eslint/no-empty-interface": "off",
         "import/order": "error",
@@ -71,12 +81,19 @@
           {
             "case": "kebabCase"
           }
-        ]
+        ],
+        "no-console": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/restrict-plus-operands": "off",
+        "jsdoc/newline-after-description": "off"
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
+      "parserOptions": {
+        "extraFileExtensions": [".html"]
+      },
       "rules": {}
     },
     {

@@ -21,7 +21,7 @@ export class UsersPageComponent implements OnInit {
   getUsers(): void {
     this.userFacade.getUsers().subscribe((users: User[]) => {
       this.users = users;
-      console.log('users => ' + this.users);
+      console.log(`All users => ${this.users}`);
     });
   }
 

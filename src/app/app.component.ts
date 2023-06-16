@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@/app/auth/application/services/auth.service';
 import { Router } from '@angular/router';
+import { AppInitializerService } from '@/app/app-initializer.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private appInitializerService: AppInitializerService,
   ) {}
 
   onLogout() {

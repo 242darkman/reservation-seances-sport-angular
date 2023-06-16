@@ -14,6 +14,7 @@ import { InMemoryDataService } from '@/app/in-memory-data.service';
 import { UserModule } from '@/app/user/user.module';
 import { HomeModule } from '@/app/home/home.module';
 import { LoginModule } from '@/app/auth/application/login/login.module';
+import { RegisterModule } from './auth/application/register/register.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { LoginModule } from '@/app/auth/application/login/login.module';
     MatIconModule,
     HomeModule,
     LoginModule,
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

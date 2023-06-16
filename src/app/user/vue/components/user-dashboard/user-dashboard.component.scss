@@ -1,0 +1,57 @@
+.user-dashboard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background: #c0c2cc;
+  border-radius: 4px;
+  padding: 3em 2em 2em 2em;
+  margin: 40px auto;
+
+  .edit-button {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    margin-top: -5px;
+  }
+
+  form {
+    width: 100%;
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 1em;
+
+      input[readonly] {
+        color: gray;
+      }
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: #3f51b5;
+    }
+
+    .mat-form-field-appearance-outline.mat-form-field-invalid .mat-form-field-outline {
+      color: #f44336;
+    }
+
+    .submit-button,
+    mat-spinner {
+      display: block;
+      margin: auto;
+    }
+
+    .submit-button {
+      margin-top: 1em;
+      width: 55%;
+    }
+  }
+}
+
+.green-snackbar {
+  background-color: green;
+  color: white;
+}

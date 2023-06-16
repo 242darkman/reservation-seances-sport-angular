@@ -3,6 +3,7 @@ import { AuthService } from '@/app/auth/application/services/auth.service';
 import { Router } from '@angular/router';
 import { AppInitializerService } from '@/app/app-initializer.service';
 import { Subscription } from 'rxjs';
+import { User } from '@/app/user/domain/user';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated!: boolean;
   private subscription!: Subscription;
   year = new Date().getFullYear();
+  user!: User | undefined;
 
   constructor(
     private authService: AuthService,
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.authService.isAuthenticated.subscribe((authenticated) => {
       this.isAuthenticated = authenticated;
+      this.user = this.authService.getUser();
     });
   }
 

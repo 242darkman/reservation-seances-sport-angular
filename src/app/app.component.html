@@ -1,10 +1,13 @@
 <!-- Toolbar -->
 <mat-toolbar color="primary">
-  <div class="logo" routerLink="/">
-    FIT
-    <div>
-      <span class="second">BOOKING</span>
+  <div class="info">
+    <div class="logo" routerLink="/">
+      FIT
+      <div>
+        <span class="second">BOOKING</span>
+      </div>
     </div>
+    <div class="welcome" *ngIf="isAuthenticated">Content de te revoir, {{ user?.firstName }} !</div>
   </div>
   <span class="spacer"></span>
   <button mat-button routerLink="/item1">Item 1</button>

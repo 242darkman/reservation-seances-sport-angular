@@ -49,3 +49,12 @@ $highlight-hover-color: darken($highlight-color, 20%);
 .copyright {
   padding-right: 10px;
 }
+
+.info {
+  display: flex;
+  gap: 20px;
+
+  .welcome {
+    font-family: 'Pacifico', cursive;
+  }
+}

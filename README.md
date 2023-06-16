@@ -2,7 +2,7 @@
 
 ### [Click here to access the github repository](https://github.com/242darkman/sport-resa.git)
 
-### Développeurs du projet
+### Project web developer
 
 1. VOUVOU Brandon
 2. KEITA Lansana

@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('@/app/home/home.module').then((module) => module.HomeModule),
     pathMatch: 'full',
   },
-  { path: 'users/list', loadChildren: () => import('@/app/user/user.module').then((module) => module.UserModule) },
+  { path: '', loadChildren: () => import('@/app/user/user.module').then((module) => module.UserModule) },
   {
     path: '',
     loadChildren: () => import('@/app/auth/application/login/login.module').then((module) => module.LoginModule),

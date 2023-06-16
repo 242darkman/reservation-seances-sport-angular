@@ -7,7 +7,7 @@ export const USERS: User[] = [
     firstName: 'Brandon',
     lastName: 'VOUVOU',
     email: 'bvouvou2@myges.fr',
-    password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
+    password: '$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm',
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const USERS: User[] = [
     firstName: 'Lansana',
     lastName: 'KEITA',
     email: 'lkeita2@myges.fr',
-    password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
+    password: '$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm',
   },
   {
     id: 3,
@@ -23,6 +23,6 @@ export const USERS: User[] = [
     firstName: 'Nalvac',
     lastName: 'ATINHOUNON',
     email: 'natinhounon@myges.fr',
-    password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
+    password: '$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm',
   },
 ];

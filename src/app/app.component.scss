@@ -2,8 +2,19 @@
   flex: 1 1 auto;
 }
 
-.cursor-pointer {
+.logo {
+  display: flex;
+  gap: 5px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bolder;
   cursor: pointer;
+
+  .second {
+    color: #3f51b5;
+    background-color: whitesmoke;
+    padding: 4px;
+    border-radius: 1px;
+  }
 }
 
 $highlight-color: darkred;

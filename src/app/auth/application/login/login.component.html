@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title class="title-spacing">Connexion</mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field>
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+      <div *ngIf="isLoading; else loginButton">
+        <mat-spinner [diameter]="35"></mat-spinner>
+      </div>
+      <ng-template #loginButton>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+      </ng-template>
+    </form>
+
+    <div class="link">
+      <p>Vous n'avez pas de compte ? <a routerLink="/register">Créer un compte</a></p>
+    </div>
+  </mat-card-content>
+</mat-card>

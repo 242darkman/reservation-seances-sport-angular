@@ -13,9 +13,13 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>Mon compte</button>
-  <button mat-menu-item class="highlight" (click)="connexion()"><span class="auth">Connexion</span></button>
-  <button mat-menu-item class="highlight" (click)="deconnexion()"><span class="auth">Déconnexion</span></button>
+  <button mat-menu-item routerLink="/account" *ngIf="isAuthenticated">Mes informations</button>
+  <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
+    <span>Connexion</span>
+  </button>
+  <button mat-menu-item class="highlight" (click)="onLogout()" *ngIf="isAuthenticated">
+    <span class="auth">Déconnexion</span>
+  </button>
 </mat-menu>
 
 <div class="content" role="main">

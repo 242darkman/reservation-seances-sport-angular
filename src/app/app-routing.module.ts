@@ -8,6 +8,10 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'users/list', loadChildren: () => import('@/app/user/user.module').then((module) => module.UserModule) },
+  {
+    path: '',
+    loadChildren: () => import('@/app/auth/application/login/login.module').then((module) => module.LoginModule),
+  },
 ];
 
 @NgModule({

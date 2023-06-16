@@ -13,6 +13,7 @@ import { AppRoutingModule } from '@/app/app-routing.module';
 import { InMemoryDataService } from '@/app/in-memory-data.service';
 import { UserModule } from '@/app/user/user.module';
 import { HomeModule } from '@/app/home/home.module';
+import { LoginModule } from '@/app/auth/application/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { HomeModule } from '@/app/home/home.module';
     MatButtonModule,
     MatIconModule,
     HomeModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

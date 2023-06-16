@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated!: boolean;
   private subscription!: Subscription;
+  year = new Date().getFullYear();
 
   constructor(
     private authService: AuthService,

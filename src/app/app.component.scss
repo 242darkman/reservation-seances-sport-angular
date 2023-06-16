@@ -31,3 +31,21 @@ $highlight-hover-color: darken($highlight-color, 20%);
     color: whitesmoke;
   }
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  mat-toolbar {
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+  }
+}
+
+.copyright {
+  padding-right: 10px;
+}

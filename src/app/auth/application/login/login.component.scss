@@ -1,0 +1,43 @@
+mat-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 8em;
+
+  mat-card-title {
+    margin-bottom: 20px;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  button,
+  mat-spinner {
+    display: block;
+    margin: auto;
+  }
+
+  button {
+    width: 55%;
+  }
+}
+
+.link {
+  margin-top: 15px;
+  text-align: center;
+
+  p {
+    font-size: 14px;
+  }
+
+  a {
+    color: blue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

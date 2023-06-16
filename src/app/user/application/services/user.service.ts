@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '@/app/user/domain/user';
+import { InMemoryDataService } from '@/app/in-memory-data.service';
+import { USERS } from '@/app/user/mock/mock-users';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,7 @@ export class UserService {
   };
   private usersUrl = 'api/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private memory: InMemoryDataService) {}
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl).pipe(
@@ -44,7 +46,7 @@ export class UserService {
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
-      tap((newUser: User) => console.log(`added user w/ id=${newUser.id}`)),
+      tap(() => console.log()),
       catchError(this.handleError<User>('addUser')),
     );
   }
@@ -60,9 +62,15 @@ export class UserService {
   updateUser(user: User): Observable<User> {
     const url = `${this.usersUrl}/${user.id}`;
     return this.http.put<User>(url, user, this.httpOptions).pipe(
-      tap(() => console.log(`updated user id=${user.id}`)),
+      tap(() => console.log()),
       catchError(this.handleError<User>('updateUser')),
     );
+  }
+
+  generateId(): number {
+    const users = USERS;
+    const id = this.memory.genId(users);
+    return id;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

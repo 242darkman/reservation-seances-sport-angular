@@ -29,4 +29,8 @@ export class UserFacadeService {
   deleteUser(id: number) {
     return this.userService.deleteUser(id);
   }
+
+  generateId() {
+    return this.userService.generateId();
+  }
 }

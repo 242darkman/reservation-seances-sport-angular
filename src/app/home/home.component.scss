@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.content {
+  width: 80%;
+  margin-top: 20px;
+}
+
+.example-card {
+  max-width: 400px;
+  margin: 20px;
+}
+
+.example-header-image {
+  background-image: url('https://images.unsplash.com/photo-1505250469679-203ad9ced0cb');
+  background-size: cover;
+}

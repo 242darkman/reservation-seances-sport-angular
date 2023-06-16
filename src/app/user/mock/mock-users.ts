@@ -3,26 +3,26 @@ import { User } from '@/app/user/domain/user';
 export const USERS: User[] = [
   {
     id: 1,
+    userName: '242darkman',
     firstName: 'Brandon',
     lastName: 'VOUVOU',
     email: 'bvouvou2@myges.fr',
-    password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
-    token: 'sport-resaPfGQa0hyy6lZiHUr!OHRKz=t!n6luO0RBS!o?c840YQZIYUCOFRS42',
+    password: '$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm',
   },
   {
     id: 2,
+    userName: 'lanskei',
     firstName: 'Lansana',
     lastName: 'KEITA',
     email: 'lkeita2@myges.fr',
-    password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
-    token: 'sport-resakwxDxxCeQLy8VPzOogd6gwlZOiEzP4?NUF5A5F3KI7o?XYgt4NtgV!',
+    password: '$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm',
   },
   {
     id: 3,
+    userName: 'nalvac',
     firstName: 'Nalvac',
     lastName: 'ATINHOUNON',
     email: 'natinhounon@myges.fr',
-    password: '$2y$10$e4BFLbsxsLoG2OYvzcTL7.cbFbxxPT00MMqLke7aLwpRvjlPQgzVm',
-    token: 'sport-resaMRclj1J36-nyP9573r6S!boMDgfxCSPvT7T?O0xBXmwYqbLxKhl9Ga',
+    password: '$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm',
   },
 ];

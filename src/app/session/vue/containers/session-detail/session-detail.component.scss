@@ -1,0 +1,20 @@
+.session-details {
+  display: flex;
+  justify-content: center;
+  .session-card {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+
+
+    .session-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  }
+
+}
+
+

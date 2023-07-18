@@ -1,0 +1,14 @@
+<div class="sessions-container">
+  <mat-card class="session-card">
+    <img mat-card-image [src]="sessionService.getTrainingSessionImageUrl(session.type)" alt="Session Image" class="session-image">
+    <mat-card-content>
+      <h3 mat-card-title style="padding: 5px 0">{{ session.title }}</h3>
+      <p mat-card-subtitle>{{ session.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="session-status" [ngClass]="{ 'open': isSessionOpen(session), 'closed' : !isSessionOpen(session) }">
+        {{ isSessionOpen(session) ? 'Ouvert' : 'Fermé' }}
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

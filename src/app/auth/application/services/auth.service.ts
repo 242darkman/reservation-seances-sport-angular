@@ -1,14 +1,15 @@
+import { EventEmitter, Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
-import { Injectable, EventEmitter } from '@angular/core';
+import { USERS } from '@/app/user/mock/mock-users';
 import { User } from '@/app/user/domain/user';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
+import find from 'lodash/find';
 import get from 'lodash/get';
-import isUndefined from 'lodash/isUndefined';
 import isEmpty from 'lodash/isEmpty';
 import isNull from 'lodash/isNull';
+import isUndefined from 'lodash/isUndefined';
 import { map } from 'rxjs/operators';
-import { USERS } from '@/app/user/mock/mock-users';
-import find from 'lodash/find';
 
 @Injectable({
   providedIn: 'root',
@@ -52,8 +53,10 @@ export class AuthService {
     this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
   }
 
-  generateToken(user: any): string {
-    const stringifyUser = JSON.stringify(user);
+  generateToken(user: User): string {
+    const expire = Math.floor(Date.now() / 1000) + 60 * 60;
+    const userInfo = { ...user, expire };
+    const stringifyUser = JSON.stringify(userInfo);
     const encodeUser = btoa(stringifyUser);
     return encodeUser;
   }
@@ -70,6 +73,7 @@ export class AuthService {
     if (isNull(token) || isUndefined(token) || isEmpty(token)) {
       return '';
     }
+
     return token;
   }
 

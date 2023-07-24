@@ -15,6 +15,7 @@ import { UserModule } from '@/app/user/user.module';
 import { HomeModule } from '@/app/home/home.module';
 import { LoginModule } from '@/app/auth/application/login/login.module';
 import { RegisterModule } from './auth/application/register/register.module';
+import { BookingModule } from './booking/booking.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { RegisterModule } from './auth/application/register/register.module';
     HomeModule,
     LoginModule,
     RegisterModule,
+    BookingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

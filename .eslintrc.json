@@ -14,14 +14,7 @@
           "typescript": {}
         }
       },
-      "plugins": [
-        "@typescript-eslint",
-        "import",
-        "jsdoc",
-        "@angular-eslint",
-        "eslint-plugin-prefer-arrow",
-        "unicorn"
-      ],
+      "plugins": ["@typescript-eslint", "import", "jsdoc", "@angular-eslint", "eslint-plugin-prefer-arrow", "unicorn"],
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
@@ -82,7 +75,7 @@
             "case": "kebabCase"
           }
         ],
-        "no-console": "off",
+        "no-console": "warn",
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/restrict-plus-operands": "off",
         "jsdoc/newline-after-description": "off"

@@ -1,11 +1,11 @@
-import {Component} from "@angular/core";
-import {sessionsMock} from "@/app/session/mock/mock-session";
-import {Session} from "@/app/session/domain/session";
+import { Component } from '@angular/core';
+import { sessionsMock } from '@/app/session/mock/mock-session';
+import { Session } from '@/app/session/domain/session';
 
 @Component({
   selector: 'session-listing',
   templateUrl: 'session-listing-page.component.html',
-  styleUrls: ['session-listing-page.component.scss']
+  styleUrls: ['session-listing-page.component.scss'],
 })
 export class SessionListingPageComponent {
   sessions = sessionsMock;
@@ -22,14 +22,15 @@ export class SessionListingPageComponent {
 
       return isTypeMatch && isTitleMatch && isOpenOnDate;
     });
-
   }
 
   isSessionOpenOnDate(session: Session, date: Date): boolean {
     const currentDayOfWeek = date.toLocaleString('fr-FR', { weekday: 'long' });
     const currentTime = date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' });
 
-    const openingHours = session.openingHours.find((openingHour) => openingHour.dayOfWeek.toLowerCase() === currentDayOfWeek)
+    const openingHours = session.openingHours.find(
+      (openingHour) => openingHour.dayOfWeek.toLowerCase() === currentDayOfWeek,
+    );
 
     if (!openingHours) {
       return false; // Session non planifiée pour le jour actuel

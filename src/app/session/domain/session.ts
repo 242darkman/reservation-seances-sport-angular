@@ -4,7 +4,7 @@ export interface Session {
   description: string;
   imageUrl?: string;
   type: TrainingSession;
-  openingHours: Array<OpeningHour>;
+  openingHours: OpeningHour[];
   address?: string;
   location?: string;
 }
@@ -21,7 +21,7 @@ export enum TrainingSession {
   GROUP = 'Entraînement en groupe',
   YOGA = 'Yoga ou Pilates',
   FUNCTIONAL = 'Entraînement fonctionnel',
-  OUTDOOR = 'Entraînement en plein air'
+  OUTDOOR = 'Entraînement en plein air',
 }
 
 export const TrainingSessionImages = {
@@ -30,5 +30,5 @@ export const TrainingSessionImages = {
   GROUP: 'assets/pictures/group.gif',
   YOGA: 'assets/pictures/yoga.jpeg',
   FUNCTIONAL: 'assets/pictures/functional.jpeg',
-  OUTDOOR: 'assets/pictures/outdoor.jpg'
+  OUTDOOR: 'assets/pictures/outdoor.jpg',
 };

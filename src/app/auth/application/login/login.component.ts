@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 import { User } from '@/app/user/domain/user';
 import get from 'lodash/get';
 
+/**
+ * Composant permettant à l'utilisateur de se connecter à l'application.
+ * @selector 'app-login'
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,6 +22,12 @@ export class LoginComponent {
   isLoading = false;
   loginForm: FormGroup;
 
+  /**
+   * Construit une instance de LoginComponent.
+   * @param {FormBuilder} formBuilder - Permet de construire le groupe de formulaires.
+   * @param {AuthService} authService - Service d'authentification.
+   * @param {Router} router - Router d'Angular pour naviguer entre les pages.
+   */
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -29,6 +39,11 @@ export class LoginComponent {
     });
   }
 
+  /**
+   * Méthode exécutée lors de la soumission du formulaire de connexion.
+   * Si le formulaire est valide, elle appelle le service d'authentification pour connecter l'utilisateur,
+   * puis navigue vers la page d'accueil.
+   */
   onLogin() {
     if (this.loginForm.valid) {
       this.isLoading = true;

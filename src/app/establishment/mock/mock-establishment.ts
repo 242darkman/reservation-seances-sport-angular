@@ -1,4 +1,4 @@
-import {Establishment} from "@/app/establishment/domain/establishment";
+import { Establishment } from '@/app/establishment/domain/establishment';
 
 export const establishmentsMock: Establishment[] = [
   {
@@ -38,8 +38,8 @@ export const establishmentsMock: Establishment[] = [
   },
   {
     id: 8,
-    nom: 'Club d\'Escalade Vertigo',
-    address: '444 Avenue de l\'Escalade, 75017 Paris, France',
+    nom: "Club d'Escalade Vertigo",
+    address: "444 Avenue de l'Escalade, 75017 Paris, France",
   },
   {
     id: 9,

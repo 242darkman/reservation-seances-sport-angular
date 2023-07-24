@@ -1,17 +1,11 @@
-import {NgModule} from "@angular/core";
-import {EstablishmentRouting} from "@/app/establishment/establishment-routing";
-import {EstablishmentComponent} from "@/app/establishment/vue/establishment.component";
-
+import { NgModule } from '@angular/core';
+import { EstablishmentRouting } from '@/app/establishment/establishment-routing';
+import { EstablishmentComponent } from '@/app/establishment/vue/establishment.component';
 
 @NgModule({
-  declarations: [
-    EstablishmentComponent,
-  ],
-  imports: [
-    EstablishmentRouting
-  ],
+  declarations: [EstablishmentComponent],
+  imports: [EstablishmentRouting],
   providers: [],
-  exports: [
-  ]
+  exports: [],
 })
 export class EstablishmentModule {}

@@ -1,29 +1,26 @@
-import {Component, OnInit} from "@angular/core";
-import {Session} from "@/app/session/domain/session";
-import {ActivatedRoute} from "@angular/router";
-import {SessionService} from "@/app/session/application/services/session-service";
-import {parseInt} from "lodash";
+import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
+import { Session } from '@/app/session/domain/session';
+import { SessionService } from '@/app/session/application/services/session.service';
+import get from 'lodash/get';
+import parseInt from 'lodash/parseInt';
 
 @Component({
   selector: 'session-detail',
   templateUrl: 'session-detail.component.html',
-  styleUrls: ['session-detail.component.scss']
+  styleUrls: ['session-detail.component.scss'],
 })
 export class SessionDetailComponent implements OnInit {
   session!: Session;
   sessionId!: number;
   selectedDays!: string[];
-  constructor(
-    private route: ActivatedRoute,
-    public sessionService: SessionService
-  ) { }
-
-
+  constructor(private route: ActivatedRoute, public sessionService: SessionService) {}
 
   ngOnInit(): void {
-
-    this.route.params.subscribe(param => {
-      this.sessionId = parseInt(param['id']);
+    this.route.params.subscribe((param) => {
+      const id: string = get(param, 'id');
+      this.sessionId = parseInt(id);
       this.session = this.sessionService.getSessionById(this.sessionId);
     });
 
@@ -31,6 +28,6 @@ export class SessionDetailComponent implements OnInit {
   }
 
   onReserve() {
-
+    return;
   }
 }

@@ -97,4 +97,12 @@ export class AuthService {
     const user = find(USERS, { id });
     return user;
   }
+
+  getUserRoles(): string[] {
+    const user = this.getUser();
+    if (!user) {
+      return [];
+    }
+    return user.roles || [];
+  }
 }

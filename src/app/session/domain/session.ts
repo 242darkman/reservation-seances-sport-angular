@@ -1,18 +1,20 @@
+
+
 export interface Session {
   id: number;
+  establishmentId?: number;
   title: string;
   description: string;
   imageUrl?: string;
   type: TrainingSession;
   openingHours: Array<OpeningHour>;
-  address?: string;
-  location?: string;
 }
 
 export interface OpeningHour {
   dayOfWeek: string;
   startTime: string;
   endTime: string;
+  fullDate: number;
 }
 
 export enum TrainingSession {

@@ -2,9 +2,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  height: 100%;
 
   .session-card {
+    display: flex;
+    flex-direction: column;
     width: 300px;
+
+    mat-card-actions {
+      margin-top: auto; /* Pour placer le contenu en bas */
+    }
 
     .session-status {
       display: inline-block;
@@ -12,7 +19,9 @@
       border-radius: 4px;
       color: #fff;
       font-weight: bold;
+      margin-top: auto; /* Pour placer le contenu en bas */
     }
+
     .open {
       background-color: green;
     }
@@ -27,6 +36,7 @@
       object-fit: cover;
     }
   }
+
 
 
 

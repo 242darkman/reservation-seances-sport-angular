@@ -7,15 +7,20 @@
       <mat-card-subtitle>{{ session.description }}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
-      <h3>Disponibilités :</h3>
-      <ul>
-        <li *ngFor="let availability of session.openingHours">
-          {{ availability.dayOfWeek }} - {{ availability.startTime }} à {{ availability.endTime }}
-        </li>
-      </ul>
+    <h3>Disponibilité(s)</h3>
+    <mat-card-content
+       class="session-availability"
+    >
+      <mat-form-field appearance="fill">
+        <mat-select multiple [(value)]="selectedDays">
+          <mat-option *ngFor="let availability of session.openingHours" [value]="availability.dayOfWeek">
+            {{ availability.dayOfWeek }} - {{ availability.fullDate | date: 'dd/MM/yyyy' }} , {{availability.startTime}} à {{availability.endTime}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <button mat-button color="primary" (click)="onReserve()">Réserver</button>
+
+      <button mat-raised-button color="primary">Réserver</button>
     </mat-card-content>
   </mat-card>
 </div>

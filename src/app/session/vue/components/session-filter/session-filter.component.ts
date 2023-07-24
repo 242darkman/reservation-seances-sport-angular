@@ -7,7 +7,11 @@ import { TrainingSession } from '@/app/session/domain/session';
   styleUrls: ['session-filter.component.scss'],
 })
 export class SessionFilterComponent {
-  @Output() filterChange = new EventEmitter<{ type: string; title: string; date: Date }>();
+  @Output() filterChange = new EventEmitter<{
+    type: string;
+    title: string;
+    date: Date;
+  }>();
 
   selectedType = '';
   searchTitle = '';

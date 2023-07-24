@@ -3,8 +3,7 @@
     <img
       class="session-image"
       [src]="sessionService.getTrainingSessionImageUrl(session.type)"
-      alt="Image de la session"
-    />
+      alt="Image de la session" />
 
     <mat-card-header>
       <mat-card-title>{{ session.title }}</mat-card-title>
@@ -15,8 +14,11 @@
     <mat-card-content class="session-availability">
       <mat-form-field appearance="fill">
         <mat-select multiple [(value)]="selectedDays">
-          <mat-option *ngFor="let availability of session.openingHours" [value]="availability.dayOfWeek">
-            {{ availability.dayOfWeek }} - {{ availability.fullDate | date : 'dd/MM/yyyy' }} ,
+          <mat-option
+            *ngFor="let availability of session.openingHours"
+            [value]="availability.dayOfWeek">
+            {{ availability.dayOfWeek }} -
+            {{ availability.fullDate | date : 'dd/MM/yyyy' }} ,
             {{ availability.startTime }} à {{ availability.endTime }}
           </mat-option>
         </mat-select>

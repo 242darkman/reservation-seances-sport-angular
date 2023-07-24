@@ -8,10 +8,16 @@ import { UserFacadeService } from '@/app/user/application/facade/user-facade.ser
   providedIn: 'root',
 })
 export class AppInitializerService {
-  constructor(private authService: AuthService, private userService: UserFacadeService, private router: Router) {
-    this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe(() => {
-      this.removeTokenIfUserNotFound();
-    });
+  constructor(
+    private authService: AuthService,
+    private userService: UserFacadeService,
+    private router: Router
+  ) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationStart))
+      .subscribe(() => {
+        this.removeTokenIfUserNotFound();
+      });
   }
 
   removeTokenIfUserNotFound() {
@@ -23,7 +29,7 @@ export class AppInitializerService {
     const userId = this.authService.getUserIdFromToken(token);
     const user = this.userService.getUser(userId);
 
-    user.subscribe((u) => {
+    user.subscribe(u => {
       if (!u) {
         localStorage.removeItem('app_token');
         this.authService.setCurrentUser(null);

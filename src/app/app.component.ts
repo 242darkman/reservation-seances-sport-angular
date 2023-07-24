@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private appInitializerService: AppInitializerService,
+    private appInitializerService: AppInitializerService
   ) {}
 
   onLogout() {
@@ -28,10 +28,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.authService.isAuthenticated.subscribe((authenticated) => {
-      this.isAuthenticated = authenticated;
-      this.user = this.authService.getUser();
-    });
+    this.subscription = this.authService.isAuthenticated.subscribe(
+      authenticated => {
+        this.isAuthenticated = authenticated;
+        this.user = this.authService.getUser();
+      }
+    );
   }
 
   ngOnDestroy(): void {

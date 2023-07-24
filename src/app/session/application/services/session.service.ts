@@ -1,4 +1,8 @@
-import { Session, TrainingSession, TrainingSessionImages } from '@/app/session/domain/session';
+import {
+  Session,
+  TrainingSession,
+  TrainingSessionImages,
+} from '@/app/session/domain/session';
 
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { Injectable } from '@angular/core';
@@ -22,7 +26,7 @@ export class SessionService {
   }
 
   getSessionById(id: number): Session {
-    const sessionData = this.sessions.find((session) => session.id === id);
+    const sessionData = this.sessions.find(session => session.id === id);
 
     return sessionData ?? ([] as unknown as Session);
   }
@@ -43,7 +47,9 @@ export class SessionService {
     const result: sessionByEstablishment[] = [];
 
     for (const [establishmentId, sessions] of sessionsByEstablishment) {
-      const establishment = this.establishments.find((e) => e.id === establishmentId);
+      const establishment = this.establishments.find(
+        e => e.id === establishmentId
+      );
       if (establishment) {
         result.push({
           nomEstablishment: establishment.nom,
@@ -57,10 +63,15 @@ export class SessionService {
   }
 
   getTrainingSessionImageUrl(type: string): string {
-    return TrainingSessionImages[this.getKeyByValue(TrainingSession, type) as keyof typeof TrainingSession];
+    return TrainingSessionImages[
+      this.getKeyByValue(TrainingSession, type) as keyof typeof TrainingSession
+    ];
   }
 
-  getKeyByValue(obj: { [key: string]: string }, value: string): string | undefined {
+  getKeyByValue(
+    obj: { [key: string]: string },
+    value: string
+  ): string | undefined {
     for (const key in obj) {
       if (obj.hasOwnProperty(key) && obj[key] === value) {
         return key;

@@ -20,11 +20,14 @@ export class AuthService {
   isAuthenticated = this.isAuthenticatedEmitter.asObservable();
   isCurrentlyAuthenticated = false;
 
-  constructor(private http: HttpClient, private userService: UserFacadeService) {
+  constructor(
+    private http: HttpClient,
+    private userService: UserFacadeService
+  ) {
     const token = this.getToken();
     if (!isEmpty(token)) {
       const loggedUserId = this.getUserIdFromToken(token);
-      this.userService.getUser(loggedUserId).subscribe((user) => {
+      this.userService.getUser(loggedUserId).subscribe(user => {
         this.isCurrentlyAuthenticated = !!user;
         this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
       });
@@ -39,11 +42,11 @@ export class AuthService {
   login(userName: string) {
     const apiLoginUrl = 'api/users';
     return this.http.get<User>(`${apiLoginUrl}/?userName=${userName}`).pipe(
-      map((user) => {
+      map(user => {
         this.isCurrentlyAuthenticated = !!user;
         this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
         return user;
-      }),
+      })
     );
   }
 

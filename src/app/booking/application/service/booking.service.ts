@@ -12,7 +12,11 @@ import { Router } from '@angular/router';
 export class BookingService {
   private bookings: Booking[] = [];
 
-  constructor(private memory: InMemoryDataService, private authService: AuthService, private router: Router) {}
+  constructor(
+    private memory: InMemoryDataService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   // méthode pour générer un id
   generateId(): number {

@@ -3,7 +3,8 @@
     <session-filter (filterChange)="onFilterChange($event)">></session-filter>
   </div>
   <div>
-    <ng-container *ngFor="let sessionByEstablishment of sessionsByEstablishment">
+    <ng-container
+      *ngFor="let sessionByEstablishment of sessionsByEstablishment">
       <p>{{ sessionByEstablishment.nomEstablishment }}</p>
       <small>{{ sessionByEstablishment.address }}</small>
       <div style="display: flex" class="session-list-container">
@@ -11,8 +12,7 @@
           class="session"
           *ngFor="let session of sessionByEstablishment.sessions"
           [routerLink]="'detail/' + session.id"
-          [session]="session"
-        ></session>
+          [session]="session"></session>
       </div>
     </ng-container>
   </div>

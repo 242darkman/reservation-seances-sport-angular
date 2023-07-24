@@ -14,7 +14,11 @@ export class RegisterComponent {
   registerForm!: FormGroup;
   isLoading = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserFacadeService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserFacadeService
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -39,7 +43,9 @@ export class RegisterComponent {
     const password = this.registerForm.get('password')?.value;
     const confirmPassword = this.registerForm.get('confirmPassword')?.value;
     if (password !== confirmPassword) {
-      this.registerForm.get('confirmPassword')?.setErrors({ passwordDoesNotMatch: true });
+      this.registerForm
+        .get('confirmPassword')
+        ?.setErrors({ passwordDoesNotMatch: true });
     } else {
       this.registerForm.get('confirmPassword')?.setErrors(null);
     }

@@ -8,6 +8,11 @@ import { BookingComponent } from '../booking/vue/component/booking.component';
 
 @NgModule({
   declarations: [BookingComponent],
-  imports: [CommonModule, BookingRoutingModule, MatButtonModule, MatTableModule],
+  imports: [
+    CommonModule,
+    BookingRoutingModule,
+    MatButtonModule,
+    MatTableModule,
+  ],
 })
 export class BookingModule {}

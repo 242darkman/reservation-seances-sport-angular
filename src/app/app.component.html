@@ -7,7 +7,9 @@
         <span class="second">BOOKING</span>
       </div>
     </div>
-    <div class="welcome" *ngIf="isAuthenticated">Content de te revoir, {{ user?.firstName }} !</div>
+    <div class="welcome" *ngIf="isAuthenticated">
+      Content de te revoir, {{ user?.firstName }} !
+    </div>
   </div>
   <span class="spacer"></span>
   <button mat-button routerLink="/item1">Item 1</button>
@@ -21,11 +23,17 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/account" *ngIf="isAuthenticated">Mes informations</button>
+  <button mat-menu-item routerLink="/account" *ngIf="isAuthenticated">
+    Mes informations
+  </button>
   <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
     <span>Connexion</span>
   </button>
-  <button mat-menu-item class="highlight" (click)="onLogout()" *ngIf="isAuthenticated">
+  <button
+    mat-menu-item
+    class="highlight"
+    (click)="onLogout()"
+    *ngIf="isAuthenticated">
     <span class="auth">Déconnexion</span>
   </button>
 </mat-menu>

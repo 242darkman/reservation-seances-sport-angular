@@ -23,12 +23,15 @@ export class UserDashboardComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private userService: UserFacadeService,
-    private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar
   ) {
     this.userForm = this.fb.group({
       firstName: [{ value: '', disabled: true }, Validators.required],
       lastName: [{ value: '', disabled: true }, Validators.required],
-      email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
+      email: [
+        { value: '', disabled: true },
+        [Validators.required, Validators.email],
+      ],
       userName: [{ value: '', disabled: true }],
     });
   }
@@ -37,9 +40,18 @@ export class UserDashboardComponent {
     this.user = this.authService.getUser();
 
     this.userForm = this.fb.group({
-      firstName: [{ value: this.user?.firstName, disabled: true }, Validators.required],
-      lastName: [{ value: this.user?.lastName, disabled: true }, Validators.required],
-      email: [{ value: this.user?.email, disabled: true }, [Validators.required, Validators.email]],
+      firstName: [
+        { value: this.user?.firstName, disabled: true },
+        Validators.required,
+      ],
+      lastName: [
+        { value: this.user?.lastName, disabled: true },
+        Validators.required,
+      ],
+      email: [
+        { value: this.user?.email, disabled: true },
+        [Validators.required, Validators.email],
+      ],
       userName: [{ value: this.user?.userName, disabled: true }],
     });
   }
@@ -71,16 +83,32 @@ export class UserDashboardComponent {
     const firstName: string = get(this.userForm.value, 'firstName');
     const lastName: string = get(this.userForm.value, 'lastName');
     const email: string = get(this.userForm.value, 'email');
-    const newUser: User = { id, userName, firstName, lastName, email, password };
+    const newUser: User = {
+      id,
+      userName,
+      firstName,
+      lastName,
+      email,
+      password,
+    };
     this.userService.updateUser(newUser).subscribe({
       next: () => {
-        this.snackBar.open('Les informations ont été mise à jour avec succès', 'Fermer', {
-          duration: 5000,
-          panelClass: ['green-snackbar'],
-        });
+        this.snackBar.open(
+          'Les informations ont été mise à jour avec succès',
+          'Fermer',
+          {
+            duration: 5000,
+            panelClass: ['green-snackbar'],
+          }
+        );
         this.isLoading = false;
       },
-      error: () => this.snackBar.open("Une erreur s'est produite lors de la mise à jour", 'Fermer', { duration: 5000 }),
+      error: () =>
+        this.snackBar.open(
+          "Une erreur s'est produite lors de la mise à jour",
+          'Fermer',
+          { duration: 5000 }
+        ),
     });
   }
 
@@ -88,7 +116,9 @@ export class UserDashboardComponent {
     if (this.userForm.controls['email'].hasError('required')) {
       return 'Adresse email requis.';
     }
-    const error = this.userForm.controls['email'].hasError('email') ? 'Email non valide' : '';
+    const error = this.userForm.controls['email'].hasError('email')
+      ? 'Email non valide'
+      : '';
     return error;
   }
 }

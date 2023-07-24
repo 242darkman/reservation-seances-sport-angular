@@ -15,12 +15,21 @@
         <mat-spinner [diameter]="35"></mat-spinner>
       </div>
       <ng-template #loginButton>
-        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid">
+          Se connecter
+        </button>
       </ng-template>
     </form>
 
     <div class="link">
-      <p>Vous n'avez pas de compte ? <a routerLink="/register">Créer un compte</a></p>
+      <p>
+        Vous n'avez pas de compte ?
+        <a routerLink="/register">Créer un compte</a>
+      </p>
     </div>
   </mat-card-content>
 </mat-card>

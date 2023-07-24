@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService, sessionByEstablishment } from '@/app/session/application/services/session.service';
+import {
+  SessionService,
+  sessionByEstablishment,
+} from '@/app/session/application/services/session.service';
 
 import { Session } from '@/app/session/domain/session';
 import { sessionsMock } from '@/app/session/mock/mock-session';
@@ -16,15 +19,18 @@ export class SessionListingPageComponent implements OnInit {
   constructor(private sessionService: SessionService) {}
 
   ngOnInit() {
-    this.sessionsByEstablishment = this.sessionService.getSessionByEstablishment();
+    this.sessionsByEstablishment =
+      this.sessionService.getSessionByEstablishment();
   }
 
   onFilterChange(event: { type: string; title: string; date: Date }) {
     const { type, title, date } = event;
 
-    this.sessions = this.sessions.filter((session) => {
-      const isTypeMatch = !type || session.type.toLowerCase().includes(type.toLowerCase());
-      const isTitleMatch = !title || session.title.toLowerCase().includes(title.toLowerCase());
+    this.sessions = this.sessions.filter(session => {
+      const isTypeMatch =
+        !type || session.type.toLowerCase().includes(type.toLowerCase());
+      const isTitleMatch =
+        !title || session.title.toLowerCase().includes(title.toLowerCase());
 
       const isOpenOnDate = !date || this.isSessionOpenOnDate(session, date);
 
@@ -34,16 +40,22 @@ export class SessionListingPageComponent implements OnInit {
 
   isSessionOpenOnDate(session: Session, date: Date): boolean {
     const currentDayOfWeek = date.toLocaleString('fr-FR', { weekday: 'long' });
-    const currentTime = date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' });
+    const currentTime = date.toLocaleTimeString('fr-FR', {
+      hour: 'numeric',
+      minute: 'numeric',
+    });
 
     const openingHours = session.openingHours.find(
-      (openingHour) => openingHour.dayOfWeek.toLowerCase() === currentDayOfWeek,
+      openingHour => openingHour.dayOfWeek.toLowerCase() === currentDayOfWeek
     );
 
     if (!openingHours) {
       return false; // Session non planifiée pour le jour actuel
     }
 
-    return currentTime >= openingHours.startTime && currentTime <= openingHours.endTime;
+    return (
+      currentTime >= openingHours.startTime &&
+      currentTime <= openingHours.endTime
+    );
   }
 }

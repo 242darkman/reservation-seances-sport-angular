@@ -18,11 +18,11 @@ export class SessionDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public sessionService: SessionService,
-    private bookingService: BookingService,
+    private bookingService: BookingService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((param) => {
+    this.route.params.subscribe(param => {
       const id: string = get(param, 'id');
       this.sessionId = parseInt(id);
       this.session = this.sessionService.getSessionById(this.sessionId);

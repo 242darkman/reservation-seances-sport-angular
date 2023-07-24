@@ -4,7 +4,7 @@ import {
 } from "@/app/session/vue/containers/session-listing-page/session-listing-page.component";
 import {SessionComponent} from "@/app/session/vue/components/session/session.component";
 import {MatCardModule} from "@angular/material/card";
-import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {SessionFilterComponent} from "@/app/session/vue/components/session-filter/session-filter.component";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
@@ -34,7 +34,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatDatepickerModule,
     RouterLink,
     NgIf,
-    MatButtonModule
+    MatButtonModule,
+    DatePipe
   ],
   providers: [],
   exports: [

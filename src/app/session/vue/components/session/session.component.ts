@@ -1,20 +1,18 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {Session} from "@/app/session/domain/session";
-import {SessionService} from "@/app/session/application/services/sessionService";
+import {SessionService} from "@/app/session/application/services/session-service";
 
 @Component({
   selector: 'session',
   templateUrl: 'session.component.html',
   styleUrls: ['session.component.scss'],
 })
-export class SessionComponent implements OnInit {
+export class SessionComponent {
   @Input() session: Session = {} as Session;
 
   constructor(public sessionService: SessionService) {
   }
 
-  ngOnInit() {
-  }
 
   isSessionOpen(session: Session): boolean {
     const currentDate = new Date();

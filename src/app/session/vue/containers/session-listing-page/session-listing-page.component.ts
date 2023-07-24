@@ -1,17 +1,25 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {sessionsMock} from "@/app/session/mock/mock-session";
 import {Session} from "@/app/session/domain/session";
+import {sessionByEstablishment, SessionService} from "@/app/session/application/services/session-service";
 
 @Component({
   selector: 'session-listing',
   templateUrl: 'session-listing-page.component.html',
   styleUrls: ['session-listing-page.component.scss']
 })
-export class SessionListingPageComponent {
+export class SessionListingPageComponent implements OnInit {
   sessions = sessionsMock;
+  sessionsByEstablishment!: Array<sessionByEstablishment>;
+
+  constructor(private sessionService: SessionService) {
+  }
+
+  ngOnInit() {
+    this.sessionsByEstablishment = this.sessionService.getSessionByEstablishment();
+  }
 
   onFilterChange(event: { type: string; title: string; date: Date }) {
-    console.log(event);
     const { type, title, date } = event;
 
     this.sessions = this.sessions.filter((session) => {

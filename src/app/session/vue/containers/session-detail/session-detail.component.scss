@@ -7,6 +7,16 @@
     margin: 20px;
 
 
+
+    .session-availability {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mat-form-field {
+        width: 350px;
+      }
+    }
+
     .session-image {
       width: 100%;
       max-height: 300px;

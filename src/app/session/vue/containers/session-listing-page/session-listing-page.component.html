@@ -3,14 +3,26 @@
   <div class="session-filter">
     <session-filter (filterChange)="onFilterChange($event)">></session-filter>
   </div>
-  <div
-    class="session-list-container">
-    <session
-      class="session"
-      *ngFor="let session of sessions"
-      [routerLink]="'detail/'+ session.id"
-      [session]="session"
-    ></session>
+  <div>
+    <ng-container
+      *ngFor=" let sessionByEstablishment of sessionsByEstablishment"
+    >
+      <p>{{sessionByEstablishment.nomEstablishment}}</p>
+      <small>{{sessionByEstablishment.address}}</small>
+      <div
+        style="display: flex"
+        class="session-list-container"
+      >
+        <session
+          class="session"
+          *ngFor="let session of sessionByEstablishment.sessions"
+          [routerLink]="'detail/'+ session.id"
+          [session]="session"
+        ></session>
+      </div>
+
+    </ng-container>
+
 
   </div>
 </div>

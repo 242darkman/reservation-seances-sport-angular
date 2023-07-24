@@ -1,9 +1,7 @@
-import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {
-  SessionListingPageComponent
-} from "@/app/session/vue/containers/session-listing-page/session-listing-page.component";
-import {SessionDetailComponent} from "@/app/session/vue/containers/session-detail/session-detail.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { SessionListingPageComponent } from '@/app/session/vue/containers/session-listing-page/session-listing-page.component';
+import { SessionDetailComponent } from '@/app/session/vue/containers/session-detail/session-detail.component';
 
 const route: Routes = [
   {
@@ -12,15 +10,13 @@ const route: Routes = [
     children: [
       {
         path: 'detail/:id',
-        component: SessionDetailComponent
-      }
-    ]
+        component: SessionDetailComponent,
+      },
+    ],
   },
-
-]
+];
 @NgModule({
   imports: [RouterModule.forChild(route)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SessionRoutingModule {
-}
+export class SessionRoutingModule {}

@@ -1,16 +1,16 @@
-import {Component, EventEmitter, Output} from "@angular/core";
-import {TrainingSession} from "@/app/session/domain/session";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { TrainingSession } from '@/app/session/domain/session';
 
 @Component({
   selector: 'session-filter',
   templateUrl: 'session-filter.component.html',
-  styleUrls: ['session-filter.component.scss']
+  styleUrls: ['session-filter.component.scss'],
 })
 export class SessionFilterComponent {
   @Output() filterChange = new EventEmitter<{ type: string; title: string; date: Date }>();
 
-  selectedType: string = '';
-  searchTitle: string = '';
+  selectedType = '';
+  searchTitle = '';
 
   sessionTypes: string[] = Object.values(TrainingSession);
 

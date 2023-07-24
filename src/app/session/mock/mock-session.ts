@@ -1,5 +1,4 @@
-import {Session, TrainingSession} from "@/app/session/domain/session";
-
+import { Session, TrainingSession } from '@/app/session/domain/session';
 
 export const sessionsMock: Session[] = [
   {
@@ -76,7 +75,12 @@ export const sessionsMock: Session[] = [
     type: TrainingSession.YOGA,
     openingHours: [
       { dayOfWeek: 'Lundi', startTime: '08:00', endTime: '09:30', fullDate: new Date(2023, 6, 17, 8, 0).getTime() },
-      { dayOfWeek: 'Mercredi', startTime: '17:30', endTime: '19:00', fullDate: new Date(2023, 6, 19, 17, 30).getTime() },
+      {
+        dayOfWeek: 'Mercredi',
+        startTime: '17:30',
+        endTime: '19:00',
+        fullDate: new Date(2023, 6, 19, 17, 30).getTime(),
+      },
     ],
   },
   {
@@ -113,6 +117,3 @@ export const sessionsMock: Session[] = [
     ],
   },
 ];
-
-
-

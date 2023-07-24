@@ -1,31 +1,30 @@
-import {Injectable} from '@angular/core';
-import {Session, TrainingSession, TrainingSessionImages} from "@/app/session/domain/session";
-import {sessionsMock} from "@/app/session/mock/mock-session";
-import {establishmentsMock} from "@/app/establishment/mock/mock-establishment";
-import {Establishment} from "@/app/establishment/domain/establishment";
+import { Session, TrainingSession, TrainingSessionImages } from '@/app/session/domain/session';
+
+import { Establishment } from '@/app/establishment/domain/establishment';
+import { Injectable } from '@angular/core';
+import { establishmentsMock } from '@/app/establishment/mock/mock-establishment';
+import { sessionsMock } from '@/app/session/mock/mock-session';
 
 export interface sessionByEstablishment {
   nomEstablishment: string;
   address: string;
-  sessions: Array<Session>;
+  sessions: Session[];
 }
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SessionService {
   private sessions: Session[] = sessionsMock;
   private establishments: Establishment[] = establishmentsMock;
-
-  constructor() { }
 
   getAllSessions(): Session[] {
     return this.sessions;
   }
 
   getSessionById(id: number): Session {
-    const session = this.sessions.find(session => session.id === id);
+    const sessionData = this.sessions.find((session) => session.id === id);
 
-    return session ?? [] as unknown as Session;
+    return sessionData ?? ([] as unknown as Session);
   }
 
   getSessionByEstablishment(): sessionByEstablishment[] {
@@ -49,7 +48,7 @@ export class SessionService {
         result.push({
           nomEstablishment: establishment.nom,
           address: establishment.address,
-          sessions: sessions,
+          sessions,
         });
       }
     }
@@ -58,7 +57,7 @@ export class SessionService {
   }
 
   getTrainingSessionImageUrl(type: string): string {
-    return TrainingSessionImages[this.getKeyByValue(TrainingSession, type) as keyof  typeof TrainingSession];
+    return TrainingSessionImages[this.getKeyByValue(TrainingSession, type) as keyof typeof TrainingSession];
   }
 
   getKeyByValue(obj: { [key: string]: string }, value: string): string | undefined {

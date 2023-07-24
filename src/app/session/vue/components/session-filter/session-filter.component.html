@@ -2,7 +2,7 @@
   <mat-form-field>
     <mat-label>Type de session</mat-label>
     <mat-select [(ngModel)]="selectedType" (selectionChange)="filterSessions()">
-      <mat-option >Tous</mat-option>
+      <mat-option>Tous</mat-option>
       <mat-option *ngFor="let sessionType of sessionTypes" [value]="sessionType">
         {{ sessionType }}
       </mat-option>

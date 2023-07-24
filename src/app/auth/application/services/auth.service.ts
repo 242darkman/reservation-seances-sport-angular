@@ -62,6 +62,14 @@ export class AuthService {
     return encodeUser;
   }
 
+  verifyToken(token: string): boolean {
+    const decodeUser = atob(token);
+    const parsedUser = JSON.parse(decodeUser);
+    const currentTime = Math.floor(Date.now() / 1000);
+    const tokenExpiration = get(parsedUser, 'expire');
+    return currentTime < tokenExpiration;
+  }
+
   getUserIdFromToken(token: string): number {
     const decodeToken = atob(token);
     const user = JSON.parse(decodeToken);

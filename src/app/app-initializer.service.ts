@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { NavigationStart, Router } from '@angular/router';
+
 import { AuthService } from '@/app/auth/application/services/auth.service';
+import { Injectable } from '@angular/core';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,14 @@ export class AppInitializerService {
   }
 
   removeTokenIfUserNotFound() {
-    const token = this.authService.getToken();
+    const token: string = this.authService.getToken();
     if (!token) {
+      return;
+    }
+
+    const isValidateToken = this.authService.verifyToken(token);
+    if (!isValidateToken) {
+      void this.router.navigateByUrl('/login');
       return;
     }
 

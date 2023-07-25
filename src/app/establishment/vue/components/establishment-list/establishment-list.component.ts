@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { EstablishmentFacadeService } from '../../application/facade/establishment-face.service';
-import { Establishment } from '../../domain/establishment';
+import { EstablishmentFacadeService } from '../../../application/facade/establishment-face.service';
+import { Establishment } from '../../../domain/establishment';
 
 @Component({
   selector: 'app-establishment',
-  templateUrl: './establishment.component.html',
-  styleUrls: ['./establishment.component.scss'],
+  templateUrl: './establishment-list.component.html',
+  styleUrls: ['./establishment-list.component.scss'],
 })
-export class EstablishmentComponent implements OnInit {
+export class EstablishmentListComponent implements OnInit {
   establishments: Establishment[] = [];
 
   displayedColumns: string[] = ['id', 'nom', 'address', 'opening', 'close'];

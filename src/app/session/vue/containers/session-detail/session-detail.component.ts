@@ -38,7 +38,7 @@ export class SessionDetailComponent implements OnInit {
   onBooking() {
     console.log('Réservation de la session :', this.session.title);
     // Utilisez le service de réservation pour effectuer la réservation
-    this.bookingService.bookingSession(this.session).subscribe(
+    this.bookingService.bookingSession(this.session).then(
       reservation => {
         console.log('Réservation réussie !', reservation);
       },

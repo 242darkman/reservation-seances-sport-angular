@@ -5,7 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { Establishment } from '../domain/establishment';
+import { Establishment } from '../../../domain/establishment';
 
 @Component({
   selector: 'app-establishment',

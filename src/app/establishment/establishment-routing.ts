@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { EstablishmentComponent } from '@/app/establishment/vue/components/establishment.component';
+import { EstablishmentListComponent } from '@/app/establishment/vue/components/establishment-list/establishment-list.component';
 
 const route: Routes = [
   {
     path: 'establishments',
-    component: EstablishmentComponent,
+    component: EstablishmentListComponent,
   },
 ];
 @NgModule({

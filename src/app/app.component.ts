@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated!: boolean;
   private subscription!: Subscription;
   year = new Date().getFullYear();
-  user!: User | undefined;
+  user!: User | null;
   isAdmin!: boolean;
 
   constructor(
@@ -31,14 +31,15 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.authService.isAuthenticated.subscribe(
-      authenticated => {
-        this.isAuthenticated = authenticated;
-        this.user = this.authService.getUser();
-        const userRoles = this.authService.getUserRoles();
-        this.isAdmin = includes(userRoles, 'admin');
+    this.subscription = this.authService.currentUser$.subscribe(user => {
+      if (this.user !== user) {
+        this.user = user;
       }
-    );
+
+      this.isAuthenticated = !!user;
+      this.user = user;
+      this.isAdmin = user ? includes(user.roles, 'admin') : false;
+    });
   }
 
   ngOnDestroy(): void {

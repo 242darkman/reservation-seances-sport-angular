@@ -96,6 +96,7 @@ export class UserDashboardComponent {
     };
     this.userService.updateUser(updatedUser, (success: boolean) => {
       if (success) {
+        this.authService.setCurrentUser(updatedUser);
         this.snackBar.open(
           'Les informations ont été mise à jour avec succès',
           'Fermer',

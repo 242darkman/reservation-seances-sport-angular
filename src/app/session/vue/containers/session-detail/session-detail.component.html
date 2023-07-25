@@ -1,0 +1,28 @@
+<div class="session-details" *ngIf="session">
+  <mat-card class="session-card">
+    <img
+      class="session-image"
+      [src]="sessionService.getTrainingSessionImageUrl(session.type)"
+      alt="Image de la session"
+    />
+
+    <mat-card-header>
+      <mat-card-title>{{ session.title }}</mat-card-title>
+      <mat-card-subtitle>{{ session.description }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <h3>Disponibilité(s)</h3>
+    <mat-card-content class="session-availability">
+      <mat-form-field appearance="fill">
+        <mat-select multiple [(value)]="selectedDays">
+          <mat-option *ngFor="let availability of session.openingHours" [value]="availability.dayOfWeek">
+            {{ availability.dayOfWeek }} - {{ availability.fullDate | date : 'dd/MM/yyyy' }} ,
+            {{ availability.startTime }} à {{ availability.endTime }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="onBooking()">Réserver</button>
+    </mat-card-content>
+  </mat-card>
+</div>

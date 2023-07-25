@@ -1,0 +1,30 @@
+<div class="booking-list">
+  <mat-table [dataSource]="bookings">
+    <!-- ID Column -->
+    <ng-container matColumnDef="num">
+      <mat-header-cell *matHeaderCellDef> N° </mat-header-cell>
+      <mat-cell *matCellDef="let bookking"> {{ bookking.num }} </mat-cell>
+    </ng-container>
+
+    <!-- Titre Column -->
+    <ng-container matColumnDef="titre">
+      <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+      <mat-cell *matCellDef="let bookking"> fdgdfgfg</mat-cell>
+    </ng-container>
+
+    <!-- Contenu Column -->
+    <ng-container matColumnDef="contenu">
+      <mat-header-cell *matHeaderCellDef> Contenu </mat-header-cell>
+      <mat-cell *matCellDef="let bookking"> csscsc </mat-cell>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let bookking"> csscsc </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

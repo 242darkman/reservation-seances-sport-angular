@@ -33,7 +33,7 @@ $highlight-hover-color: darken($highlight-color, 20%);
 }
 
 .footer {
-  position: absolute;
+  position: sticky;
   bottom: 0;
   width: 100%;
   mat-toolbar {
@@ -57,4 +57,7 @@ $highlight-hover-color: darken($highlight-color, 20%);
   .welcome {
     font-family: 'Pacifico', cursive;
   }
+}
+.content {
+  height: 100%;
 }

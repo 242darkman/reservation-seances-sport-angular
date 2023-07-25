@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from '@/app/home/home.component';
 
 import { HomeRoutingModule } from '@/app/home/home-routing.module';
+import { SessionModule } from '@/app/session/session.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -18,6 +19,7 @@ import { HomeRoutingModule } from '@/app/home/home-routing.module';
     MatListModule,
     MatCardModule,
     HomeRoutingModule,
+    SessionModule,
   ],
 })
 export class HomeModule {}

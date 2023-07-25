@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { User } from '@/app/user/domain/user';
 
@@ -9,6 +9,21 @@ import { User } from '@/app/user/domain/user';
 })
 export class UserListComponent {
   @Input() users: User[] = [];
+  @Output() add = new EventEmitter<User>();
+  @Output() update = new EventEmitter<User>();
+  @Output() delete = new EventEmitter<User>();
 
   displayedColumns: string[] = ['id', 'name', 'email', 'action'];
+
+  onAdd() {
+    this.add.emit();
+  }
+
+  onUpdate(user: User) {
+    this.update.emit(user);
+  }
+
+  onDelete(user: User) {
+    this.delete.emit(user);
+  }
 }

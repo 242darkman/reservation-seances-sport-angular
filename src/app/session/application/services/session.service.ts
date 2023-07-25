@@ -6,7 +6,7 @@ import {
 
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { Injectable } from '@angular/core';
-import { establishmentsMock } from '@/app/establishment/mock/mock-establishment';
+import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { sessionsMock } from '@/app/session/mock/mock-session';
 
 export interface sessionByEstablishment {
@@ -19,7 +19,7 @@ export interface sessionByEstablishment {
 })
 export class SessionService {
   private sessions: Session[] = sessionsMock;
-  private establishments: Establishment[] = establishmentsMock;
+  private establishments: Establishment[] = ESTABLISHMENTS;
 
   getAllSessions(): Session[] {
     return this.sessions;

@@ -1,1 +1,18 @@
+<div class="hero-container">
+  <div
+    style="
+      display: flex;
+      color: white;
+      justify-content: center;
+      align-self: center;
+      height: 100%;
+    "></div>
+</div>
+<div style="display: flex; justify-content: center">
+  <div style="max-width: 1200px; display: flex; flex-wrap: wrap">
+    <app-establishment
+      *ngFor="let establishment of establishments"
+      [establishment]="establishment"></app-establishment>
+  </div>
+</div>
 <session-listing></session-listing>

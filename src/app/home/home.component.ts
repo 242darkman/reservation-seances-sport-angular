@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Establishment } from '@/app/establishment/domain/establishment';
+import { establishmentsMock } from '@/app/establishment/mock/mock-establishment';
 
 @Component({
   selector: 'app-home',
@@ -13,4 +15,6 @@ export class HomeComponent {
       description: 'This is sports news 1',
     },
   ];
+
+  establishments: Establishment[] = establishmentsMock;
 }

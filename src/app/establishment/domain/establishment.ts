@@ -1,4 +1,4 @@
-import {OpeningHour} from "@/app/session/domain/session";
+import { OpeningHour } from '@/app/session/domain/session';
 
 export interface Establishment {
   nom: string;

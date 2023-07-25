@@ -1,6 +1,5 @@
 import { Establishment } from '@/app/establishment/domain/establishment';
 
-
 export const establishmentsMock: Establishment[] = [
   {
     id: 1,
@@ -69,7 +68,8 @@ export const establishmentsMock: Establishment[] = [
     id: 6,
     nom: 'Centre de Natation AquaSport',
     address: '222 Place de la Natation, 28900 Clermont',
-    imgUrl: 'assets/pictures/espace-cardio-muscu-clermont-1-1-600x400-c-default.jpeg',
+    imgUrl:
+      'assets/pictures/espace-cardio-muscu-clermont-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 11 22 33 44',
     openingHours: [
       { dayOfWeek: 'Mercredi', startTime: '06:30', endTime: '19:00' },
@@ -82,7 +82,8 @@ export const establishmentsMock: Establishment[] = [
     id: 7,
     nom: 'Salle de CrossFit IronFit',
     address: '333 Rue du CrossFit, 92000 Marseille',
-    imgUrl: 'assets/pictures/espace-cardio-muscu-marseille-1-1-600x400-c-default.jpeg',
+    imgUrl:
+      'assets/pictures/espace-cardio-muscu-marseille-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 44 55 66 77',
     openingHours: [
       { dayOfWeek: 'Lundi', startTime: '10:00', endTime: '20:00' },
@@ -94,7 +95,8 @@ export const establishmentsMock: Establishment[] = [
     id: 8,
     nom: "Club d'Escalade Vertigo",
     address: "444 Avenue de l'Escalade, 75017 Paris",
-    imgUrl: 'assets/pictures/espace-cardio-muscu-tassin-1-1-600x400-c-default.jpeg',
+    imgUrl:
+      'assets/pictures/espace-cardio-muscu-tassin-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 99 88 77 66',
     openingHours: [
       { dayOfWeek: 'Lundi', startTime: '09:30', endTime: '22:00' },

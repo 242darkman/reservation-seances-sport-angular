@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Establishment} from "@/app/establishment/domain/establishment";
-import {establishmentsMock} from "@/app/establishment/mock/mock-establishment";
+import { Establishment } from '@/app/establishment/domain/establishment';
+import { establishmentsMock } from '@/app/establishment/mock/mock-establishment';
 
 @Component({
   selector: 'app-home',
@@ -16,5 +16,5 @@ export class HomeComponent {
     },
   ];
 
-  establishments: Establishment[] = establishmentsMock
+  establishments: Establishment[] = establishmentsMock;
 }

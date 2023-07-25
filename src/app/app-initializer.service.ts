@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
 import { filter } from 'rxjs/operators';
 
+/**
+ * Le `AppInitializerService` fournit des méthodes pour initialiser l'application.
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -14,6 +17,11 @@ export class AppInitializerService {
     private userService: UserFacadeService,
     private router: Router
   ) {
+    /**
+     * À chaque démarrage de la navigation, le service vérifie si le token de l'utilisateur est valide.
+     * Si le token n'est pas valide ou si l'utilisateur n'existe pas, le service supprime le token
+     * et redirige l'utilisateur vers la page de connexion.
+     */
     this.router.events
       .pipe(filter(event => event instanceof NavigationStart))
       .subscribe(() => {
@@ -21,6 +29,9 @@ export class AppInitializerService {
       });
   }
 
+  /**
+   * Supprime le token de l'utilisateur si l'utilisateur n'est pas trouvé.
+   */
   removeTokenIfUserNotFound() {
     const token: string = this.authService.getToken();
     if (!token) {

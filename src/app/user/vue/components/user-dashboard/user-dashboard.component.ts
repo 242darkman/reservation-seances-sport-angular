@@ -8,6 +8,13 @@ import { UserFacadeService } from '@/app/user/application/facade/user-facade.ser
 import get from 'lodash/get';
 import { isUndefined } from 'lodash';
 
+/**
+ * Le composant `UserDashboardComponent` sert à fournir une interface utilisateur pour afficher et modifier les détails de l'utilisateur.
+ *
+ * @selector `app-user-dashboard`
+ * @templateUrl `./user-dashboard.component.html`
+ * @styleUrls [`./user-dashboard.component.scss`]
+ */
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -37,6 +44,10 @@ export class UserDashboardComponent {
     });
   }
 
+  /**
+   * Au moment de l'initialisation, récupère l'utilisateur à partir du service d'authentification
+   * et met à jour le formulaire utilisateur avec les données de l'utilisateur.
+   */
   ngOnInit() {
     this.user = this.authService.getUser();
 
@@ -57,6 +68,9 @@ export class UserDashboardComponent {
     });
   }
 
+  /**
+   * Bascule l'état d'édition du formulaire et active/désactive les champs du formulaire en conséquence.
+   */
   toggleEdit() {
     this.editing = !this.editing;
     if (this.editing) {
@@ -66,6 +80,10 @@ export class UserDashboardComponent {
     }
   }
 
+  /**
+   * Met à jour les informations de l'utilisateur existant.
+   * Affiche un message de confirmation en cas de succès, ou un message d'erreur en cas d'échec.
+   */
   updateUser() {
     const id = get(this.user, 'id');
     const userName = get(this.user, 'userName');
@@ -116,6 +134,10 @@ export class UserDashboardComponent {
     });
   }
 
+  /**
+   * Vérifie les erreurs dans le champ 'email' du formulaire utilisateur et renvoie un message d'erreur approprié.
+   * @returns Un message d'erreur en cas d'erreur, sinon une chaîne vide.
+   */
   getEmailError() {
     if (this.userForm.controls['email'].hasError('required')) {
       return 'Adresse email requis.';

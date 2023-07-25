@@ -21,11 +21,11 @@ export class BookingService {
   }
 
   // Méthode pour effectuer la réservation
-  bookingSession(session: Session) {
+  async bookingSession(session: Session) {
     const user = this.authService.getUser();
     const userId: number = user?.id ?? -1;
     if (!user || userId === -1) {
-      this.router.navigate(['/login']).then(() => {});
+      await this.router.navigate(['/login']);
     }
     const newReservation: Booking = {
       id: this.generateId(),

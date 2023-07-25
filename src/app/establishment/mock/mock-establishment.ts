@@ -7,7 +7,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '123 Rue du Sport, 75001 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '123 Rue du Sport, 75001 Paris',
     imgUrl: 'assets/pictures/porte-maillot-600x400-c-default.png',
     phoneNumber: '+33 1 23 45 67 89',
     openingHours: [
@@ -23,7 +22,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '456 Avenue des Sportifs, 75008 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '456 Avenue des Sportifs, 69000 Lyon',
     imgUrl: 'assets/pictures/bandeau-club-gambetta-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 98 76 54 32',
     openingHours: [
@@ -38,7 +36,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '789 Rue de la Forme, 75016 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '789 Rue de la Forme, 69002 Lyon',
     imgUrl: 'assets/pictures/dsc5365-600x400-c-default.jpeg',
     phoneNumber: '+33 1 55 66 77 88',
     openingHours: [
@@ -54,7 +51,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '1010 Rue des Boxeurs, 75012 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '1010 Rue des Boxeurs, 78000 Besançon',
     imgUrl: 'assets/pictures/espace-cardio-besancon-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 22 33 44 55',
     openingHours: [
@@ -69,7 +65,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '555 Rue du Yoga, 75020 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '555 Rue du Yoga, 48000 Lille',
     imgUrl: 'assets/pictures/espace-cardio-muscu-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 66 77 88 99',
     openingHours: [
@@ -85,7 +80,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '222 Place de la Natation, 75009 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '222 Place de la Natation, 28900 Clermont',
     imgUrl:
       'assets/pictures/espace-cardio-muscu-clermont-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 11 22 33 44',
@@ -102,7 +96,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '333 Rue du CrossFit, 75005 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '333 Rue du CrossFit, 92000 Marseille',
     imgUrl:
       'assets/pictures/espace-cardio-muscu-marseille-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 44 55 66 77',
@@ -118,7 +111,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: "444 Avenue de l'Escalade, 75017 Paris, France",
     opening: '07:00',
     close: '22:00',
-    address: "444 Avenue de l'Escalade, 75017 Paris",
     imgUrl:
       'assets/pictures/espace-cardio-muscu-tassin-1-1-600x400-c-default.jpeg',
     phoneNumber: '+33 1 99 88 77 66',
@@ -135,7 +127,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '777 Boulevard du Football, 75013 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '777 Boulevard du Football, 69100 Lyon',
     imgUrl: 'assets/pictures/espace-cardio-villeurbanne-600x400-c-default.jpeg',
     phoneNumber: '+33 1 12 34 56 78',
     openingHours: [
@@ -151,7 +142,6 @@ export const ESTABLISHMENTS: Establishment[] = [
     address: '888 Rue de la Danse, 75014 Paris, France',
     opening: '07:00',
     close: '22:00',
-    address: '888 Rue de la Danse, 69002 Lyon Confluence',
     imgUrl: 'assets/pictures/piscine-confluence-600x400-c-default.jpeg',
     phoneNumber: '+33 1 23 45 67 89',
     openingHours: [

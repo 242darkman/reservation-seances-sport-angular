@@ -19,7 +19,7 @@ export class EstablishmentService {
   getEstablishments(): Observable<Establishment[]> {
     return this.http.get<Establishment[]>(this.establishmentsUrl).pipe(
       tap(() => console.log('fetched establishment')),
-      catchError(this.handleError<Establishment[]>('getEstablishments', [])),
+      catchError(this.handleError<Establishment[]>('getEstablishments', []))
     );
   }
 

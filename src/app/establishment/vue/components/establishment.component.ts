@@ -18,9 +18,11 @@ export class EstablishmentComponent implements OnInit {
   }
 
   getEstablishmens(): void {
-    this.EstablishmentFacade.getEstablishments().subscribe((establishments: Establishment[]) => {
-      this.establishments = establishments;
-      console.log(`All establishments => ${this.establishments}`);
-    });
+    this.EstablishmentFacade.getEstablishments().subscribe(
+      (establishments: Establishment[]) => {
+        this.establishments = establishments;
+        console.log(`All establishments => ${this.establishments}`);
+      }
+    );
   }
 }

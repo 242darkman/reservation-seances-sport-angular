@@ -39,12 +39,12 @@ export class SessionDetailComponent implements OnInit {
     console.log('Réservation de la session :', this.session.title);
     // Utilisez le service de réservation pour effectuer la réservation
     this.bookingService.bookingSession(this.session).subscribe(
-      (reservation) => {
+      reservation => {
         console.log('Réservation réussie !', reservation);
       },
-      (error) => {
+      error => {
         console.error('Erreur lors de la réservation :', error);
-      },
+      }
     );
   }
 }

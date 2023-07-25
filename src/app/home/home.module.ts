@@ -8,6 +8,7 @@ import { HomeComponent } from '@/app/home/home.component';
 
 import { HomeRoutingModule } from '@/app/home/home-routing.module';
 import { SessionModule } from '@/app/session/session.module';
+import { EstablishmentModule } from '../establishment/establishment.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -20,6 +21,7 @@ import { SessionModule } from '@/app/session/session.module';
     MatCardModule,
     HomeRoutingModule,
     SessionModule,
+    EstablishmentModule,
   ],
 })
 export class HomeModule {}

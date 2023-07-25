@@ -1,0 +1,72 @@
+.establishment-container {
+  padding: 20px;
+  max-width: 346px;
+  max-height: 641px;
+  position: relative;
+
+  .establishment-card {
+    height: 541px;
+    .establishment-img-container {
+      width: 346px;
+      height: 228px;
+      position: relative;
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .image-text {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 2;
+      }
+
+      .establishment-image {
+        width: 100%;
+        object-fit: contain;
+      }
+
+    }
+
+    .establishment-info {
+      display: flex;
+      align-items: center;
+
+      .icon-padding {
+        padding-right: 8px;
+      }
+    }
+
+    .action-button {
+      display: flex;
+      width: 100%;
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+
+      button {
+        width: 50%;
+        padding: 0;
+        border-radius: 0;
+      }
+    }
+
+    .mdc-card__actions {
+      padding: 0;
+      min-height: auto;
+    }
+  }
+
+
+}

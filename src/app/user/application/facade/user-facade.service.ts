@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '@/app/user/domain/user';
 import { UserService } from '@/app/user/application/services/user.service';
 
@@ -6,28 +7,28 @@ import { UserService } from '@/app/user/application/services/user.service';
   providedIn: 'root',
 })
 export class UserFacadeService {
+  users$ = this.userService.users$;
+
   constructor(private userService: UserService) {}
 
   getUsers() {
-    const users = this.userService.getUsers();
-    return users;
+    this.userService.getUsers();
   }
 
   getUser(id: number) {
-    const user = this.userService.getUser(id);
-    return user;
+    return this.userService.getUser(id);
   }
 
-  addUser(user: User) {
+  addUser(user: User): Observable<User> {
     return this.userService.addUser(user);
   }
 
-  updateUser(user: User) {
-    return this.userService.updateUser(user);
+  updateUser(user: User, callback: (success: boolean) => void) {
+    this.userService.updateUser(user, callback);
   }
 
-  deleteUser(id: number) {
-    return this.userService.deleteUser(id);
+  deleteUser(id: number, callback: (success: boolean) => void) {
+    this.userService.deleteUser(id, callback);
   }
 
   generateId() {

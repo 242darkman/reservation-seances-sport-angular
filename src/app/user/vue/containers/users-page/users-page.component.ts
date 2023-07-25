@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '@/app/user/domain/user';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
-import filter from 'lodash/filter';
 import get from 'lodash/get';
 
 @Component({
@@ -11,7 +10,7 @@ import get from 'lodash/get';
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit {
-  users: User[] = [];
+  users$ = this.userFacade.users$;
 
   constructor(private userFacade: UserFacadeService) {}
 
@@ -20,26 +19,36 @@ export class UsersPageComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userFacade.getUsers().subscribe((users: User[]) => {
-      this.users = users;
-      console.log(`All users => ${this.users}`);
-    });
+    this.userFacade.getUsers();
   }
 
   addUser(user: User) {
     if (!user) {
       return;
     }
-    this.userFacade.addUser(user).subscribe();
+    this.userFacade.addUser(user);
   }
 
   updateUser(user: User) {
-    this.userFacade.updateUser(user).subscribe();
+    this.userFacade.updateUser(user, (success: boolean) => {
+      if (success) {
+        console.log(`User with id ${user.id} updated successfully`);
+        this.getUsers();
+      } else {
+        console.log(`Failed to update user with id ${user.id}`);
+      }
+    });
   }
 
   deleteUser(user: User) {
-    this.users = filter(this.users, (u: User) => u !== user);
-    const id = get(user, 'id');
-    this.userFacade.deleteUser(id).subscribe();
+    const id: number = get(user, 'id');
+    this.userFacade.deleteUser(id, (success: boolean) => {
+      if (success) {
+        console.log(`User with id ${id} deleted successfully`);
+        this.getUsers();
+      } else {
+        console.log(`Failed to delete user with id ${id}`);
+      }
+    });
   }
 }

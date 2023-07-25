@@ -85,7 +85,7 @@ export class UserDashboardComponent {
     const firstName: string = get(this.userForm.value, 'firstName');
     const lastName: string = get(this.userForm.value, 'lastName');
     const email: string = get(this.userForm.value, 'email');
-    const newUser: User = {
+    const updatedUser: User = {
       id,
       userName,
       firstName,
@@ -94,8 +94,8 @@ export class UserDashboardComponent {
       password,
       roles: roles as string[],
     };
-    this.userService.updateUser(newUser).subscribe({
-      next: () => {
+    this.userService.updateUser(updatedUser, (success: boolean) => {
+      if (success) {
         this.snackBar.open(
           'Les informations ont été mise à jour avec succès',
           'Fermer',
@@ -104,14 +104,14 @@ export class UserDashboardComponent {
             panelClass: ['green-snackbar'],
           }
         );
-        this.isLoading = false;
-      },
-      error: () =>
+      } else {
         this.snackBar.open(
           "Une erreur s'est produite lors de la mise à jour",
           'Fermer',
           { duration: 5000 }
-        ),
+        );
+      }
+      this.isLoading = false;
     });
   }
 

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { User } from '@/app/user/domain/user';
+
 import { InMemoryDataService } from '@/app/in-memory-data.service';
+import { Injectable } from '@angular/core';
 import { USERS } from '@/app/user/mock/mock-users';
+import { User } from '@/app/user/domain/user';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,21 @@ export class UserService {
   };
   private usersUrl = 'api/users';
 
+  private usersSubject = new BehaviorSubject<User[]>([]);
+  users$ = this.usersSubject.asObservable();
+
   constructor(private http: HttpClient, private memory: InMemoryDataService) {}
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl).pipe(
-      tap(() => console.log('fetched users')),
-      catchError(this.handleError<User[]>('getUsers', []))
-    );
+  getUsers(): void {
+    this.http
+      .get<User[]>(this.usersUrl)
+      .pipe(
+        tap(() => console.log('fetched users')),
+        catchError(this.handleError<User[]>('getUsers', []))
+      )
+      .subscribe(users => {
+        this.usersSubject.next(users);
+      });
   }
 
   getUserNo404(id: number): Observable<User> {
@@ -46,25 +55,55 @@ export class UserService {
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
-      tap(() => console.log()),
+      tap(newUser => {
+        const currentValue = this.usersSubject.getValue();
+        this.usersSubject.next([...currentValue, newUser]);
+      }),
       catchError(this.handleError<User>('addUser'))
     );
   }
 
-  deleteUser(id: number): Observable<User> {
+  deleteUser(id: number, callback: (success: boolean) => void): void {
     const url = `${this.usersUrl}/${id}`;
-    return this.http.delete<User>(url, this.httpOptions).pipe(
-      tap(() => console.log(`deleted user id=${id}`)),
-      catchError(this.handleError<User>('deleteUser'))
-    );
+    this.http
+      .delete<User>(url, this.httpOptions)
+      .pipe(
+        tap(() => {
+          const currentValue = this.usersSubject.getValue();
+          const updatedUsers = currentValue.filter(user => user.id !== id);
+          this.usersSubject.next(updatedUsers);
+          callback(true);
+        }),
+        catchError(this.handleError<User>('deleteUser'))
+      )
+      .subscribe({
+        error: err => {
+          console.error(err);
+          callback(false);
+        },
+      });
   }
 
-  updateUser(user: User): Observable<User> {
+  updateUser(user: User, callback: (success: boolean) => void): void {
     const url = `${this.usersUrl}/${user.id}`;
-    return this.http.put<User>(url, user, this.httpOptions).pipe(
-      tap(() => console.log()),
-      catchError(this.handleError<User>('updateUser'))
-    );
+    this.http
+      .put<User>(url, user, this.httpOptions)
+      .pipe(
+        tap(updatedUser => {
+          const currentValue = this.usersSubject.getValue();
+          const updatedUsers = currentValue.map(u =>
+            u.id === updatedUser.id ? updatedUser : u
+          );
+          this.usersSubject.next(updatedUsers);
+          callback(true);
+        }),
+        catchError(err => {
+          this.handleError<User>(`updateUser ${err.message}`);
+          callback(false);
+          return of(null);
+        })
+      )
+      .subscribe();
   }
 
   generateId(): number {

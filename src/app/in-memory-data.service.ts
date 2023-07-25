@@ -3,6 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { User } from '@/app/user/domain/user';
 import { USERS } from '@/app/user/mock/mock-users';
 import { Booking } from './booking/domain/booking';
+import { ESTABLISHMENTS } from './establishment/mock/mock-establishment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,8 @@ import { Booking } from './booking/domain/booking';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = USERS;
-    return { users };
+    const establishments = ESTABLISHMENTS;
+    return { users, establishments };
   }
 
   genId(users: User[]): number {

@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { SessionListingPageComponent } from '@/app/session/vue/containers/session-listing-page/session-listing-page.component';
 import { SessionComponent } from '@/app/session/vue/components/session/session.component';
 import { MatCardModule } from '@angular/material/card';
-import { DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
+import {
+  DatePipe,
+  NgClass,
+  NgForOf,
+  NgIf,
+  NgOptimizedImage,
+} from '@angular/common';
 import { SessionFilterComponent } from '@/app/session/vue/components/session-filter/session-filter.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -14,7 +20,12 @@ import { SessionDetailComponent } from '@/app/session/vue/containers/session-det
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [SessionListingPageComponent, SessionComponent, SessionFilterComponent, SessionDetailComponent],
+  declarations: [
+    SessionListingPageComponent,
+    SessionComponent,
+    SessionFilterComponent,
+    SessionDetailComponent,
+  ],
   imports: [
     MatCardModule,
     NgForOf,

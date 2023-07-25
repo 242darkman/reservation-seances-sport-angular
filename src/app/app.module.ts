@@ -26,7 +26,9 @@ import { EstablishmentModule } from '@/app/establishment/establishment.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+    }),
     UserModule,
     MatToolbarModule,
     MatMenuModule,

@@ -16,10 +16,12 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   genId(users: User[]): number {
-    return users.length > 0 ? Math.max(...users.map((hero) => hero.id)) + 1 : 1;
+    return users.length > 0 ? Math.max(...users.map(hero => hero.id)) + 1 : 1;
   }
 
   bookingId(booking: Booking[]): number {
-    return booking.length > 0 ? Math.max(...booking.map((hero) => hero.id)) + 1 : 1;
+    return booking.length > 0
+      ? Math.max(...booking.map(hero => hero.id)) + 1
+      : 1;
   }
 }

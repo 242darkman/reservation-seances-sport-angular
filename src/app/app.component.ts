@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import { AppInitializerService } from '@/app/app-initializer.service';
 import { AuthService } from '@/app/auth/application/services/auth.service';
 import { Router } from '@angular/router';
-import { AppInitializerService } from '@/app/app-initializer.service';
 import { Subscription } from 'rxjs';
 import { User } from '@/app/user/domain/user';
+import includes from 'lodash/includes';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +17,12 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription!: Subscription;
   year = new Date().getFullYear();
   user!: User | undefined;
+  isAdmin!: boolean;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private appInitializerService: AppInitializerService,
+    private appInitializerService: AppInitializerService
   ) {}
 
   onLogout() {
@@ -28,10 +31,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.authService.isAuthenticated.subscribe((authenticated) => {
-      this.isAuthenticated = authenticated;
-      this.user = this.authService.getUser();
-    });
+    this.subscription = this.authService.isAuthenticated.subscribe(
+      authenticated => {
+        this.isAuthenticated = authenticated;
+        this.user = this.authService.getUser();
+        const userRoles = this.authService.getUserRoles();
+        this.isAdmin = includes(userRoles, 'admin');
+      }
+    );
   }
 
   ngOnDestroy(): void {

@@ -1,10 +1,11 @@
-import { AuthService } from '@/app/auth/application/services/auth.service';
-import { User } from '@/app/user/domain/user';
-import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from '@/app/auth/application/services/auth.service';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import get from 'lodash/get';
+import { User } from '@/app/user/domain/user';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
+import get from 'lodash/get';
 import { isUndefined } from 'lodash';
 
 @Component({
@@ -69,6 +70,7 @@ export class UserDashboardComponent {
     const id = get(this.user, 'id');
     const userName = get(this.user, 'userName');
     const password = get(this.user, 'password');
+    const roles = get(this.user, 'roles');
 
     if (isUndefined(id) || isUndefined(userName) || isUndefined(password)) {
       return;
@@ -90,6 +92,7 @@ export class UserDashboardComponent {
       lastName,
       email,
       password,
+      roles: roles as string[],
     };
     this.userService.updateUser(newUser).subscribe({
       next: () => {

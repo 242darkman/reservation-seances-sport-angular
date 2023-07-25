@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import filter from 'lodash/filter';
-import get from 'lodash/get';
+
 import { User } from '@/app/user/domain/user';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
+import filter from 'lodash/filter';
+import get from 'lodash/get';
 
 @Component({
   selector: 'app-users-page',

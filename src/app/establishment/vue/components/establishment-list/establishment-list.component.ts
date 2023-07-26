@@ -1,28 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { EstablishmentFacadeService } from '../../../application/facade/establishment-face.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Establishment } from '../../../domain/establishment';
 
 @Component({
-  selector: 'app-establishment',
+  selector: 'app-establishment-list',
   templateUrl: './establishment-list.component.html',
   styleUrls: ['./establishment-list.component.scss'],
 })
-export class EstablishmentListComponent implements OnInit {
-  establishments: Establishment[] = [];
+export class EstablishmentListComponent {
+  @Input() establishments: Establishment[] = [];
+  @Output() add = new EventEmitter<Establishment>();
+  @Output() update = new EventEmitter<Establishment>();
+  @Output() delete = new EventEmitter<Establishment>();
 
-  displayedColumns: string[] = ['id', 'nom', 'address', 'opening', 'close'];
-  constructor(private EstablishmentFacade: EstablishmentFacadeService) {}
+  displayedColumns: string[] = [
+    'nom',
+    'address',
+    'opening',
+    'close',
+    'phoneNumber',
+    'imgUrl',
+    'action',
+  ];
 
-  ngOnInit(): void {
-    this.getEstablishmens();
+  onAdd() {
+    this.add.emit();
   }
 
-  getEstablishmens(): void {
-    this.EstablishmentFacade.getEstablishments().subscribe(
-      (establishments: Establishment[]) => {
-        this.establishments = establishments;
-        console.log(`All establishments => ${this.establishments}`);
-      }
-    );
+  onUpdate(establishment: Establishment) {
+    this.update.emit(establishment);
+  }
+
+  onDelete(establishment: Establishment) {
+    this.delete.emit(establishment);
   }
 }

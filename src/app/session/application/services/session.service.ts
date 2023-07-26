@@ -5,10 +5,10 @@ import {
 } from '@/app/session/domain/session';
 
 import { Establishment } from '@/app/establishment/domain/establishment';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { sessionsMock } from '@/app/session/mock/mock-session';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface sessionByEstablishment {
   nomEstablishment: string;
@@ -19,28 +19,34 @@ export interface sessionByEstablishment {
 @Injectable({
   providedIn: 'root',
 })
-export class SessionService implements OnInit {
+export class SessionService {
   private sessions: Session[] = sessionsMock;
   private establishments: Establishment[] = ESTABLISHMENTS;
 
   private sessionsSubject: BehaviorSubject<Session[]> = new BehaviorSubject<
     Session[]
-  >([]);
-
-  ngOnInit() {
-    this.updateSessions(this.sessions);
-  }
+  >(this.sessions);
 
   // Getter pour obtenir le BehaviorSubject en tant qu'Observable
-  get sessions$() {
+  get sessionsAsObservable(): Observable<Session[]> {
     return this.sessionsSubject.asObservable();
   }
-
-  // Méthode pour mettre à jour les sessions
-  updateSessions(sessions: Session[]) {
-    this.sessionsSubject.next(sessions);
+  get sessionsAsValue(): Session[] {
+    return this.sessionsSubject.value;
+  }
+  set updateSessions(session: Session[]) {
+    this.sessionsSubject.next(session);
   }
 
+  updateSession(updatedSession: Session): Session[] {
+    const index = this.sessionsAsValue.findIndex(
+      session => session.id === updatedSession.id
+    );
+    if (index !== -1) {
+      this.sessionsAsValue[index] = updatedSession;
+    }
+    return this.sessionsAsValue;
+  }
   getSessionById(id: number): Session {
     const sessionData = this.sessions.find(session => session.id === id);
 

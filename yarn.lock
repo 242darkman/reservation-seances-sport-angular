@@ -7827,6 +7827,14 @@ next-tick@^1.1.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
   integrity sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==
 
+ngx-logger@^5.0.12:
+  version "5.0.12"
+  resolved "https://registry.yarnpkg.com/ngx-logger/-/ngx-logger-5.0.12.tgz#387feec5e4e951b3c44789eab6e0c30df255371c"
+  integrity sha512-4kTtPvxQoV2ka6pigtvkbtaLKpMYWqZm7Slu0YQVcwzBKoVR2K+oLmMVcA50S6kCxkZXq7iKcrXUKR2vhMXPqQ==
+  dependencies:
+    tslib "^2.3.0"
+    vlq "^1.0.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
@@ -10247,6 +10255,11 @@ vite@4.3.9:
     rollup "^3.21.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vlq@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vlq/-/vlq-1.0.1.tgz#c003f6e7c0b4c1edd623fd6ee50bbc0d6a1de468"
+  integrity sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==
 
 void-elements@^2.0.0:
   version "2.0.1"

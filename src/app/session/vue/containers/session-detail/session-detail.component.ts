@@ -5,6 +5,9 @@ import { SessionService } from '@/app/session/application/services/session.servi
 import get from 'lodash/get';
 import parseInt from 'lodash/parseInt';
 import { BookingService } from '@/app/booking/application/service/booking.service';
+import { Booking } from '@/app/booking/domain/booking';
+import { AuthService } from '@/app/auth/application/services/auth.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'session-detail',
@@ -18,7 +21,8 @@ export class SessionDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public sessionService: SessionService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -36,16 +40,34 @@ export class SessionDetailComponent implements OnInit {
   }
 
   onBooking() {
-    console.log('Réservation de la session :', this.session.title);
-    console.log(this.selectedDays);
-    // Utilisez le service de réservation pour effectuer la réservation
-    this.bookingService.bookingSession(this.session).then(
-      reservation => {
-        console.log('Réservation réussie !', reservation);
-      },
-      error => {
+    const book: Booking = {
+      timeBook: this.selectedDays,
+      sessionId: this.sessionId,
+      userId: this.authService.getUser()?.id as number,
+    };
+
+    this.bookingService
+      .bookingSession(book)
+      .then(reservation => {
+        this.sessionService.sessionsAsObservable
+          .pipe(take(1))
+          .subscribe(sessions => {
+            const sessionBooking = sessions.find(
+              session => session.id === this.sessionId
+            );
+            if (sessionBooking) {
+              sessionBooking.openingHours.forEach(sessionTime => {
+                if (book.timeBook.includes(sessionTime)) {
+                  sessionTime.availablePlace--;
+                  console.log(reservation);
+                }
+              });
+              this.sessionService.updateSession(sessionBooking);
+            }
+          });
+      })
+      .catch(error => {
         console.error('Erreur lors de la réservation :', error);
-      }
-    );
+      });
   }
 }

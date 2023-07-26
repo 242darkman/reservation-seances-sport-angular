@@ -21,7 +21,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
   bookingId(booking: Booking[]): number {
     return booking.length > 0
-      ? Math.max(...booking.map(hero => hero.id)) + 1
+      ? Math.max(...booking.map(hero => hero.id as number)) + 1
       : 1;
   }
 }

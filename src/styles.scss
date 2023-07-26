@@ -39,4 +39,8 @@ $sport-resa-theme: mat.define-light-theme(
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  height: 100%;
+}
+html {
+  height: 100%;
 }

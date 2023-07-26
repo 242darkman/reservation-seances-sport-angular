@@ -5,24 +5,41 @@ import {
 } from '@/app/session/domain/session';
 
 import { Establishment } from '@/app/establishment/domain/establishment';
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { sessionsMock } from '@/app/session/mock/mock-session';
+import {BehaviorSubject} from "rxjs";
 
 export interface sessionByEstablishment {
   nomEstablishment: string;
+  establishmentId: number;
   address: string;
   sessions: Session[];
 }
 @Injectable({
   providedIn: 'root',
 })
-export class SessionService {
+export class SessionService implements OnInit{
   private sessions: Session[] = sessionsMock;
   private establishments: Establishment[] = ESTABLISHMENTS;
 
-  getAllSessions(): Session[] {
-    return this.sessions;
+
+  private sessionsSubject: BehaviorSubject<Session[]> = new BehaviorSubject<Session[]>([]);
+
+  constructor() {}
+
+  ngOnInit() {
+    this.updateSessions(this.sessions);
+  }
+
+  // Getter pour obtenir le BehaviorSubject en tant qu'Observable
+  get sessions$() {
+    return this.sessionsSubject.asObservable();
+  }
+
+  // Méthode pour mettre à jour les sessions
+  updateSessions(sessions: Session[]) {
+    this.sessionsSubject.next(sessions);
   }
 
   getSessionById(id: number): Session {
@@ -52,6 +69,7 @@ export class SessionService {
       );
       if (establishment) {
         result.push({
+          establishmentId: establishment.id,
           nomEstablishment: establishment.nom,
           address: establishment.address,
           sessions,
@@ -60,6 +78,10 @@ export class SessionService {
     }
 
     return result;
+  }
+
+  getOneSessionByEstablishment(id: number): sessionByEstablishment {
+   return  <sessionByEstablishment> this.getSessionByEstablishment().find(sessionByEstablishment => sessionByEstablishment.establishmentId === id)
   }
 
   getTrainingSessionImageUrl(type: string): string {

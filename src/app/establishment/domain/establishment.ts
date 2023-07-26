@@ -10,3 +10,7 @@ export interface Establishment {
   openingHours: Pick<OpeningHour, 'startTime' | 'endTime' | 'dayOfWeek'>[];
   id: number;
 }
+
+export interface FormattedOpeningHour {
+  formattedDayAndHours: string;
+}

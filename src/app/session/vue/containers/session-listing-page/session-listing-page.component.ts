@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {
   SessionService,
   sessionByEstablishment,
@@ -6,6 +6,9 @@ import {
 
 import { Session } from '@/app/session/domain/session';
 import { sessionsMock } from '@/app/session/mock/mock-session';
+import get from "lodash/get";
+import parseInt from "lodash/parseInt";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'session-listing',
@@ -14,13 +17,22 @@ import { sessionsMock } from '@/app/session/mock/mock-session';
 })
 export class SessionListingPageComponent implements OnInit {
   sessions = sessionsMock;
-  sessionsByEstablishment!: sessionByEstablishment[];
+  sessionsByEstablishment!: sessionByEstablishment;
 
-  constructor(private sessionService: SessionService) {}
+  constructor(
+    private sessionService: SessionService,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.sessionsByEstablishment =
-      this.sessionService.getSessionByEstablishment();
+    this.route.params.subscribe(param => {
+      const id: string = get(param, 'id');
+
+      this.sessionsByEstablishment =
+        this.sessionService.getOneSessionByEstablishment(parseInt(id));
+
+      console.log(this.sessionService.getSessionByEstablishment());
+    });
   }
 
   onFilterChange(event: { type: string; title: string; date: Date }) {

@@ -12,6 +12,7 @@ export interface OpeningHour {
   dayOfWeek: string;
   startTime: string;
   endTime: string;
+  availablePlace: number;
   fullDate: number;
 }
 

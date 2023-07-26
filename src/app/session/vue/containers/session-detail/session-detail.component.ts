@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Session } from '@/app/session/domain/session';
+import {OpeningHour, Session} from '@/app/session/domain/session';
 import { SessionService } from '@/app/session/application/services/session.service';
 import get from 'lodash/get';
 import parseInt from 'lodash/parseInt';
@@ -14,7 +14,7 @@ import { BookingService } from '@/app/booking/application/service/booking.servic
 export class SessionDetailComponent implements OnInit {
   session!: Session;
   sessionId!: number;
-  selectedDays!: string[];
+  selectedDays!: OpeningHour[];
   constructor(
     private route: ActivatedRoute,
     public sessionService: SessionService,
@@ -28,7 +28,7 @@ export class SessionDetailComponent implements OnInit {
       this.session = this.sessionService.getSessionById(this.sessionId);
     });
 
-    this.selectedDays = [this.session.openingHours[0].dayOfWeek];
+    this.selectedDays = [this.session.openingHours[0]];
   }
 
   onReserve() {
@@ -37,6 +37,7 @@ export class SessionDetailComponent implements OnInit {
 
   onBooking() {
     console.log('Réservation de la session :', this.session.title);
+    console.log(this.selectedDays);
     // Utilisez le service de réservation pour effectuer la réservation
     this.bookingService.bookingSession(this.session).then(
       reservation => {

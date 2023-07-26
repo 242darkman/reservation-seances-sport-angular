@@ -1,12 +1,8 @@
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+:host{
+  height: 100%;
 }
+
+
 
 .mat-toolbar-row {
   justify-content: space-between;

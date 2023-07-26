@@ -10,13 +10,14 @@
       <mat-card-subtitle>{{ session.description }}</mat-card-subtitle>
     </mat-card-header>
 
-    <h3>Disponibilité(s)</h3>
+    <h3 style="padding-left: 16px">Disponibilité(s)</h3>
     <mat-card-content class="session-availability">
       <mat-form-field appearance="fill">
         <mat-select multiple [(value)]="selectedDays">
           <mat-option
             *ngFor="let availability of session.openingHours"
-            [value]="availability.dayOfWeek">
+            [value]="availability"
+          >
             {{ availability.dayOfWeek }} -
             {{ availability.fullDate | date : 'dd/MM/yyyy' }} ,
             {{ availability.startTime }} à {{ availability.endTime }}

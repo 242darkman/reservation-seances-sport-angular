@@ -4,7 +4,7 @@ import { EstablishmentListComponent } from '@/app/establishment/vue/components/e
 
 const route: Routes = [
   {
-    path: 'establishments',
+    path: '',
     component: EstablishmentListComponent,
   },
 ];

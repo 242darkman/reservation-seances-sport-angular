@@ -5,7 +5,7 @@ import { SessionDetailComponent } from '@/app/session/vue/containers/session-det
 
 const route: Routes = [
   {
-    path: '',
+    path: ':id',
     component: SessionListingPageComponent,
     children: [
       {

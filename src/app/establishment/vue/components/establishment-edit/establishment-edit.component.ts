@@ -43,5 +43,4 @@ export class EstablishmentEditComponent {
       reader.readAsDataURL(file);
     }
   }
-
 }

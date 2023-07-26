@@ -61,8 +61,7 @@ export class BookingService {
     };
     this.bookings.push(newReservation);
     this.insertBooking(newReservation);
-    debugger;
-    console.log(this.bookingAsValue)
+    console.log(this.bookingAsValue);
     return of(newReservation);
   }
 

@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EstablishmentEditComponent } from '@/app/establishment/vue/components/establishment-edit/establishment-edit.component';
 import { MatInputModule } from '@angular/material/input';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     CommonModule,
     FormsModule,
     MatInputModule,
-    NgxMaterialTimepickerModule,
   ],
   providers: [],
   exports: [EstablishmentComponent],

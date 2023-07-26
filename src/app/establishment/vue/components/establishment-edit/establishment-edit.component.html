@@ -33,13 +33,11 @@
     <mat-form-field>
       <mat-label>Horaire de fermeture</mat-label>
       <input
-        [ngxTimepicker]="picker"
         ng-model="string"
         matInput
         placeholder="Close"
         [(ngModel)]="establishment.close"
         name="close" />
-      <ngx-material-timepicker #picker></ngx-material-timepicker>
     </mat-form-field>
 
     <mat-form-field>

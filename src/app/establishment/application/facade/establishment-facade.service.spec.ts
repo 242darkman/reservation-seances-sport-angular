@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EstablishmentFacadeService } from './establishment-face.service';
+import { EstablishmentFacadeService } from './establishment-facade.service';
 
 describe('EstablishmentFacadeService', () => {
   let service: EstablishmentFacadeService;

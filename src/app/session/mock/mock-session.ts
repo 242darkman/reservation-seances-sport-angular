@@ -1,5 +1,8 @@
 import { Session, TrainingSession } from '@/app/session/domain/session';
 
+/**
+ * Un mock des Sessions de formation pour les tests et le développement.
+ */
 export const sessionsMock: Session[] = [
   {
     id: 1,

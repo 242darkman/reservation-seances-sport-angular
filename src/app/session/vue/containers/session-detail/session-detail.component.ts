@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {OpeningHour, Session} from '@/app/session/domain/session';
+import { OpeningHour, Session } from '@/app/session/domain/session';
 import { SessionService } from '@/app/session/application/services/session.service';
 import get from 'lodash/get';
 import parseInt from 'lodash/parseInt';

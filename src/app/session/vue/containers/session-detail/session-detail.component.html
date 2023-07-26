@@ -16,8 +16,7 @@
         <mat-select multiple [(value)]="selectedDays">
           <mat-option
             *ngFor="let availability of session.openingHours"
-            [value]="availability"
-          >
+            [value]="availability">
             {{ availability.dayOfWeek }} -
             {{ availability.fullDate | date : 'dd/MM/yyyy' }} ,
             {{ availability.startTime }} à {{ availability.endTime }}

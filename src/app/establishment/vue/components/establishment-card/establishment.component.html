@@ -31,8 +31,13 @@
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions class="action-button" >
-      <button [routerLink]="'establishment/'+establishment.id" mat-raised-button color="primary">Session</button>
+    <mat-card-actions class="action-button">
+      <button
+        [routerLink]="'establishment/' + establishment.id"
+        mat-raised-button
+        color="primary">
+        Session
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

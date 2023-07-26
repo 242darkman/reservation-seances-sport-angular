@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
   SessionService,
   sessionByEstablishment,
@@ -6,9 +6,9 @@ import {
 
 import { Session } from '@/app/session/domain/session';
 import { sessionsMock } from '@/app/session/mock/mock-session';
-import get from "lodash/get";
-import parseInt from "lodash/parseInt";
-import {ActivatedRoute} from "@angular/router";
+import get from 'lodash/get';
+import parseInt from 'lodash/parseInt';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'session-listing',
@@ -22,7 +22,8 @@ export class SessionListingPageComponent implements OnInit {
   constructor(
     private sessionService: SessionService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef) {}
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(param => {

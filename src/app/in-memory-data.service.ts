@@ -1,5 +1,6 @@
 import { Booking } from './booking/domain/booking';
 import { ESTABLISHMENTS } from './establishment/mock/mock-establishment';
+import { Establishment } from './establishment/domain/establishment';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
 import { USERS } from '@/app/user/mock/mock-users';
@@ -36,6 +37,10 @@ export class InMemoryDataService implements InMemoryDbService {
     return users.length > 0 ? Math.max(...users.map(hero => hero.id)) + 1 : 1;
   }
 
+
+  EstablishmentId(Establishments: Establishment[]): number {
+    return Establishments.length > 0
+      ? Math.max(...Establishments.map(hero => hero.id)) + 1
   /**
    * Génère un ID unique pour une nouvelle réservation.
    * Si la collection des réservations est vide, renvoie 1.

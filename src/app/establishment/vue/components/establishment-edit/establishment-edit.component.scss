@@ -1,0 +1,34 @@
+::ng-deep .mdc-dialog__container {
+  width: 664px;
+  margin-left: -100px;
+
+  form {
+    width: 100%;
+    text-align: center;
+    mat-form-field {
+      width: 70%;
+      margin-bottom: 1em;
+    }
+  }
+  h2 {
+    text-align: center;
+  }
+
+  .btn-edit {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 15px;
+    button {
+      width: 140px;
+    }
+  }
+
+  .file {
+    input {
+      width: 60%;
+      margin-bottom: 1em;
+    }
+    width: 500px;
+  }
+}

@@ -9,10 +9,15 @@
     "></div>
 </div>
 <div style="display: flex; justify-content: center">
-  <div style="max-width: 1200px; display: flex; flex-wrap: wrap">
+  <div
+    style="
+      max-width: 1200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    ">
     <app-establishment
       *ngFor="let establishment of establishments"
       [establishment]="establishment"></app-establishment>
   </div>
 </div>
-<session-listing></session-listing>

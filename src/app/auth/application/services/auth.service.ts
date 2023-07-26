@@ -1,11 +1,9 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { USERS } from '@/app/user/mock/mock-users';
+import { Injectable } from '@angular/core';
 import { User } from '@/app/user/domain/user';
 import { UserFacadeService } from '@/app/user/application/facade/user-facade.service';
-import find from 'lodash/find';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import isNull from 'lodash/isNull';
@@ -19,10 +17,8 @@ import { map } from 'rxjs/operators';
  * Classe de service d'authentification qui contient toutes les méthodes liées à l'authentification de l'utilisateur.
  */
 export class AuthService {
-  private isAuthenticatedEmitter = new EventEmitter<boolean>();
-
-  isAuthenticated = this.isAuthenticatedEmitter.asObservable();
-  isCurrentlyAuthenticated = false;
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -32,8 +28,7 @@ export class AuthService {
     if (!isEmpty(token)) {
       const loggedUserId = this.getUserIdFromToken(token);
       this.userService.getUser(loggedUserId).subscribe(user => {
-        this.isCurrentlyAuthenticated = !!user;
-        this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
+        this.currentUserSubject.next(user);
       });
     }
   }
@@ -44,8 +39,7 @@ export class AuthService {
    * @param {User | null | undefined} user - L'utilisateur à définir comme utilisateur courant
    */
   setCurrentUser(user: User | null | undefined) {
-    this.isCurrentlyAuthenticated = !!user;
-    this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
+    this.currentUserSubject.next(user ?? null);
   }
 
   /**
@@ -58,8 +52,7 @@ export class AuthService {
     const apiLoginUrl = 'api/users';
     return this.http.get<User>(`${apiLoginUrl}/?userName=${userName}`).pipe(
       map(user => {
-        this.isCurrentlyAuthenticated = !!user;
-        this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
+        this.currentUserSubject.next(user);
         return user;
       })
     );
@@ -70,8 +63,7 @@ export class AuthService {
    */
   logout() {
     localStorage.removeItem('app_token');
-    this.isCurrentlyAuthenticated = false;
-    this.isAuthenticatedEmitter.emit(this.isCurrentlyAuthenticated);
+    this.currentUserSubject.next(null);
   }
 
   /**
@@ -135,13 +127,8 @@ export class AuthService {
    * @returns {User | undefined} L'utilisateur actuel
    */
   getUser(): User | undefined {
-    const token = this.getToken();
-    if (isEmpty(token)) {
-      return;
-    }
-    const id = this.getUserIdFromToken(token);
-    const user = find(USERS, { id });
-    return user;
+    const currentUser = this.currentUserSubject.value;
+    return currentUser !== null ? currentUser : undefined;
   }
 
   /**

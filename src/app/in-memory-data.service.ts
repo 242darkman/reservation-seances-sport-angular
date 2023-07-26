@@ -37,6 +37,12 @@ export class InMemoryDataService implements InMemoryDbService {
     return users.length > 0 ? Math.max(...users.map(hero => hero.id)) + 1 : 1;
   }
 
+  EstablishmentId(Establishments: Establishment[]): number {
+    return Establishments.length > 0
+      ? Math.max(...Establishments.map(hero => hero.id)) + 1
+      : 1;
+  }
+
   /**
    * Génère un ID unique pour une nouvelle réservation.
    * Si la collection des réservations est vide, renvoie 1.
@@ -44,15 +50,9 @@ export class InMemoryDataService implements InMemoryDbService {
    * @param booking - La collection des réservations
    * @returns Le nouvel ID généré.
    */
-  bookingId(bookings: Booking[]): number {
-    return bookings.length > 0
-      ? Math.max(...bookings.map(hero => hero.id)) + 1
-      : 1;
-  }
-
-  EstablishmentId(Establishments: Establishment[]): number {
-    return Establishments.length > 0
-      ? Math.max(...Establishments.map(hero => hero.id)) + 1
+  bookingId(booking: Booking[]): number {
+    return booking.length > 0
+      ? Math.max(...booking.map(hero => hero.id)) + 1
       : 1;
   }
 }

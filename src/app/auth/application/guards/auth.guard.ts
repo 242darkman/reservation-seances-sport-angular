@@ -7,7 +7,6 @@ import {
 
 import { AuthService } from '@/app/auth/application/services/auth.service';
 import { inject } from '@angular/core';
-import isEmpty from 'lodash/isEmpty';
 
 /**
  * Le garde d'authentification (auth guard) sert à protéger les routes et à vérifier si l'utilisateur est authentifié.
@@ -24,8 +23,8 @@ export const authGuard: CanActivateFn = (
   const authService = inject(AuthService);
   const router = inject(Router);
   const token = authService.getToken();
-  const isUserAuthenticated =
-    authService.isCurrentlyAuthenticated || !isEmpty(token);
+  const user = authService.getUser();
+  const isUserAuthenticated = !!user;
   const isTokenValid = authService.verifyToken(token);
 
   if (route && state && isUserAuthenticated && isTokenValid) {

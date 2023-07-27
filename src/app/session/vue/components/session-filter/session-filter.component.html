@@ -24,6 +24,7 @@
       matInput
       [matDatepicker]="picker"
       placeholder="Date d'ouverture"
+      [(ngModel)]="selectedDate"
       (dateInput)="filterSessions()" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

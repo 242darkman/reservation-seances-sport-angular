@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '@/app/home/home.component';
 import { NgModule } from '@angular/core';
 import { SessionDetailComponent } from '@/app/session/vue/containers/session-detail/session-detail.component';
-import { SessionListingPageComponent } from '@/app/session/vue/containers/session-listing-page/session-listing-page.component';
+import { SessionEstablishmentListingPageComponent } from '@/app/session/vue/containers/session-listing-by-establishment-page/session-establishment-listing-page.component';
+import { SessionsListingAllComponent } from '@/app/session/vue/containers/sessions-listing-all/sessions-listing-all.component';
 
 /**
  * Configuration des routes pour le module Home.
@@ -24,7 +25,11 @@ const routes: Routes = [
   },
   {
     path: 'establishment/:id',
-    component: SessionListingPageComponent,
+    component: SessionEstablishmentListingPageComponent,
+  },
+  {
+    path: 'all-session',
+    component: SessionsListingAllComponent,
   },
 ];
 

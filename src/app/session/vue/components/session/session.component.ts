@@ -29,8 +29,6 @@ export class SessionComponent {
       return false; // Session non planifiée pour le jour actuel
     }
 
-    session.openingHours.forEach(sessionOpening => {});
-
     return (
       currentTime >= openingHours.startTime &&
       currentTime <= openingHours.endTime

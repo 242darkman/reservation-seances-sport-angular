@@ -6,6 +6,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
 import { USERS } from '@/app/user/mock/mock-users';
 import { User } from '@/app/user/domain/user';
+import { Session } from '@/app/session/domain/session';
+import { sessionsMock } from '@/app/session/mock/mock-session';
 
 /**
  * Service qui imite une interface d'API REST avec une base de données en mémoire.
@@ -23,9 +25,10 @@ export class InMemoryDataService implements InMemoryDbService {
    */
   createDb() {
     const users = USERS;
-    const establishments = ESTABLISHMENTS;
+    const sessions: Session[] = sessionsMock;
     const bookings = BOOKINGS;
-    return { users, establishments, bookings };
+    const establishments = ESTABLISHMENTS;
+    return { users, establishments, bookings, sessions };
   }
 
   /**
@@ -55,6 +58,12 @@ export class InMemoryDataService implements InMemoryDbService {
   bookingId(booking: Booking[]): number {
     return booking.length > 0
       ? Math.max(...booking.map(hero => hero.id as number)) + 1
+      : 1;
+  }
+
+  sessionId(sessions: Session[]): number {
+    return sessions.length > 0
+      ? Math.max(...sessions.map(hero => hero.id)) + 1
       : 1;
   }
 }

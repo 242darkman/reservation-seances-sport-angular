@@ -1,4 +1,3 @@
-import { BehaviorSubject, Observable } from 'rxjs';
 import {
   OpeningHour,
   Session,
@@ -6,10 +5,14 @@ import {
   TrainingSessionImages,
 } from '@/app/session/domain/session';
 
-import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { Injectable } from '@angular/core';
+import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { sessionsMock } from '@/app/session/mock/mock-session';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InMemoryDataService } from '@/app/in-memory-data.service';
+import { catchError, tap } from 'rxjs/operators';
 
 export interface sessionByEstablishment {
   nomEstablishment: string;
@@ -28,6 +31,17 @@ export class SessionService {
     Session[]
   >(this.sessions);
 
+  private isFilterSubject: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+  private sessionUrl = 'api/sessions';
+
+  constructor(private memory: InMemoryDataService, private http: HttpClient) {}
+
+  // Getter pour obtenir le BehaviorSubject en tant qu'Observable
   get sessionsAsObservable(): Observable<Session[]> {
     return this.sessionsSubject.asObservable();
   }
@@ -37,6 +51,41 @@ export class SessionService {
   }
   set updateSessions(session: Session[]) {
     this.sessionsSubject.next(session);
+  }
+
+  getSessions(): void {
+    this.http
+      .get<Session[]>(this.sessionUrl)
+      .pipe(tap(), catchError(this.handleError<Session[]>('getSession', [])))
+      .subscribe(sessions => {
+        this.sessionsSubject.next(sessions);
+        return sessions;
+      });
+  }
+
+  generateId(): number {
+    const sessions = sessionsMock;
+    const id = this.memory.sessionId(sessions);
+    return id;
+  }
+
+  get isFilter(): boolean {
+    return this.isFilterSubject.value;
+  }
+
+  set isFilter(isFilter) {
+    this.isFilterSubject.next(isFilter);
+  }
+  insertSession(session: Session): Observable<Session> {
+    return this.http
+      .post<Session>(this.sessionUrl, session, this.httpOptions)
+      .pipe(
+        tap(newSession => {
+          const currentValue = this.sessionsSubject.getValue();
+          this.sessionsSubject.next([...currentValue, newSession]);
+        }),
+        catchError(this.handleError<Session>('insertSession'))
+      );
   }
 
   updateSession(updatedSession: Session): Session[] {
@@ -117,5 +166,17 @@ export class SessionService {
         new Date(openingHour.fullDate) > date &&
         new Date().getTime().toLocaleString() < openingHour.endTime
     );
+  }
+  /**
+   * Gère les erreurs de requête HTTP.
+   * @param operation - Le nom de l'opération pendant laquelle l'erreur s'est produite.
+   * @param result - La valeur de retour en cas d'erreur.
+   * @returns Un Observable du résultat.
+   */
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: unknown): Observable<T> => {
+      console.error(`${operation} failed: ${error}`);
+      return of(result as T);
+    };
   }
 }

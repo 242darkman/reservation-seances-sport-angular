@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OpeningHour, Session } from '@/app/session/domain/session';
 
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@/app/auth/application/services/auth.service';
 import { Booking } from '@/app/booking/domain/booking';
 import { BookingFacadeService } from '@/app/booking/application/facade/booking-facade.service';

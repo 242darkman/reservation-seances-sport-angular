@@ -71,4 +71,18 @@ export class EstablishmentEditComponent {
   onCancelEdit(): void {
     this.dialogRef.close();
   }
+
+  onFileSelected(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      const file = inputElement.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (e.target && e.target.result) {
+          this.establishment.imgUrl = e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 }

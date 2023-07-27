@@ -128,6 +128,19 @@ export class BookingService {
     };
     this.insertBooking(newReservation);
     console.log(this.findBookings);
+  async bookSession(booking: Booking): Promise<Booking> {
+    return new Promise((resolve, reject) => {
+      this.insertBooking(booking).subscribe(
+        newBooking => {
+          console.log(this.findBookings);
+          resolve(newBooking);
+        },
+        error => {
+          console.error('Error:', error);
+          reject(error);
+        }
+      );
+    });
   }
 
   /**
@@ -144,6 +157,20 @@ export class BookingService {
 
   /**
    * Génère un identifiant unique pour un nouvel utilisateur.
+  getBookingsByUserId(userId: number): void {
+    const url = `${this.bookingUrl}/?userId=${userId}`;
+    this.http
+      .get<Booking[]>(url)
+      .pipe(
+        tap(),
+        catchError(
+          this.handleError<Booking[]>(`getBookingsByUserId id=${userId}`, [])
+        )
+      )
+      .subscribe(bookings => {
+        this.bookingsSubject.next(bookings);
+      });
+  }
    * @returns Un identifiant numérique unique.
    */
   generateId(): number {

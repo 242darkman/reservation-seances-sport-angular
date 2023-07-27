@@ -11,8 +11,17 @@
     </mat-card-header>
 
     <h3 style="padding-left: 16px">Disponibilité(s)</h3>
-    <mat-card-content class="session-availability">
-      <mat-form-field appearance="fill">
+    <span
+      *ngIf="!isValidOpening()"
+      style="padding: 16px"
+    >
+      Aucune disponibilité
+    </span>
+    <mat-card-content  class="session-availability">
+      <mat-form-field
+        *ngIf="isValidOpening()"
+        appearance="fill"
+      >
         <mat-select multiple [(value)]="selectedDays">
           <mat-option
             *ngFor="let availability of session.openingHours"
@@ -24,7 +33,11 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="onBooking()">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!isValidOpening()"
+        (click)="onBooking()">
         Réserver
       </button>
     </mat-card-content>

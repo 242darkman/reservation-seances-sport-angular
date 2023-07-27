@@ -15,21 +15,23 @@ export class SessionComponent {
 
   isSessionOpen(session: Session): boolean {
     const currentDate = new Date();
-    const currentDayOfWeek = currentDate.toLocaleString('fr-FR', {
-      weekday: 'long',
-    });
+    const currentDay = currentDate.getDay();
     const currentTime = currentDate.toLocaleTimeString('fr-FR', {
       hour: 'numeric',
       minute: 'numeric',
     });
 
     const openingHours = session.openingHours.find(
-      openingHour => openingHour.dayOfWeek.toLowerCase() === currentDayOfWeek
+      openingHour => (new Date(openingHour.fullDate)).getDay() === currentDay
     );
 
     if (!openingHours) {
       return false; // Session non planifiée pour le jour actuel
     }
+
+    session.openingHours.forEach(sessionOpening => {
+
+    })
 
     return (
       currentTime >= openingHours.startTime &&

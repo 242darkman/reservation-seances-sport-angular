@@ -30,6 +30,9 @@ export class SessionDetailComponent implements OnInit {
       const id: string = get(param, 'id');
       this.sessionId = parseInt(id);
       this.session = this.sessionService.getSessionById(this.sessionId);
+
+      this.session.openingHours = this.sessionService.validOpenings(this.session.openingHours);
+
     });
 
     this.selectedDays = [this.session.openingHours[0]];
@@ -69,5 +72,9 @@ export class SessionDetailComponent implements OnInit {
       .catch(error => {
         console.error('Erreur lors de la réservation :', error);
       });
+  }
+
+  isValidOpening() {
+    return this.sessionService.validOpenings(this.session.openingHours).length > 0;
   }
 }

@@ -13,17 +13,45 @@ import isEqual from 'lodash/isEqual';
 import parseInt from 'lodash/parseInt';
 import { take } from 'rxjs';
 
+/**
+ * @description Le composant SessionDetailComponent affiche les détails d'une session spécifique.
+ * L'utilisateur peut réserver une session à partir de cette page.
+ * Le composant met à jour le nombre de places disponibles après chaque réservation.
+ *
+ * @example
+ * <session-detail></session-detail>
+ *
+ * @selector session-detail
+ */
 @Component({
   selector: 'session-detail',
   templateUrl: 'session-detail.component.html',
   styleUrls: ['session-detail.component.scss'],
 })
 export class SessionDetailComponent implements OnInit {
+  /**
+   * La session en cours de consultation.
+   */
   session!: Session;
+  /**
+   * L'identifiant de la session en cours de consultation.
+   */
   sessionId!: number;
+  /**
+   * Les jours sélectionnés pour la réservation.
+   */
   selectedDays!: OpeningHour[];
+  /**
+   * Un flux d'informations de réservation.
+   */
   booking$ = this.bookingService.booking$;
+  /**
+   * Toutes les sessions disponibles.
+   */
   allSessions: Session[] = [];
+  /**
+   * Les réservations effectuées par l'utilisateur.
+   */
   userBookings: Booking[] = [];
 
   constructor(
@@ -34,6 +62,9 @@ export class SessionDetailComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
+  /**
+   * Méthode ngOnInit, récupère les informations de la session à partir de l'identifiant.
+   */
   ngOnInit(): void {
     this.route.params.subscribe(param => {
       const id: string = get(param, 'id');
@@ -47,6 +78,12 @@ export class SessionDetailComponent implements OnInit {
     this.selectedDays = [this.session.openingHours[0]];
   }
 
+  /**
+   * Diminue la disponibilité d'une session.
+   *
+   * @param sessionId L'identifiant de la session à réserver.
+   * @param bookedTime Le créneau horaire réservé.
+   */
   decreaseAvailability(sessionId: number, bookedTime: any) {
     const sessionToBook = find(this.allSessions, session =>
       isEqual(session.id, sessionId)
@@ -61,6 +98,14 @@ export class SessionDetailComponent implements OnInit {
     }
   }
 
+  /**
+   * Vérifie si l'utilisateur a déjà réservé la session.
+   *
+   * @param userId L'identifiant de l'utilisateur.
+   * @param sessionId L'identifiant de la session.
+   * @param bookedTime Le créneau horaire réservé.
+   * @returns Vrai si la session est déjà réservée, sinon faux.
+   */
   alreadyBooked(userId: number, sessionId: number, bookedTime: any): boolean {
     this.booking$.subscribe(booking => {
       const bookings = booking.filter(b => b.userId === userId);
@@ -82,6 +127,9 @@ export class SessionDetailComponent implements OnInit {
     return false;
   }
 
+  /**
+   * Gère la logique de réservation d'une session.
+   */
   onBooking() {
     const user = this.authService.getUser();
     if (!user) {

@@ -34,7 +34,7 @@ export const USERS: User[] = [
   },
   {
     id: 4,
-    userName: 'jdoe',
+    userName: 'user',
     firstName: 'John',
     lastName: 'Doe',
     email: 'jdoe@myges.fr',

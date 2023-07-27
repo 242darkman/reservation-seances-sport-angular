@@ -4,6 +4,7 @@ import { AppInitializerService } from '@/app/app-initializer.service';
 import { AuthService } from '@/app/auth/application/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { User } from '@/app/user/domain/user';
 import includes from 'lodash/includes';
 
@@ -30,7 +31,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private appInitializerService: AppInitializerService
+    private appInitializerService: AppInitializerService,
+    private toastr: ToastrService
   ) {}
 
   /**
@@ -40,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   onLogout() {
     this.authService.logout();
     void this.router.navigateByUrl('/');
+    this.toastr.success('Vous vous êtes déconnecté avec succès !');
   }
 
   /**

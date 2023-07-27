@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { RegisterModule } from './auth/application/register/register.module';
+import { ToastrModule } from 'ngx-toastr';
 import { UserModule } from '@/app/user/user.module';
 
 /**
@@ -41,6 +42,7 @@ import { UserModule } from '@/app/user/user.module';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
+    ToastrModule.forRoot(),
     UserModule,
     MatToolbarModule,
     MatMenuModule,

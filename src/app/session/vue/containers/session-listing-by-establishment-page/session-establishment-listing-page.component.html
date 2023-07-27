@@ -4,8 +4,10 @@
   </div>
   <div>
     <ng-container *ngIf="sessionsByEstablishment">
-      <p>{{ sessionsByEstablishment.nomEstablishment }}</p>
-      <small>{{ sessionsByEstablishment.address }}</small>
+      <p style="padding: 20px">
+        {{ sessionsByEstablishment.nomEstablishment }}
+      </p>
+      <small style="padding: 20px">{{ sessionsByEstablishment.address }}</small>
       <div style="display: flex" class="session-list-container">
         <session
           class="session"
@@ -14,6 +16,8 @@
           [session]="session"></session>
       </div>
     </ng-container>
+    <p style="padding: 20px" *ngIf="!sessionsByEstablishment">
+      Désolé aucune session n'est disponible dans cet établissement
+    </p>
   </div>
 </div>
-

@@ -1,0 +1,945 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sport-resa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">sport-resa documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#adminGuard" title="src/app/auth/application/guards/admin.guard.ts" ><b>adminGuard</b>&nbsp;&nbsp;&nbsp;(src/.../admin.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authGuard" title="src/app/auth/application/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BOOKINGS" title="src/app/booking/mock/mock-booking.ts" ><b>BOOKINGS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-booking.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ESTABLISHMENTS" title="src/app/establishment/mock/mock-establishment.ts" ><b>ESTABLISHMENTS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-establishment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#sessionsMock" title="src/app/session/mock/mock-session.ts" ><b>sessionsMock</b>&nbsp;&nbsp;&nbsp;(src/.../mock-session.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TrainingSessionImages" title="src/app/session/domain/session.ts" ><b>TrainingSessionImages</b>&nbsp;&nbsp;&nbsp;(src/.../session.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USERS" title="src/app/user/mock/mock-users.ts" ><b>USERS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-users.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/auth/application/guards/admin.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="adminGuard"></a>
+                    <span class="name">
+                        <span ><b>adminGuard</b></span>
+                        <a href="#adminGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) &#x3D;&gt; {
+  const authService &#x3D; inject(AuthService);
+  const router &#x3D; inject(Router);
+  const token &#x3D; authService.getToken();
+  const user &#x3D; authService.getUser();
+  const isUserAuthenticated &#x3D; !!user;
+  const isTokenValid &#x3D; authService.verifyToken(token);
+  const isAdmin &#x3D; user ? includes(user.roles, &#x27;admin&#x27;) : false;
+
+  if (route &amp;&amp; state &amp;&amp; isUserAuthenticated &amp;&amp; isTokenValid &amp;&amp; isAdmin) {
+    return true;
+  }
+
+  authService.logout();
+  return router.navigateByUrl(&#x27;/login&#x27;);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Le garde d&#39;administration (admin guard) sert à protéger les routes et à vérifier si l&#39;utilisateur est authentifié et possède le rôle &#39;admin&#39;.
+Si l&#39;utilisateur est authentifié, que le token est valide et que l&#39;utilisateur a le rôle &#39;admin&#39;, l&#39;accès à la route est autorisé.
+Sinon, l&#39;utilisateur est déconnecté et redirigé vers la page de login.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/auth/application/guards/auth.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authGuard"></a>
+                    <span class="name">
+                        <span ><b>authGuard</b></span>
+                        <a href="#authGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) &#x3D;&gt; {
+  const authService &#x3D; inject(AuthService);
+  const router &#x3D; inject(Router);
+  const token &#x3D; authService.getToken();
+  const user &#x3D; authService.getUser();
+  const isUserAuthenticated &#x3D; !!user;
+  const isTokenValid &#x3D; authService.verifyToken(token);
+
+  if (route &amp;&amp; state &amp;&amp; isUserAuthenticated &amp;&amp; isTokenValid) {
+    return true;
+  }
+
+  authService.logout();
+  return router.navigateByUrl(&#x27;/login&#x27;);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Le garde d&#39;authentification (auth guard) sert à protéger les routes et à vérifier si l&#39;utilisateur est authentifié.
+Si l&#39;utilisateur est authentifié et que le token est valide, l&#39;accès à la route est autorisé.
+Sinon, l&#39;utilisateur est déconnecté et redirigé vers la page de login.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/booking/mock/mock-booking.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BOOKINGS"></a>
+                    <span class="name">
+                        <span ><b>BOOKINGS</b></span>
+                        <a href="#BOOKINGS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Booking.html" target="_self" >Booking[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: 1,
+    userId: 1,
+    sessionId: 1,
+    timeBook: [
+      {
+        dayOfWeek: &#x27;Monday&#x27;,
+        startTime: &#x27;09:00&#x27;,
+        endTime: &#x27;10:00&#x27;,
+        fullDate: new Date(2023, 0, 2).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 2,
+    userId: 2,
+    sessionId: 2,
+    timeBook: [
+      {
+        dayOfWeek: &#x27;Tuesday&#x27;,
+        startTime: &#x27;10:00&#x27;,
+        endTime: &#x27;11:00&#x27;,
+        fullDate: new Date(2023, 0, 3).getTime(),
+        availablePlace: 8,
+      },
+    ],
+  },
+  {
+    id: 3,
+    userId: 3,
+    sessionId: 3,
+    timeBook: [
+      {
+        dayOfWeek: &#x27;Wednesday&#x27;,
+        startTime: &#x27;11:00&#x27;,
+        endTime: &#x27;12:00&#x27;,
+        fullDate: new Date(2023, 0, 4).getTime(),
+        availablePlace: 6,
+      },
+    ],
+  },
+  {
+    id: 4,
+    userId: 1,
+    sessionId: 1,
+    timeBook: [
+      {
+        dayOfWeek: &#x27;Thursday&#x27;,
+        startTime: &#x27;12:00&#x27;,
+        endTime: &#x27;13:00&#x27;,
+        fullDate: new Date(2023, 0, 5).getTime(),
+        availablePlace: 4,
+      },
+    ],
+  },
+  {
+    id: 5,
+    userId: 2,
+    sessionId: 2,
+    timeBook: [
+      {
+        dayOfWeek: &#x27;Friday&#x27;,
+        startTime: &#x27;13:00&#x27;,
+        endTime: &#x27;14:00&#x27;,
+        fullDate: new Date(2023, 0, 6).getTime(),
+        availablePlace: 2,
+      },
+    ],
+  },
+  {
+    id: 6,
+    userId: 3,
+    sessionId: 3,
+    timeBook: [
+      {
+        dayOfWeek: &#x27;Saturday&#x27;,
+        startTime: &#x27;14:00&#x27;,
+        endTime: &#x27;15:00&#x27;,
+        fullDate: new Date(2023, 0, 7).getTime(),
+        availablePlace: 0,
+      },
+    ],
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/establishment/mock/mock-establishment.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ESTABLISHMENTS"></a>
+                    <span class="name">
+                        <span ><b>ESTABLISHMENTS</b></span>
+                        <a href="#ESTABLISHMENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Establishment.html" target="_self" >Establishment[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: 1,
+    nom: &#x27;Gymnase Fitness Plus&#x27;,
+    address: &#x27;123 Rue du Sport, 75001 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/porte-maillot-600x400-c-default.png&#x27;,
+    phoneNumber: &#x27;+33 1 23 45 67 89&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+      { dayOfWeek: &#x27;Jeudi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+      { dayOfWeek: &#x27;Vendredi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+      { dayOfWeek: &#x27;Samedi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;13:00&#x27; },
+    ],
+  },
+  {
+    id: 2,
+    nom: &#x27;Stade Olympique&#x27;,
+    address: &#x27;456 Avenue des Sportifs, 75008 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/bandeau-club-gambetta-1-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 98 76 54 32&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+      { dayOfWeek: &#x27;Mardi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+      { dayOfWeek: &#x27;Jeudi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+    ],
+  },
+  {
+    id: 3,
+    nom: &#x27;Salle de Musculation Power Gym&#x27;,
+    address: &#x27;789 Rue de la Forme, 75016 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/dsc5365-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 55 66 77 88&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Mardi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Mercredi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Vendredi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;22:00&#x27; },
+    ],
+  },
+  {
+    id: 4,
+    nom: &#x27;Centre de Boxe Punch Club&#x27;,
+    address: &#x27;1010 Rue des Boxeurs, 75012 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/espace-cardio-besancon-1-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 22 33 44 55&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;07:30&#x27;, endTime: &#x27;21:00&#x27; },
+      { dayOfWeek: &#x27;Mardi&#x27;, startTime: &#x27;07:30&#x27;, endTime: &#x27;21:00&#x27; },
+      { dayOfWeek: &#x27;Mercredi&#x27;, startTime: &#x27;07:30&#x27;, endTime: &#x27;21:00&#x27; },
+    ],
+  },
+  {
+    id: 5,
+    nom: &#x27;Studio Yoga Zen&#x27;,
+    address: &#x27;555 Rue du Yoga, 75020 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/espace-cardio-muscu-1-1-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 66 77 88 99&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;19:30&#x27; },
+      { dayOfWeek: &#x27;Mardi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;19:30&#x27; },
+      { dayOfWeek: &#x27;Vendredi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;19:30&#x27; },
+      { dayOfWeek: &#x27;Samedi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;12:30&#x27; },
+    ],
+  },
+  {
+    id: 6,
+    nom: &#x27;Centre de Natation AquaSport&#x27;,
+    address: &#x27;222 Place de la Natation, 75009 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl:
+      &#x27;assets/pictures/espace-cardio-muscu-clermont-1-1-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 11 22 33 44&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Mercredi&#x27;, startTime: &#x27;06:30&#x27;, endTime: &#x27;19:00&#x27; },
+      { dayOfWeek: &#x27;Jeudi&#x27;, startTime: &#x27;06:30&#x27;, endTime: &#x27;19:00&#x27; },
+      { dayOfWeek: &#x27;Vendredi&#x27;, startTime: &#x27;06:30&#x27;, endTime: &#x27;19:00&#x27; },
+      { dayOfWeek: &#x27;Samedi&#x27;, startTime: &#x27;08:00&#x27;, endTime: &#x27;15:00&#x27; },
+    ],
+  },
+  {
+    id: 7,
+    nom: &#x27;Salle de CrossFit IronFit&#x27;,
+    address: &#x27;333 Rue du CrossFit, 75005 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl:
+      &#x27;assets/pictures/espace-cardio-muscu-marseille-1-1-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 44 55 66 77&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;20:00&#x27; },
+      { dayOfWeek: &#x27;Mercredi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;20:00&#x27; },
+      { dayOfWeek: &#x27;Jeudi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;20:00&#x27; },
+    ],
+  },
+  {
+    id: 8,
+    nom: &quot;Club d&#x27;Escalade Vertigo&quot;,
+    address: &quot;444 Avenue de l&#x27;Escalade, 75017 Paris, France&quot;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl:
+      &#x27;assets/pictures/espace-cardio-muscu-tassin-1-1-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 99 88 77 66&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;09:30&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Mercredi&#x27;, startTime: &#x27;09:30&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Vendredi&#x27;, startTime: &#x27;09:30&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Samedi&#x27;, startTime: &#x27;10:00&#x27;, endTime: &#x27;20:00&#x27; },
+    ],
+  },
+  {
+    id: 9,
+    nom: &#x27;Terrain de Football SoccerCity&#x27;,
+    address: &#x27;777 Boulevard du Football, 75013 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/espace-cardio-villeurbanne-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 12 34 56 78&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Mardi&#x27;, startTime: &#x27;16:00&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Mercredi&#x27;, startTime: &#x27;16:00&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Vendredi&#x27;, startTime: &#x27;16:00&#x27;, endTime: &#x27;22:00&#x27; },
+      { dayOfWeek: &#x27;Samedi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;14:00&#x27; },
+    ],
+  },
+  {
+    id: 10,
+    nom: &#x27;Salle de Danse MoveIt&#x27;,
+    address: &#x27;888 Rue de la Danse, 75014 Paris, France&#x27;,
+    opening: &#x27;07:00&#x27;,
+    close: &#x27;22:00&#x27;,
+    imgUrl: &#x27;assets/pictures/piscine-confluence-600x400-c-default.jpeg&#x27;,
+    phoneNumber: &#x27;+33 1 23 45 67 89&#x27;,
+    openingHours: [
+      { dayOfWeek: &#x27;Lundi&#x27;, startTime: &#x27;14:00&#x27;, endTime: &#x27;20:00&#x27; },
+      { dayOfWeek: &#x27;Mardi&#x27;, startTime: &#x27;14:00&#x27;, endTime: &#x27;20:00&#x27; },
+      { dayOfWeek: &#x27;Samedi&#x27;, startTime: &#x27;09:00&#x27;, endTime: &#x27;18:00&#x27; },
+    ],
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/session/mock/mock-session.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionsMock"></a>
+                    <span class="name">
+                        <span ><b>sessionsMock</b></span>
+                        <a href="#sessionsMock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Session.html" target="_self" >Session[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: 1,
+    establishmentId: 1,
+    title: &#x27;Session de Cardio&#x27;,
+    description: &#x27;Entraînement cardiovasculaire intensif&#x27;,
+    type: TrainingSession.CARDIO,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Lundi&#x27;,
+        startTime: &#x27;09:00&#x27;,
+        endTime: &#x27;20:30&#x27;,
+        fullDate: new Date(2023, 6, 27, 19, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Mercredi&#x27;,
+        startTime: &#x27;14:00&#x27;,
+        endTime: &#x27;15:30&#x27;,
+        fullDate: new Date(2023, 6, 19, 14, 0).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 2,
+    establishmentId: 2,
+    title: &#x27;Séance de Yoga&#x27;,
+    description: &#x27;Yoga pour se détendre et se ressourcer&#x27;,
+    type: TrainingSession.YOGA,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Mardi&#x27;,
+        startTime: &#x27;17:00&#x27;,
+        endTime: &#x27;18:30&#x27;,
+        fullDate: new Date(2023, 6, 18, 17, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Vendredi&#x27;,
+        startTime: &#x27;10:00&#x27;,
+        endTime: &#x27;11:30&#x27;,
+        fullDate: new Date(2023, 6, 21, 10, 0).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 3,
+    establishmentId: 3,
+    title: &#x27;Séance de Strength&#x27;,
+    description: &#x27;Entraînement musculaire intense&#x27;,
+    type: TrainingSession.STRENGTH,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Jeudi&#x27;,
+        startTime: &#x27;18:00&#x27;,
+        endTime: &#x27;19:30&#x27;,
+        fullDate: new Date(2023, 6, 20, 18, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Samedi&#x27;,
+        startTime: &#x27;09:30&#x27;,
+        endTime: &#x27;11:00&#x27;,
+        fullDate: new Date(2023, 6, 22, 9, 30).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 4,
+    establishmentId: 2,
+    title: &#x27;Séance de Group&#x27;,
+    description: &#x27;Entraînement en groupe convivial&#x27;,
+    type: TrainingSession.GROUP,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Mardi&#x27;,
+        startTime: &#x27;10:00&#x27;,
+        endTime: &#x27;11:30&#x27;,
+        fullDate: new Date(2023, 6, 18, 10, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Jeudi&#x27;,
+        startTime: &#x27;16:00&#x27;,
+        endTime: &#x27;17:30&#x27;,
+        fullDate: new Date(2023, 6, 20, 16, 0).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 5,
+    establishmentId: 5,
+    title: &#x27;Séance de Functional&#x27;,
+    description: &#x27;Entraînement fonctionnel pour tous niveaux&#x27;,
+    type: TrainingSession.FUNCTIONAL,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Lundi&#x27;,
+        startTime: &#x27;17:00&#x27;,
+        endTime: &#x27;18:30&#x27;,
+        fullDate: new Date(2023, 6, 17, 17, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Mercredi&#x27;,
+        startTime: &#x27;08:30&#x27;,
+        endTime: &#x27;10:00&#x27;,
+        fullDate: new Date(2023, 6, 19, 8, 30).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 6,
+    establishmentId: 4,
+    title: &#x27;Séance de Outdoor&#x27;,
+    description: &#x27;Entraînement en plein air dans la nature&#x27;,
+    type: TrainingSession.OUTDOOR,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Vendredi&#x27;,
+        startTime: &#x27;15:00&#x27;,
+        endTime: &#x27;16:30&#x27;,
+        fullDate: new Date(2023, 6, 21, 15, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Dimanche&#x27;,
+        startTime: &#x27;11:00&#x27;,
+        endTime: &#x27;12:30&#x27;,
+        fullDate: new Date(2023, 6, 23, 11, 0).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 7,
+    establishmentId: 7,
+    title: &#x27;Séance de Yoga&#x27;,
+    description: &#x27;Yoga pour se détendre et se ressourcer&#x27;,
+    type: TrainingSession.YOGA,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Lundi&#x27;,
+        startTime: &#x27;08:00&#x27;,
+        endTime: &#x27;09:30&#x27;,
+        fullDate: new Date(2023, 6, 17, 8, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Mercredi&#x27;,
+        startTime: &#x27;17:30&#x27;,
+        endTime: &#x27;19:00&#x27;,
+        fullDate: new Date(2023, 6, 19, 17, 30).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 8,
+    establishmentId: 8,
+    title: &#x27;Séance de Cardio&#x27;,
+    description: &#x27;Entraînement cardiovasculaire intensif&#x27;,
+    type: TrainingSession.CARDIO,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Mardi&#x27;,
+        startTime: &#x27;15:00&#x27;,
+        endTime: &#x27;16:30&#x27;,
+        fullDate: new Date(2023, 6, 18, 15, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Jeudi&#x27;,
+        startTime: &#x27;09:30&#x27;,
+        endTime: &#x27;11:00&#x27;,
+        fullDate: new Date(2023, 6, 20, 9, 30).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 9,
+    establishmentId: 9,
+    title: &#x27;Séance de Strength&#x27;,
+    description: &#x27;Entraînement musculaire intense&#x27;,
+    type: TrainingSession.STRENGTH,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Lundi&#x27;,
+        startTime: &#x27;18:00&#x27;,
+        endTime: &#x27;19:30&#x27;,
+        fullDate: new Date(2023, 6, 17, 18, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Mercredi&#x27;,
+        startTime: &#x27;09:00&#x27;,
+        endTime: &#x27;10:30&#x27;,
+        fullDate: new Date(2023, 6, 19, 9, 0).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+  {
+    id: 10,
+    establishmentId: 1,
+    title: &#x27;Séance de Group&#x27;,
+    description: &#x27;Entraînement en groupe convivial&#x27;,
+    type: TrainingSession.GROUP,
+    openingHours: [
+      {
+        dayOfWeek: &#x27;Vendredi&#x27;,
+        startTime: &#x27;16:00&#x27;,
+        endTime: &#x27;17:30&#x27;,
+        fullDate: new Date(2023, 6, 27, 20, 0).getTime(),
+        availablePlace: 10,
+      },
+      {
+        dayOfWeek: &#x27;Samedi&#x27;,
+        startTime: &#x27;10:00&#x27;,
+        endTime: &#x27;11:30&#x27;,
+        fullDate: new Date(2023, 6, 22, 10, 0).getTime(),
+        availablePlace: 10,
+      },
+    ],
+  },
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Un mock des Sessions de formation pour les tests et le développement.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/session/domain/session.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TrainingSessionImages"></a>
+                    <span class="name">
+                        <span ><b>TrainingSessionImages</b></span>
+                        <a href="#TrainingSessionImages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  /** Chemin d&#x27;accès à l&#x27;image pour le cardio. */
+  CARDIO: &#x27;assets/pictures/cardio.jpeg&#x27;,
+
+  /** Chemin d&#x27;accès à l&#x27;image pour l&#x27;entraînement en force. */
+  STRENGTH: &#x27;assets/pictures/strength.jpeg&#x27;,
+
+  /** Chemin d&#x27;accès à l&#x27;image pour l&#x27;entraînement en groupe. */
+  GROUP: &#x27;assets/pictures/group.gif&#x27;,
+
+  /** Chemin d&#x27;accès à l&#x27;image pour le yoga. */
+  YOGA: &#x27;assets/pictures/yoga.jpeg&#x27;,
+
+  /** Chemin d&#x27;accès à l&#x27;image pour l&#x27;entraînement fonctionnel. */
+  FUNCTIONAL: &#x27;assets/pictures/functional.jpeg&#x27;,
+
+  /** Chemin d&#x27;accès à l&#x27;image pour l&#x27;entraînement en plein air. */
+  OUTDOOR: &#x27;assets/pictures/outdoor.jpg&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Objet contenant les chemins d&#39;accès aux images pour chaque type de Session.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/user/mock/mock-users.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USERS"></a>
+                    <span class="name">
+                        <span ><b>USERS</b></span>
+                        <a href="#USERS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: 1,
+    userName: &#x27;242darkman&#x27;,
+    firstName: &#x27;Brandon&#x27;,
+    lastName: &#x27;VOUVOU&#x27;,
+    email: &#x27;bvouvou2@myges.fr&#x27;,
+    password: &#x27;$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm&#x27;,
+    roles: [&#x27;user&#x27;, &#x27;admin&#x27;],
+  },
+  {
+    id: 2,
+    userName: &#x27;lanskei&#x27;,
+    firstName: &#x27;Lansana&#x27;,
+    lastName: &#x27;KEITA&#x27;,
+    email: &#x27;lkeita2@myges.fr&#x27;,
+    password: &#x27;$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm&#x27;,
+    roles: [&#x27;user&#x27;, &#x27;admin&#x27;],
+  },
+  {
+    id: 3,
+    userName: &#x27;nalvac&#x27;,
+    firstName: &#x27;Nalvac&#x27;,
+    lastName: &#x27;ATINHOUNON&#x27;,
+    email: &#x27;natinhounon@myges.fr&#x27;,
+    password: &#x27;$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm&#x27;,
+    roles: [&#x27;user&#x27;, &#x27;admin&#x27;],
+  },
+  {
+    id: 4,
+    userName: &#x27;user&#x27;,
+    firstName: &#x27;John&#x27;,
+    lastName: &#x27;Doe&#x27;,
+    email: &#x27;jdoe@myges.fr&#x27;,
+    password: &#x27;$2a$10$B16ws8u/Y0J8TJitdmdF5epN5YVQHr587Wi2ma0RSGFv4cpX4Y/Xm&#x27;,
+    roles: [&#x27;user&#x27;],
+  },
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Liste des utilisateurs prédéfinis.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

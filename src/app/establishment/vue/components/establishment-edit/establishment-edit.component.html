@@ -5,29 +5,17 @@
     <!-- Affichez les mêmes champs que dans le tableau pour l'édition -->
     <mat-form-field>
       <mat-label>Nom</mat-label>
-      <input
-        matInput
-        placeholder="Name"
-        [(ngModel)]="establishment.nom"
-        name="name" />
+      <input matInput [(ngModel)]="establishment.nom" name="name" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Adresse</mat-label>
-      <input
-        matInput
-        placeholder="Address"
-        [(ngModel)]="establishment.address"
-        name="address" />
+      <input matInput [(ngModel)]="establishment.address" name="address" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Horaire d'ouverture</mat-label>
-      <input
-        matInput
-        placeholder="Opening"
-        [(ngModel)]="establishment.opening"
-        name="opening" />
+      <input matInput [(ngModel)]="establishment.opening" name="opening" />
     </mat-form-field>
 
     <mat-form-field>
@@ -35,7 +23,6 @@
       <input
         ng-model="string"
         matInput
-        placeholder="Close"
         [(ngModel)]="establishment.close"
         name="close" />
     </mat-form-field>
@@ -44,7 +31,6 @@
       <mat-label>Contact</mat-label>
       <input
         matInput
-        placeholder="phoneNumber"
         [(ngModel)]="establishment.phoneNumber"
         name="phoneNumber" />
     </mat-form-field>

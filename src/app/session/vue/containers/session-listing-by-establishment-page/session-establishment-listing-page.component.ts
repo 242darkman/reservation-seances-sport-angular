@@ -9,15 +9,17 @@ import { sessionsMock } from '@/app/session/mock/mock-session';
 import get from 'lodash/get';
 import parseInt from 'lodash/parseInt';
 import { ActivatedRoute } from '@angular/router';
+import {FilterPayload} from "@/app/session/vue/components/session-filter/session-filter.component";
 
 @Component({
   selector: 'session-listing',
-  templateUrl: 'session-listing-page.component.html',
-  styleUrls: ['session-listing-page.component.scss'],
+  templateUrl: 'session-establishment-listing-page.component.html',
+  styleUrls: ['session-establishment-listing-page.component.scss'],
 })
-export class SessionListingPageComponent implements OnInit {
+export class SessionEstablishmentListingPageComponent implements OnInit {
   sessions = sessionsMock;
   sessionsByEstablishment!: sessionByEstablishment;
+  allSessionsByEstablishment!: sessionByEstablishment[];
 
   constructor(
     private sessionService: SessionService,
@@ -28,27 +30,34 @@ export class SessionListingPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(param => {
       const id: string = get(param, 'id');
-
       this.sessionsByEstablishment =
         this.sessionService.getOneSessionByEstablishment(parseInt(id));
 
-      console.log(this.sessionService.getSessionByEstablishment());
+      this.sessionService.sessionsAsObservable.subscribe(sessions => {
+        this.sessionsByEstablishment =
+          this.sessionService.getOneSessionByEstablishment(parseInt(id));
+      })
     });
+    this.allSessionsByEstablishment = this.sessionService.getSessionByEstablishment()
   }
 
-  onFilterChange(event: { type: string; title: string; date: Date }) {
+  onFilterChange(event: FilterPayload) {
+    console.log(event);
     const { type, title, date } = event;
 
-    this.sessions = this.sessions.filter(session => {
-      const isTypeMatch =
-        !type || session.type.toLowerCase().includes(type.toLowerCase());
-      const isTitleMatch =
-        !title || session.title.toLowerCase().includes(title.toLowerCase());
+      this.sessionsByEstablishment.sessions = this.sessionsByEstablishment.sessions.filter(session => {
+        const isTypeMatch =
+          !type || session.type.toLowerCase().includes(type.toLowerCase());
+        const isTitleMatch =
+          !title || session.title.toLowerCase().includes(title.toLowerCase());
 
-      const isOpenOnDate = !date || this.isSessionOpenOnDate(session, date);
+        const isOpenOnDate = !date || this.isSessionOpenOnDate(session, new Date(date));
 
-      return isTypeMatch && isTitleMatch && isOpenOnDate;
-    });
+        return isTypeMatch && isTitleMatch && isOpenOnDate;
+      });
+      if (!this.sessionService.isFilter) {
+        this.sessionService.getSessions()
+      }
   }
 
   isSessionOpenOnDate(session: Session, date: Date): boolean {

@@ -15,7 +15,7 @@ export const sessionsMock: Session[] = [
         dayOfWeek: 'Lundi',
         startTime: '09:00',
         endTime: '20:30',
-        fullDate: new Date(2023, 6, 27, 19, 0).getTime(),
+        fullDate: new Date(2024, 6, 27, 19, 0).getTime(),
         availablePlace: 10,
       },
       {

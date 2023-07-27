@@ -7,7 +7,6 @@
       <mat-label>Nom</mat-label>
       <input
         matInput
-        placeholder="Name"
         [(ngModel)]="establishment.nom"
         name="name" />
     </mat-form-field>
@@ -16,7 +15,6 @@
       <mat-label>Adresse</mat-label>
       <input
         matInput
-        placeholder="Address"
         [(ngModel)]="establishment.address"
         name="address" />
     </mat-form-field>
@@ -25,7 +23,6 @@
       <mat-label>Horaire d'ouverture</mat-label>
       <input
         matInput
-        placeholder="Opening"
         [(ngModel)]="establishment.opening"
         name="opening" />
     </mat-form-field>
@@ -36,7 +33,6 @@
         [ngxTimepicker]="picker"
         ng-model="string"
         matInput
-        placeholder="Close"
         [(ngModel)]="establishment.close"
         name="close" />
       <ngx-material-timepicker #picker></ngx-material-timepicker>
@@ -46,7 +42,6 @@
       <mat-label>Contact</mat-label>
       <input
         matInput
-        placeholder="phoneNumber"
         [(ngModel)]="establishment.phoneNumber"
         name="phoneNumber" />
     </mat-form-field>

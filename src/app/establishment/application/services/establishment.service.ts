@@ -55,6 +55,18 @@ export class EstablishmentService {
       );
   }
 
+  insertEstablishment(establishment: Establishment): Observable<Establishment> {
+    return this.http
+      .post<Establishment>(this.establishmentsUrl, establishment, this.httpOptions)
+      .pipe(
+        tap(newBooking => {
+          const currentValue = this.establishmentSubject.getValue();
+          this.establishmentSubject.next([...currentValue, newBooking]);
+        }),
+        catchError(this.handleError<Establishment>('insertEstablishment'))
+      );
+  }
+
   updateEstablishment(
     establishment: Establishment,
     callback: (success: boolean) => void

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EstablishmentService } from '../services/establishment.service';
 import { Establishment } from '../../domain/establishment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +36,9 @@ export class EstablishmentFacadeService {
 
   generateId() {
     return this.establishmentService.generateId();
+  }
+
+  insertEstablishment(establishment: Establishment): Observable<Establishment> {
+    return this.establishmentService.insertEstablishment(establishment);
   }
 }

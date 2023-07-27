@@ -9,6 +9,15 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import get from 'lodash/get';
 
+/**
+ * @description Service pour la gestion des réservations.
+ * Ce service fournit plusieurs méthodes pour obtenir des informations sur les réservations.
+ *
+ * @example
+ * this.bookingService.getBookings();
+ *
+ * @injectable
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -29,18 +38,39 @@ export class BookingService {
     private http: HttpClient
   ) {}
 
+  /**
+   * @description Getter pour obtenir le BehaviorSubject en tant qu'Observable
+   *
+   * @returns Un Observable des réservations.
+   */
   get bookingAsObservable(): Observable<Booking[]> {
     return this.bookingsSubject.asObservable();
   }
 
+  /**
+   * @description Getter pour obtenir la valeur actuelle du BehaviorSubject.
+   *
+   * @returns La valeur actuelle du BehaviorSubject.
+   */
   get findBookings(): Booking[] {
-    return this.bookingsSubject.value;
+    return this.bookingsSubject.getValue();
   }
 
+  /**
+   * @description Setter pour mettre à jour les réservations.
+   *
+   * @param booking Les nouvelles réservations.
+   */
   set setBooking(booking: Booking[]) {
     this.bookingsSubject.next(booking);
   }
 
+  /**
+   * @description Insère une nouvelle réservation.
+   *
+   * @param booking La nouvelle réservation.
+   * @returns Un Observable de la nouvelle réservation.
+   */
   insertBooking(booking: Booking): Observable<Booking> {
     return this.http
       .post<Booking>(this.bookingUrl, booking, this.httpOptions)
@@ -54,9 +84,10 @@ export class BookingService {
   }
 
   /**
-   * Met à jour un booking existant et met à jour le `BehaviorSubject` avec la nouvelle liste des bookings.
-   * @param booking - Le booking à mettre à jour.
-   * @param callback - La fonction à exécuter après la mise à jour du booking.
+   * @description Met à jour une réservation existante.
+   *
+   * @param booking La réservation à mettre à jour.
+   * @param callback La fonction à exécuter après la mise à jour.
    */
   updateBooking(booking: Booking, callback: (success: boolean) => void): void {
     const bookingId = get(booking, 'id');
@@ -82,9 +113,10 @@ export class BookingService {
   }
 
   /**
-   * Supprime un booking par son `id` et met à jour le `BehaviorSubject` avec la nouvelle liste des bookings.
-   * @param id - L'identifiant du booking à supprimer.
-   * @param callback - La fonction à exécuter après la suppression du booking.
+   * @description Supprime une réservation.
+   *
+   * @param id L'identifiant de la réservation à supprimer.
+   * @param callback La fonction à exécuter après la suppression.
    */
   deleteBooking(id: number, callback: (success: boolean) => void): void {
     const url = `${this.bookingUrl}/${id}`;
@@ -109,29 +141,29 @@ export class BookingService {
       });
   }
 
-  async bookSession(booking: Booking) {
-    const bookingId = get(booking, 'id');
-    const sessionId = get(booking, 'sessionId');
-    const timeBook = get(booking, 'timeBook');
-    const user = this.authService.getUser();
-    const userId = get(user, 'id');
-
-    if (!userId) {
-      await this.router.navigate(['/login']);
-      return;
-    }
-    const newReservation: Booking = {
-      id: bookingId,
-      userId,
-      sessionId,
-      timeBook,
-    };
-    this.insertBooking(newReservation);
-    console.log(this.findBookings);
+  /**
+   * @description Réserve une session.
+   *
+   * @param booking La réservation de la session.
+   * @returns Une Promesse de la nouvelle réservation.
+   */
+  async bookSession(booking: Booking): Promise<Booking> {
+    return new Promise((resolve, reject) => {
+      this.insertBooking(booking).subscribe(
+        newBooking => {
+          console.log(this.findBookings);
+          resolve(newBooking);
+        },
+        error => {
+          console.error('Error:', error);
+          reject(error);
+        }
+      );
+    });
   }
 
   /**
-   * Récupère la liste actuelle des bookings depuis l'API et met à jour le `BehaviorSubject`.
+   * @description Obtient toutes les réservations.
    */
   getBookings(): void {
     this.http
@@ -143,7 +175,28 @@ export class BookingService {
   }
 
   /**
-   * Génère un identifiant unique pour un nouvel utilisateur.
+   * @description Obtient les réservations d'un utilisateur.
+   *
+   * @param id L'identifiant de l'utilisateur.
+   */
+  getBookingsByUserId(userId: number): void {
+    const url = `${this.bookingUrl}/?userId=${userId}`;
+    this.http
+      .get<Booking[]>(url)
+      .pipe(
+        tap(),
+        catchError(
+          this.handleError<Booking[]>(`getBookingsByUserId id=${userId}`, [])
+        )
+      )
+      .subscribe(bookings => {
+        this.bookingsSubject.next(bookings);
+      });
+  }
+
+  /**
+   * @description Génère un identifiant unique pour une nouvelle réservation.
+   *
    * @returns Un identifiant numérique unique.
    */
   generateId(): number {
@@ -153,9 +206,10 @@ export class BookingService {
   }
 
   /**
-   * Gère les erreurs de requête HTTP.
-   * @param operation - Le nom de l'opération pendant laquelle l'erreur s'est produite.
-   * @param result - La valeur de retour en cas d'erreur.
+   * @description Gère les erreurs de requête HTTP.
+   *
+   * @param operation Le nom de l'opération pendant laquelle l'erreur s'est produite.
+   * @param result La valeur de retour en cas d'erreur.
    * @returns Un Observable du résultat.
    */
   private handleError<T>(operation = 'operation', result?: T) {

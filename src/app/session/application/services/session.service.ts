@@ -1,3 +1,4 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
   OpeningHour,
   Session,
@@ -5,11 +6,10 @@ import {
   TrainingSessionImages,
 } from '@/app/session/domain/session';
 
+import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { Injectable } from '@angular/core';
-import { ESTABLISHMENTS } from '@/app/establishment/mock/mock-establishment';
 import { sessionsMock } from '@/app/session/mock/mock-session';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface sessionByEstablishment {
   nomEstablishment: string;
@@ -28,10 +28,10 @@ export class SessionService {
     Session[]
   >(this.sessions);
 
-  // Getter pour obtenir le BehaviorSubject en tant qu'Observable
   get sessionsAsObservable(): Observable<Session[]> {
     return this.sessionsSubject.asObservable();
   }
+
   get sessionsAsValue(): Session[] {
     return this.sessionsSubject.value;
   }

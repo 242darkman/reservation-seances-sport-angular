@@ -22,16 +22,12 @@ export class SessionComponent {
     });
 
     const openingHours = session.openingHours.find(
-      openingHour => (new Date(openingHour.fullDate)).getDay() === currentDay
+      openingHour => new Date(openingHour.fullDate).getDay() === currentDay
     );
 
     if (!openingHours) {
       return false; // Session non planifiée pour le jour actuel
     }
-
-    session.openingHours.forEach(sessionOpening => {
-
-    })
 
     return (
       currentTime >= openingHours.startTime &&

@@ -1,18 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { SessionListingPageComponent } from '@/app/session/vue/containers/session-listing-page/session-listing-page.component';
-import { SessionDetailComponent } from '@/app/session/vue/containers/session-detail/session-detail.component';
+import { SessionEstablishmentListingPageComponent } from '@/app/session/vue/containers/session-listing-by-establishment-page/session-establishment-listing-page.component';
 
 const route: Routes = [
   {
     path: ':id',
-    component: SessionListingPageComponent,
-    children: [
-      {
-        path: 'detail/:id',
-        component: SessionDetailComponent,
-      },
-    ],
+    component: SessionEstablishmentListingPageComponent,
   },
 ];
 @NgModule({

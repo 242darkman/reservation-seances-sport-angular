@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SessionListingPageComponent } from '@/app/session/vue/containers/session-listing-page/session-listing-page.component';
+import { SessionEstablishmentListingPageComponent } from '@/app/session/vue/containers/session-listing-by-establishment-page/session-establishment-listing-page.component';
 import { SessionComponent } from '@/app/session/vue/components/session/session.component';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -18,13 +18,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { RouterLink } from '@angular/router';
 import { SessionDetailComponent } from '@/app/session/vue/containers/session-detail/session-detail.component';
 import { MatButtonModule } from '@angular/material/button';
+import { SessionsListingAllComponent } from './vue/containers/sessions-listing-all/sessions-listing-all.component';
 
 @NgModule({
   declarations: [
-    SessionListingPageComponent,
+    SessionEstablishmentListingPageComponent,
     SessionComponent,
     SessionFilterComponent,
     SessionDetailComponent,
+    SessionsListingAllComponent,
   ],
   imports: [
     MatCardModule,
@@ -42,6 +44,6 @@ import { MatButtonModule } from '@angular/material/button';
     DatePipe,
   ],
   providers: [],
-  exports: [SessionListingPageComponent],
+  exports: [SessionEstablishmentListingPageComponent],
 })
 export class SessionModule {}

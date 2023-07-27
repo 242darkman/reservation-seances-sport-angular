@@ -36,7 +36,6 @@ export class SessionEstablishmentListingPageComponent implements OnInit {
       this.sessionService.sessionsAsObservable.subscribe(sessions => {
         this.sessionsByEstablishment =
           this.sessionService.getOneSessionByEstablishment(parseInt(id));
-        this.sessions = sessions;
       });
     });
     this.allSessionsByEstablishment =

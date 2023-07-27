@@ -45,6 +45,7 @@ export class SessionService {
   get sessionsAsObservable(): Observable<Session[]> {
     return this.sessionsSubject.asObservable();
   }
+
   get sessionsAsValue(): Session[] {
     return this.sessionsSubject.value;
   }

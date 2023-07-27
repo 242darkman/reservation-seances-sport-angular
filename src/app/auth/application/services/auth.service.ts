@@ -73,7 +73,7 @@ export class AuthService {
    * @returns {string} Le token généré
    */
   generateToken(user: User): string {
-    const expire = Math.floor(Date.now() / 1000) + 60 * 60;
+    const expire = Math.floor(Date.now() / 1000) + 60 * 60 * 4;
     const userInfo = { ...user, expire };
     const stringifyUser = JSON.stringify(userInfo);
     const encodeUser = btoa(stringifyUser);

@@ -34,8 +34,8 @@ export class UserFacadeService {
    * Récupère un utilisateur spécifique via UserService.
    * @param id L'ID de l'utilisateur à récupérer.
    */
-  getUser(id: number) {
-    return this.userService.getUser(id);
+  getUser(userId: number) {
+    return this.userService.getUser(userId);
   }
 
   /**

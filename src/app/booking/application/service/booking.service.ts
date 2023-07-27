@@ -151,7 +151,6 @@ export class BookingService {
     return new Promise((resolve, reject) => {
       this.insertBooking(booking).subscribe(
         newBooking => {
-          console.log(this.findBookings);
           resolve(newBooking);
         },
         error => {

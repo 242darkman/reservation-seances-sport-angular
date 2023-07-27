@@ -57,7 +57,6 @@ export class UsersPageComponent implements OnInit {
   updateUser(user: User) {
     this.userFacade.updateUser(user, (success: boolean) => {
       if (success) {
-        console.log(`User with id ${user.id} updated successfully`);
         this.getUsers();
       } else {
         console.log(`Failed to update user with id ${user.id}`);
@@ -73,7 +72,6 @@ export class UsersPageComponent implements OnInit {
     const id: number = get(user, 'id');
     this.userFacade.deleteUser(id, (success: boolean) => {
       if (success) {
-        console.log(`User with id ${id} deleted successfully`);
         this.getUsers();
       } else {
         console.log(`Failed to delete user with id ${id}`);

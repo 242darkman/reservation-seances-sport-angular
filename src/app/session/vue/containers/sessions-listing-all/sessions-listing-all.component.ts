@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '@/app/session/application/services/session.service';
-import { Session } from '@/app/session/domain/session';
+
 import { FilterPayload } from '@/app/session/vue/components/session-filter/session-filter.component';
+import { Session } from '@/app/session/domain/session';
+import { SessionService } from '@/app/session/application/services/session.service';
 
 @Component({
   selector: 'app-sessions-listing-all',
@@ -19,7 +20,6 @@ export class SessionsListingAllComponent implements OnInit {
   }
 
   onFilterChange(event: FilterPayload) {
-    console.log(event);
     const { type, title, date } = event;
 
     this.sessions = this.sessions.filter(session => {

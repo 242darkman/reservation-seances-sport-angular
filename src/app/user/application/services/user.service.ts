@@ -36,10 +36,7 @@ export class UserService {
   getUsers(): void {
     this.http
       .get<User[]>(this.usersUrl)
-      .pipe(
-        tap(() => console.log('fetched users')),
-        catchError(this.handleError<User[]>('getUsers', []))
-      )
+      .pipe(tap(), catchError(this.handleError<User[]>('getUsers', [])))
       .subscribe(users => {
         this.usersSubject.next(users);
       });
@@ -57,7 +54,7 @@ export class UserService {
       map(users => users[0]),
       tap(u => {
         const outcome = u ? 'fetched' : 'did not find';
-        console.log(`${outcome} user id=${id}`);
+        return outcome;
       }),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
@@ -70,10 +67,9 @@ export class UserService {
    */
   getUser(id: number): Observable<User> {
     const url = `${this.usersUrl}/${id}`;
-    return this.http.get<User>(url).pipe(
-      tap(() => console.log(`fetched user id=${id}`)),
-      catchError(this.handleError<User>(`getUser id=${id}`))
-    );
+    return this.http
+      .get<User>(url)
+      .pipe(tap(), catchError(this.handleError<User>(`getUser id=${id}`)));
   }
 
   /**

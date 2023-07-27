@@ -4,12 +4,12 @@ import {
   sessionByEstablishment,
 } from '@/app/session/application/services/session.service';
 
-import { Session } from '@/app/session/domain/session';
-import { sessionsMock } from '@/app/session/mock/mock-session';
-import get from 'lodash/get';
-import parseInt from 'lodash/parseInt';
 import { ActivatedRoute } from '@angular/router';
 import { FilterPayload } from '@/app/session/vue/components/session-filter/session-filter.component';
+import { Session } from '@/app/session/domain/session';
+import get from 'lodash/get';
+import parseInt from 'lodash/parseInt';
+import { sessionsMock } from '@/app/session/mock/mock-session';
 
 @Component({
   selector: 'session-listing',
@@ -43,7 +43,6 @@ export class SessionEstablishmentListingPageComponent implements OnInit {
   }
 
   onFilterChange(event: FilterPayload) {
-    console.log(event);
     const { type, title, date } = event;
 
     this.sessionsByEstablishment.sessions =

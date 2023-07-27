@@ -6,6 +6,13 @@ import { EstablishmentFacadeService } from '@/app/establishment/application/faca
 import { OpeningHour } from '@/app/session/domain/session';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
+/**
+ * @description Composant d'ajout d'un établissement.
+ * Ce composant est utilisé pour recueillir les informations sur un nouvel établissement à ajouter à la base de données.
+ *
+ * @selector app-establishment-add
+ * @component
+ */
 @Component({
   selector: 'app-establishment-add',
   templateUrl: './establishment-add.component.html',
@@ -17,12 +24,22 @@ export class EstablishmentAddComponent {
   error!: string;
   isLoading = false;
 
+  /**
+   * @description Constructeur du composant.
+   * Initialise le formulaire d'ajout d'un établissement.
+   *
+   * @param establishmentFacade Service de façade pour les établissements.
+   * @param fb Constructeur de formulaire.
+   * @param dialogRef Référence à la boîte de dialogue.
+   * @param memory Service en mémoire pour les données web.
+   * @param data Données de l'établissement à ajouter.
+   */
   constructor(
     private establishmentFacade: EstablishmentFacadeService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<EstablishmentAddComponent>,
     private memory: InMemoryDbService,
-    @Inject(MAT_DIALOG_DATA) public data: Establishment // You can remove the DialogData interface here
+    @Inject(MAT_DIALOG_DATA) public data: Establishment
   ) {
     this.establishmentForm = this.fb.group({
       name: ['', Validators.required],
@@ -34,6 +51,10 @@ export class EstablishmentAddComponent {
     });
   }
 
+  /**
+   * @description Confirme l'ajout d'un établissement.
+   * Cette méthode est appelée lorsque l'utilisateur appuie sur le bouton de confirmation.
+   */
   onConfirmAdd(): void {
     if (this.selectedFile === null) {
       return;
@@ -56,22 +77,25 @@ export class EstablishmentAddComponent {
         { dayOfWeek: 'Samedi', startTime: '09:00', endTime: '13:00' },
       ] as Pick<OpeningHour, 'startTime' | 'endTime' | 'dayOfWeek'>[],
     };
-    console.log(
-      '🚀 ~ file: establishment-add.component.ts:51 ~ EstablishmentAddComponent ~ onConfirmAdd ~ newEstablishment:',
-      newEstablishment
-    );
     this.establishmentFacade.insertEstablishment(newEstablishment).subscribe();
-
-    // Save the new establishment data
-    // this.establishmentFacade.saveNewEstablishment(newEstablishment);
 
     this.dialogRef.close(newEstablishment);
   }
 
+  /**
+   * @description Annule l'ajout d'un établissement.
+   * Cette méthode est appelée lorsque l'utilisateur appuie sur le bouton d'annulation.
+   */
   onCancelAdd(): void {
     this.dialogRef.close();
   }
 
+  /**
+   * @description Gère la sélection d'un fichier par l'utilisateur.
+   * Cette méthode est appelée lorsque l'utilisateur sélectionne un fichier.
+   *
+   * @param event L'événement de sélection du fichier.
+   */
   onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {

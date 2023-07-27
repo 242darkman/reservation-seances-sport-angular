@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+
+import { ESTABLISHMENTS } from '../../mock/mock-establishment';
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { InMemoryDataService } from '@/app/in-memory-data.service';
-import { ESTABLISHMENTS } from '../../mock/mock-establishment';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +51,7 @@ export class EstablishmentService {
         this.httpOptions
       )
       .pipe(
-        tap(() => console.log()),
+        tap(),
         catchError(this.handleError<Establishment>('addEstablishment'))
       );
   }

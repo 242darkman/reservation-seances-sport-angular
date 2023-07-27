@@ -6,11 +6,11 @@ import { Establishment } from '../../domain/establishment';
   providedIn: 'root',
 })
 export class EstablishmentFacadeService {
+  establishment$ = this.establishmentService.establishment$;
   constructor(private establishmentService: EstablishmentService) {}
 
   getEstablishments() {
-    const establishments = this.establishmentService.getEstablishments();
-    return establishments;
+    this.establishmentService.getEstablishments();
   }
 
   getEstablishment(id: number) {
@@ -22,12 +22,15 @@ export class EstablishmentFacadeService {
     return this.establishmentService.addEstablishment(establishment);
   }
 
-  updateEstablishment(establishment: Establishment) {
-    return this.establishmentService.updateEstablishment(establishment);
+  updateEstablishment(
+    establishment: Establishment,
+    callback: (success: boolean) => void
+  ) {
+    this.establishmentService.updateEstablishment(establishment, callback);
   }
 
-  deleteEstablishment(id: number) {
-    return this.establishmentService.deleteEstablishment(id);
+  deleteEstablishment(id: number, callback: (success: boolean) => void) {
+    this.establishmentService.deleteEstablishment(id, callback);
   }
 
   generateId() {

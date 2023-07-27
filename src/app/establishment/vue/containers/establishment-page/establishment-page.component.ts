@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { EstablishmentFacadeService } from '@/app/establishment/application/facade/establishment-facade.service';
-import filter from 'lodash/filter';
-import get from 'lodash/get';
+
 import { MatDialog } from '@angular/material/dialog';
 import { EstablishmentEditComponent } from '@/app/establishment/vue/components/establishment-edit/establishment-edit.component';
+import get from 'lodash/get';
 
 @Component({
   selector: 'app-establishment-page',
@@ -12,7 +12,8 @@ import { EstablishmentEditComponent } from '@/app/establishment/vue/components/e
   styleUrls: ['./establishment-page.component.scss'],
 })
 export class EstablishmentPageComponent implements OnInit {
-  establishments: Establishment[] = [];
+  establishments$ = this.establishmentService.establishment$;
+
   constructor(
     private establishmentService: EstablishmentFacadeService,
     public dialog: MatDialog
@@ -23,11 +24,7 @@ export class EstablishmentPageComponent implements OnInit {
   }
 
   getEstablishmens(): void {
-    this.establishmentService
-      .getEstablishments()
-      .subscribe((establishments: Establishment[]) => {
-        this.establishments = establishments;
-      });
+    this.establishmentService.getEstablishments();
   }
 
   addEstablishment(establishment: Establishment) {
@@ -41,26 +38,67 @@ export class EstablishmentPageComponent implements OnInit {
   //   this.establishmentService.updateEstablishment(establishment).subscribe();
   // }
 
-  updateEstablishment(establishment: any): void {
+  updateEstablishment(establishment: Establishment): void {
+    console.log(
+      '🚀 ~ file: establishment-page.component.ts:41 ~ EstablishmentPageComponent ~ updateEstablishment ~ establishment:',
+      establishment
+    );
     const dialogRef = this.dialog.open(EstablishmentEditComponent, {
-      width: '400px',
-      data: { establishment: { ...establishment } }, // Passez une copie de l'établissement à éditer
+      data: { establishment: { ...establishment } },
     });
 
     dialogRef.afterClosed().subscribe((editedEstablishment: any) => {
       if (editedEstablishment) {
-        // Mettez à jour la liste d'établissements avec les modifications
-        // Vous pouvez implémenter ici la logique pour mettre à jour la liste avec les modifications
+        this.establishmentService.updateEstablishment(
+          establishment,
+          (success: boolean) => {
+            try {
+              if (success) {
+                console.log(
+                  `establishment with id ${establishment.id} updated successfully`
+                );
+                //this.updateEstablishment;
+              } else {
+                console.log(
+                  `Failed to update establishment with id ${establishment.id}`
+                );
+              }
+            } catch (error) {
+              console.error(error);
+            }
+          }
+        );
       }
     });
   }
 
+  // updateEstablishment(establishment: Establishment) {
+  //   this.establishmentService.updateEstablishment(
+  //     establishment,
+  //     (success: boolean) => {
+  //       if (success) {
+  //         console.log(
+  //           `establishment with id ${establishment.id} updated successfully`
+  //         );
+  //         this.updateEstablishment;
+  //       } else {
+  //         console.log(
+  //           `Failed to update establishment with id ${establishment.id}`
+  //         );
+  //       }
+  //     }
+  //   );
+  // }
+
   deleteEstablishment(establishment: Establishment) {
-    this.establishments = filter(
-      this.establishments,
-      (e: Establishment) => e !== establishment
-    );
-    const id = get(establishment, 'id');
-    this.establishmentService.deleteEstablishment(id).subscribe();
+    const id: number = get(establishment, 'id');
+    this.establishmentService.deleteEstablishment(id, (success: boolean) => {
+      if (success) {
+        console.log(`establishment with id ${id} deleted successfully`);
+        this.getEstablishmens();
+      } else {
+        console.log(`Failed to delete establishment with id ${id}`);
+      }
+    });
   }
 }

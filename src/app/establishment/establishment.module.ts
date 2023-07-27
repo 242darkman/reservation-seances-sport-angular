@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 import { EstablishmentAddComponent } from './vue/components/establishment-add/establishment-add.component';
 
-
 @NgModule({
   declarations: [
     EstablishmentComponent,
@@ -41,7 +40,6 @@ import { EstablishmentAddComponent } from './vue/components/establishment-add/es
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    
   ],
   providers: [],
   exports: [EstablishmentComponent],

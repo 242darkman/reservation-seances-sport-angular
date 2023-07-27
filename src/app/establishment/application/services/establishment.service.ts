@@ -57,7 +57,11 @@ export class EstablishmentService {
 
   insertEstablishment(establishment: Establishment): Observable<Establishment> {
     return this.http
-      .post<Establishment>(this.establishmentsUrl, establishment, this.httpOptions)
+      .post<Establishment>(
+        this.establishmentsUrl,
+        establishment,
+        this.httpOptions
+      )
       .pipe(
         tap(newBooking => {
           const currentValue = this.establishmentSubject.getValue();

@@ -13,7 +13,7 @@
     text-align: center;
   }
 
-  .btn-edit {
+  .btn-add {
     display: flex;
     justify-content: center;
     gap: 50px;
@@ -29,5 +29,21 @@
       margin-bottom: 1em;
     }
     width: 500px;
+  }
+
+  .time-select-container {
+    form {
+      width: 35%;
+      text-align: center;
+      mat-form-field {
+        width: 35%;
+        margin-bottom: 1em;
+      }
+    }
+
+    .time-select-field {
+      flex: 1;
+      margin-right: 8px;
+    }
   }
 }

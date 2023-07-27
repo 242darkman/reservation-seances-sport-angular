@@ -1,3 +1,4 @@
+import { BOOKINGS } from '@/app/booking/mock/mock-booking';
 import { Booking } from './booking/domain/booking';
 import { ESTABLISHMENTS } from './establishment/mock/mock-establishment';
 import { Establishment } from './establishment/domain/establishment';
@@ -24,9 +25,10 @@ export class InMemoryDataService implements InMemoryDbService {
    */
   createDb() {
     const users = USERS;
-    const establishments = ESTABLISHMENTS;
     const sessions: Session[] = sessionsMock;
-    return { users, establishments, sessions };
+    const bookings = BOOKINGS;
+    const establishments = ESTABLISHMENTS;
+    return { users, establishments, bookings, sessions };
   }
 
   /**

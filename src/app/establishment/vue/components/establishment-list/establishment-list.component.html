@@ -1,5 +1,14 @@
 <div class="user-list">
-  <button mat-raised-button>Add Establishment</button>
+  <div class="btn-add">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="openAddDialog()">
+      Nouveau
+    </button>
+  </div>
+
   <mat-table [dataSource]="establishments">
     <!-- Name Column -->
     <ng-container matColumnDef="nom">

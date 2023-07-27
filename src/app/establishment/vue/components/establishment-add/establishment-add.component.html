@@ -1,38 +1,30 @@
-<!-- establishment-edit.component.html -->
-<h2>Etablissement</h2>
+<h2>Ajouter un établissement</h2>
 <div class="popup-wrapper">
-  <form>
-    <!-- Affichez les mêmes champs que dans le tableau pour l'édition -->
+  <form [formGroup]="establishmentForm">
+    <!-- Add the same fields as in the edit popup -->
     <mat-form-field>
       <mat-label>Nom</mat-label>
-      <input matInput [(ngModel)]="establishment.nom" name="name" />
+      <input matInput formControlName="name" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Adresse</mat-label>
-      <input matInput [(ngModel)]="establishment.address" name="address" />
+      <input matInput formControlName="address" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Horaire d'ouverture</mat-label>
-      <input matInput [(ngModel)]="establishment.opening" name="opening" />
+      <input matInput formControlName="opening" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Horaire de fermeture</mat-label>
-      <input
-        ng-model="string"
-        matInput
-        [(ngModel)]="establishment.close"
-        name="close" />
+      <input matInput formControlName="close" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Contact</mat-label>
-      <input
-        matInput
-        [(ngModel)]="establishment.phoneNumber"
-        name="phoneNumber" />
+      <input matInput formControlName="phoneNumber" />
     </mat-form-field>
 
     <!-- Champ de type "file" pour télécharger une image -->
@@ -40,22 +32,22 @@
       <input type="file" (change)="onFileSelected($event)" accept="image/*" />
     </div>
 
-    <div class="btn-edit">
+    <div class="btn-add">
       <button
         color="primary"
         class="submit-button"
-        type="submit"
+        type="button"
         mat-raised-button
-        (click)="onCancelEdit()">
-        Fermer
+        (click)="onCancelAdd()">
+        Annuler
       </button>
       <button
         mat-raised-button
         color="primary"
         class="submit-button"
-        type="submit"
-        (click)="onConfirmEdit()">
-        Mettre à jour
+        type="button"
+        (click)="onConfirmAdd()">
+        Ajouter
       </button>
     </div>
   </form>

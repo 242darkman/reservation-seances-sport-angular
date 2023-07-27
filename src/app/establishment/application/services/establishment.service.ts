@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Establishment } from '@/app/establishment/domain/establishment';
 import { InMemoryDataService } from '@/app/in-memory-data.service';
@@ -14,16 +14,22 @@ export class EstablishmentService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
+  private establishmentSubject = new BehaviorSubject<Establishment[]>([]);
+  establishment$ = this.establishmentSubject.asObservable();
+
   private establishmentsUrl = 'api/establishments';
   constructor(private http: HttpClient, private memory: InMemoryDataService) {}
 
-  getEstablishments(): Observable<Establishment[]> {
-    return this.http
+  getEstablishments(): void {
+    this.http
       .get<Establishment[]>(this.establishmentsUrl)
       .pipe(
         tap(),
         catchError(this.handleError<Establishment[]>('getEstablishments', []))
-      );
+      )
+      .subscribe(establishments => {
+        this.establishmentSubject.next(establishments);
+      });
   }
 
   getEstablishment(id: number): Observable<Establishment> {
@@ -49,24 +55,68 @@ export class EstablishmentService {
       );
   }
 
-  updateEstablishment(establishment: Establishment): Observable<Establishment> {
-    const url = `${this.establishmentsUrl}/${establishment.id}`;
+  insertEstablishment(establishment: Establishment): Observable<Establishment> {
     return this.http
-      .put<Establishment>(url, establishment, this.httpOptions)
+      .post<Establishment>(
+        this.establishmentsUrl,
+        establishment,
+        this.httpOptions
+      )
       .pipe(
-        tap(() => console.log()),
-        catchError(this.handleError<Establishment>('updateEstablishment'))
+        tap(newBooking => {
+          const currentValue = this.establishmentSubject.getValue();
+          this.establishmentSubject.next([...currentValue, newBooking]);
+        }),
+        catchError(this.handleError<Establishment>('insertEstablishment'))
       );
   }
 
-  deleteEstablishment(id: number): Observable<Establishment> {
+  updateEstablishment(
+    establishment: Establishment,
+    callback: (success: boolean) => void
+  ): void {
+    const url = `${this.establishmentsUrl}/${establishment.id}`;
+    this.http
+      .put<Establishment>(url, establishment, this.httpOptions)
+      .pipe(
+        tap(updatedUser => {
+          const currentValue = this.establishmentSubject.getValue();
+          const updatedUsers = currentValue.map(u =>
+            u.id === updatedUser.id ? updatedUser : u
+          );
+          this.establishmentSubject.next(updatedUsers);
+          callback(true);
+        }),
+        catchError(err => {
+          this.handleError<Establishment>(`UpdateEstablishment ${err.message}`);
+          callback(false);
+          return of(null);
+        })
+      )
+      .subscribe();
+  }
+
+  deleteEstablishment(id: number, callback: (success: boolean) => void): void {
     const url = `${this.establishmentsUrl}/${id}`;
-    return this.http
+    this.http
       .delete<Establishment>(url, this.httpOptions)
       .pipe(
-        tap(),
-        catchError(this.handleError<Establishment>('deleteEstablishment'))
-      );
+        tap(() => {
+          const currentValue = this.establishmentSubject.getValue();
+          const update = currentValue.filter(
+            establishment => establishment.id !== id
+          );
+          this.establishmentSubject.next(update);
+          callback(true);
+        }),
+        catchError(this.handleError<Establishment>('delete establishment'))
+      )
+      .subscribe({
+        error: err => {
+          console.error(err);
+          callback(false);
+        },
+      });
   }
 
   generateId(): number {

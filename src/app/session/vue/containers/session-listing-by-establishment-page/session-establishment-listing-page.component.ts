@@ -9,7 +9,7 @@ import { sessionsMock } from '@/app/session/mock/mock-session';
 import get from 'lodash/get';
 import parseInt from 'lodash/parseInt';
 import { ActivatedRoute } from '@angular/router';
-import {FilterPayload} from "@/app/session/vue/components/session-filter/session-filter.component";
+import { FilterPayload } from '@/app/session/vue/components/session-filter/session-filter.component';
 
 @Component({
   selector: 'session-listing',
@@ -36,28 +36,31 @@ export class SessionEstablishmentListingPageComponent implements OnInit {
       this.sessionService.sessionsAsObservable.subscribe(sessions => {
         this.sessionsByEstablishment =
           this.sessionService.getOneSessionByEstablishment(parseInt(id));
-      })
+      });
     });
-    this.allSessionsByEstablishment = this.sessionService.getSessionByEstablishment()
+    this.allSessionsByEstablishment =
+      this.sessionService.getSessionByEstablishment();
   }
 
   onFilterChange(event: FilterPayload) {
     console.log(event);
     const { type, title, date } = event;
 
-      this.sessionsByEstablishment.sessions = this.sessionsByEstablishment.sessions.filter(session => {
+    this.sessionsByEstablishment.sessions =
+      this.sessionsByEstablishment.sessions.filter(session => {
         const isTypeMatch =
           !type || session.type.toLowerCase().includes(type.toLowerCase());
         const isTitleMatch =
           !title || session.title.toLowerCase().includes(title.toLowerCase());
 
-        const isOpenOnDate = !date || this.isSessionOpenOnDate(session, new Date(date));
+        const isOpenOnDate =
+          !date || this.isSessionOpenOnDate(session, new Date(date));
 
         return isTypeMatch && isTitleMatch && isOpenOnDate;
       });
-      if (!this.sessionService.isFilter) {
-        this.sessionService.getSessions()
-      }
+    if (!this.sessionService.isFilter) {
+      this.sessionService.getSessions();
+    }
   }
 
   isSessionOpenOnDate(session: Session, date: Date): boolean {

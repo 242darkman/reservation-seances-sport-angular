@@ -1,22 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {SessionService} from "@/app/session/application/services/session.service";
-import {Session} from "@/app/session/domain/session";
-import {FilterPayload} from "@/app/session/vue/components/session-filter/session-filter.component";
+import { Component, OnInit } from '@angular/core';
+import { SessionService } from '@/app/session/application/services/session.service';
+import { Session } from '@/app/session/domain/session';
+import { FilterPayload } from '@/app/session/vue/components/session-filter/session-filter.component';
 
 @Component({
   selector: 'app-sessions-listing-all',
   templateUrl: './sessions-listing-all.component.html',
-  styleUrls: ['./sessions-listing-all.component.scss']
+  styleUrls: ['./sessions-listing-all.component.scss'],
 })
-export class SessionsListingAllComponent implements  OnInit{
+export class SessionsListingAllComponent implements OnInit {
   sessions!: Session[];
-  constructor(private sessionService: SessionService) {
-  }
+  constructor(private sessionService: SessionService) {}
   ngOnInit() {
-    this.sessionService.getSessions()
+    this.sessionService.getSessions();
     this.sessionService.sessionsAsObservable.subscribe(sessions => {
       this.sessions = sessions;
-    })
+    });
   }
 
   onFilterChange(event: FilterPayload) {
@@ -29,12 +28,13 @@ export class SessionsListingAllComponent implements  OnInit{
       const isTitleMatch =
         !title || session.title.toLowerCase().includes(title.toLowerCase());
 
-      const isOpenOnDate = !date || this.isSessionOpenOnDate(session, new Date(date));
+      const isOpenOnDate =
+        !date || this.isSessionOpenOnDate(session, new Date(date));
 
       return isTypeMatch && isTitleMatch && isOpenOnDate;
     });
     if (!this.sessionService.isFilter) {
-      this.sessionService.getSessions()
+      this.sessionService.getSessions();
     }
   }
   isSessionOpenOnDate(session: Session, date: Date): boolean {

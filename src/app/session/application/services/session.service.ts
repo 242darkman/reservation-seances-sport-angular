@@ -112,8 +112,10 @@ export class SessionService {
 
   validOpenings(openingsHour: OpeningHour[]): OpeningHour[] {
     const date = new Date();
-    return openingsHour.filter(openingHour =>
-      new Date(openingHour.fullDate) > date && new Date().getTime().toLocaleString()  < openingHour.endTime );
+    return openingsHour.filter(
+      openingHour =>
+        new Date(openingHour.fullDate) > date &&
+        new Date().getTime().toLocaleString() < openingHour.endTime
+    );
   }
-
 }

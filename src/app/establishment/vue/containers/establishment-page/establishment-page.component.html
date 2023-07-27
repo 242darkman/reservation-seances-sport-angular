@@ -1,0 +1,6 @@
+<app-establishment-list
+  [establishments]="(establishments$ | async) || []"
+  (add)="addEstablishment($event)"
+  (update)="updateEstablishment($event)"
+  (delete)="deleteEstablishment($event)">
+</app-establishment-list>

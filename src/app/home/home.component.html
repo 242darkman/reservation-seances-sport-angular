@@ -1,27 +1,25 @@
-<body>
-  <div class="content">
-    <mat-list>
-      <h3 mat-subheader>Recent Sports News</h3>
-      <mat-list-item *ngFor="let news of sportsNews">
-        <img matListAvatar src="{{ news.image }}" alt="{{ news.title }}" />
-        <h4 mat-line>{{ news.title }}</h4>
-        <p mat-line>{{ news.description }}</p>
-      </mat-list-item>
-    </mat-list>
-
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Upcoming Event</mat-card-title>
-        <mat-card-subtitle>12th June 2023</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://images.unsplash.com/photo-1489844097929-c8d5b91c456e" alt="Event image" />
-      <mat-card-content>
-        <p>Join us for a thrilling football match this weekend. Don't miss it!</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>REGISTER</button>
-      </mat-card-actions>
-    </mat-card>
+<div>
+  <div class="hero-container">
+    <div
+      style="
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-self: center;
+        height: 100%;
+      "></div>
   </div>
-</body>
+  <div style="display: flex; justify-content: center">
+    <div
+      style="
+        max-width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      ">
+      <app-establishment
+        *ngFor="let establishment of establishments"
+        [establishment]="establishment"></app-establishment>
+    </div>
+  </div>
+</div>

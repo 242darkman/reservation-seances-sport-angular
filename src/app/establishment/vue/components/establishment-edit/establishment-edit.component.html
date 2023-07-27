@@ -1,0 +1,62 @@
+<!-- establishment-edit.component.html -->
+<h2>Etablissement</h2>
+<div class="popup-wrapper">
+  <form>
+    <!-- Affichez les mêmes champs que dans le tableau pour l'édition -->
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="establishment.nom" name="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Adresse</mat-label>
+      <input matInput [(ngModel)]="establishment.address" name="address" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Horaire d'ouverture</mat-label>
+      <input matInput [(ngModel)]="establishment.opening" name="opening" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Horaire de fermeture</mat-label>
+      <input
+        ng-model="string"
+        matInput
+        [(ngModel)]="establishment.close"
+        name="close" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contact</mat-label>
+      <input
+        matInput
+        [(ngModel)]="establishment.phoneNumber"
+        name="phoneNumber" />
+    </mat-form-field>
+
+    <!-- Champ de type "file" pour télécharger une image -->
+    <div class="file">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <div class="btn-edit">
+      <button
+        color="primary"
+        class="submit-button"
+        type="submit"
+        mat-raised-button
+        (click)="onCancelEdit()">
+        Fermer
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="submit-button"
+        type="submit"
+        (click)="onConfirmEdit()">
+        Mettre à jour
+      </button>
+    </div>
+  </form>
+</div>

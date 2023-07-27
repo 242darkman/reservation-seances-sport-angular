@@ -1,44 +1,65 @@
 <div class="user-dashboard">
-  <button mat-raised-button color="primary" class="edit-button" (click)="toggleEdit()">
+  <button
+    mat-raised-button
+    color="primary"
+    class="edit-button"
+    (click)="toggleEdit()">
     {{ editing ? 'Annuler' : 'Editer' }}
   </button>
 
   <form [formGroup]="userForm" (ngSubmit)="updateUser()">
     <mat-form-field>
-      <input matInput placeholder="Username" formControlName="userName" readonly />
+      <input
+        matInput
+        placeholder="Username"
+        formControlName="userName"
+        readonly />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Prénom" formControlName="firstName" [readonly]="!editing" />
+      <input
+        matInput
+        placeholder="Prénom"
+        formControlName="firstName"
+        [readonly]="!editing" />
       <mat-error
         *ngIf="
           userForm.controls['firstName'].invalid &&
-          (userForm.controls['firstName'].dirty || userForm.controls['firstName'].touched)
-        "
-      >
+          (userForm.controls['firstName'].dirty ||
+            userForm.controls['firstName'].touched)
+        ">
         saisie du prénom requis.
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Nom" formControlName="lastName" [readonly]="!editing" />
+      <input
+        matInput
+        placeholder="Nom"
+        formControlName="lastName"
+        [readonly]="!editing" />
       <mat-error
         *ngIf="
           userForm.controls['lastName'].invalid &&
-          (userForm.controls['lastName'].dirty || userForm.controls['lastName'].touched)
-        "
-      >
+          (userForm.controls['lastName'].dirty ||
+            userForm.controls['lastName'].touched)
+        ">
         saisie du nom requis.
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Email" formControlName="email" [readonly]="!editing" />
+      <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        [readonly]="!editing" />
       <mat-error
         *ngIf="
-          userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)
-        "
-      >
+          userForm.controls['email'].invalid &&
+          (userForm.controls['email'].dirty ||
+            userForm.controls['email'].touched)
+        ">
         {{ getEmailError() }}
       </mat-error>
     </mat-form-field>
@@ -46,7 +67,12 @@
     <div *ngIf="isLoading && !editing">
       <mat-spinner [diameter]="35"></mat-spinner>
     </div>
-    <button mat-raised-button color="primary" class="submit-button" type="submit" *ngIf="editing && !isLoading">
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit-button"
+      type="submit"
+      *ngIf="editing && !isLoading">
       Mettre à jour
     </button>
   </form>

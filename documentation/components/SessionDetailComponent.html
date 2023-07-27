@@ -1,0 +1,1245 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sport-resa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">sport-resa documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SessionDetailComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/session/vue/containers/session-detail/session-detail.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>L&#39;utilisateur peut réserver une session à partir de cette page.
+Le composant met à jour le nombre de places disponibles après chaque réservation.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;session-detail&gt;&lt;/session-detail&gt;</code></pre></div>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>session-detail</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>session-detail.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>session-detail.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allSessions" >allSessions</a>
+                            </li>
+                            <li>
+                                <a href="#booking$" >booking$</a>
+                            </li>
+                            <li>
+                                <a href="#selectedDays" >selectedDays</a>
+                            </li>
+                            <li>
+                                <a href="#session" >session</a>
+                            </li>
+                            <li>
+                                <a href="#sessionId" >sessionId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sessionService" >sessionService</a>
+                            </li>
+                            <li>
+                                <a href="#userBookings" >userBookings</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alreadyBooked" >alreadyBooked</a>
+                            </li>
+                            <li>
+                                <a href="#decreaseAvailability" >decreaseAvailability</a>
+                            </li>
+                            <li>
+                                <a href="#isValidOpening" >isValidOpening</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBooking" >onBooking</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, sessionService: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, bookingService: <a href="../injectables/BookingFacadeService.html" target="_self">BookingFacadeService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, toastr: ToastrService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:55</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sessionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SessionService.html" target="_self" >SessionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bookingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookingFacadeService.html" target="_self" >BookingFacadeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alreadyBooked"></a>
+                    <span class="name">
+                        <span ><b>alreadyBooked</b></span>
+                        <a href="#alreadyBooked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>alreadyBooked(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, sessionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, bookedTime: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Vérifie si l&#39;utilisateur a déjà réservé la session.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>L&#39;identifiant de l&#39;utilisateur.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sessionId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>L&#39;identifiant de la session.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>bookedTime</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Le créneau horaire réservé.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Vrai si la session est déjà réservée, sinon faux.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="decreaseAvailability"></a>
+                    <span class="name">
+                        <span ><b>decreaseAvailability</b></span>
+                        <a href="#decreaseAvailability"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>decreaseAvailability(sessionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, bookedTime: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Diminue la disponibilité d&#39;une session.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sessionId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>L&#39;identifiant de la session à réserver.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>bookedTime</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Le créneau horaire réservé.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isValidOpening"></a>
+                    <span class="name">
+                        <span ><b>isValidOpening</b></span>
+                        <a href="#isValidOpening"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isValidOpening()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Méthode ngOnInit, récupère les informations de la session à partir de l&#39;identifiant.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBooking"></a>
+                    <span class="name">
+                        <span ><b>onBooking</b></span>
+                        <a href="#onBooking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBooking()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:138</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gère la logique de réservation d&#39;une session.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allSessions"></a>
+                    <span class="name">
+                        <span ><b>allSessions</b></span>
+                        <a href="#allSessions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Session.html" target="_self" >Session[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toutes les sessions disponibles.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="booking$"></a>
+                    <span class="name">
+                        <span ><b>booking$</b></span>
+                        <a href="#booking$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.bookingService.booking$</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Un flux d&#39;informations de réservation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedDays"></a>
+                    <span class="name">
+                        <span ><b>selectedDays</b></span>
+                        <a href="#selectedDays"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/OpeningHour.html" target="_self" >OpeningHour[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Les jours sélectionnés pour la réservation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="session"></a>
+                    <span class="name">
+                        <span ><b>session</b></span>
+                        <a href="#session"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Session.html" target="_self" >Session</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>La session en cours de consultation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionId"></a>
+                    <span class="name">
+                        <span ><b>sessionId</b></span>
+                        <a href="#sessionId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>L&#39;identifiant de la session en cours de consultation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sessionService</b></span>
+                        <a href="#sessionService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SessionService.html" target="_self" >SessionService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userBookings"></a>
+                    <span class="name">
+                        <span ><b>userBookings</b></span>
+                        <a href="#userBookings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Booking.html" target="_self" >Booking[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/session/vue/containers/session-detail/session-detail.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Les réservations effectuées par l&#39;utilisateur.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { OpeningHour, Session } from &#x27;@/app/session/domain/session&#x27;;
+
+import { AuthService } from &#x27;@/app/auth/application/services/auth.service&#x27;;
+import { Booking } from &#x27;@/app/booking/domain/booking&#x27;;
+import { BookingFacadeService } from &#x27;@/app/booking/application/facade/booking-facade.service&#x27;;
+import { SessionService } from &#x27;@/app/session/application/services/session.service&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+import { find } from &#x27;lodash&#x27;;
+import get from &#x27;lodash/get&#x27;;
+import isEqual from &#x27;lodash/isEqual&#x27;;
+import parseInt from &#x27;lodash/parseInt&#x27;;
+import { take } from &#x27;rxjs&#x27;;
+
+/**
+ * @description Le composant SessionDetailComponent affiche les détails d&#x27;une session spécifique.
+ * L&#x27;utilisateur peut réserver une session à partir de cette page.
+ * Le composant met à jour le nombre de places disponibles après chaque réservation.
+ *
+ * @example
+ * &lt;session-detail&gt;&lt;/session-detail&gt;
+ *
+ * @selector session-detail
+ */
+@Component({
+  selector: &#x27;session-detail&#x27;,
+  templateUrl: &#x27;session-detail.component.html&#x27;,
+  styleUrls: [&#x27;session-detail.component.scss&#x27;],
+})
+export class SessionDetailComponent implements OnInit {
+  /**
+   * La session en cours de consultation.
+   */
+  session!: Session;
+  /**
+   * L&#x27;identifiant de la session en cours de consultation.
+   */
+  sessionId!: number;
+  /**
+   * Les jours sélectionnés pour la réservation.
+   */
+  selectedDays!: OpeningHour[];
+  /**
+   * Un flux d&#x27;informations de réservation.
+   */
+  booking$ &#x3D; this.bookingService.booking$;
+  /**
+   * Toutes les sessions disponibles.
+   */
+  allSessions: Session[] &#x3D; [];
+  /**
+   * Les réservations effectuées par l&#x27;utilisateur.
+   */
+  userBookings: Booking[] &#x3D; [];
+
+  constructor(
+    private route: ActivatedRoute,
+    public sessionService: SessionService,
+    private bookingService: BookingFacadeService,
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) {}
+
+  /**
+   * Méthode ngOnInit, récupère les informations de la session à partir de l&#x27;identifiant.
+   */
+  ngOnInit(): void {
+    this.route.params.subscribe(param &#x3D;&gt; {
+      const id: string &#x3D; get(param, &#x27;id&#x27;);
+      this.sessionId &#x3D; parseInt(id);
+      this.session &#x3D; this.sessionService.getSessionById(this.sessionId);
+
+      this.session.openingHours &#x3D; this.sessionService.validOpenings(
+        this.session.openingHours
+      );
+
+      this.sessionService.sessionsAsObservable.subscribe(
+        sessions &#x3D;&gt; (this.allSessions &#x3D; sessions)
+      );
+    });
+
+    this.selectedDays &#x3D; [this.session.openingHours[0]];
+  }
+
+  /**
+   * Diminue la disponibilité d&#x27;une session.
+   *
+   * @param sessionId L&#x27;identifiant de la session à réserver.
+   * @param bookedTime Le créneau horaire réservé.
+   */
+  decreaseAvailability(sessionId: number, bookedTime: any) {
+    const sessionToBook &#x3D; find(this.allSessions, session &#x3D;&gt;
+      isEqual(session.id, sessionId)
+    );
+    if (sessionToBook) {
+      const timeSlot &#x3D; sessionToBook.openingHours.find(time &#x3D;&gt;
+        isEqual(time, bookedTime)
+      );
+      if (timeSlot &amp;&amp; timeSlot.availablePlace &gt; 0) {
+        timeSlot.availablePlace--;
+      }
+    }
+  }
+
+  /**
+   * Vérifie si l&#x27;utilisateur a déjà réservé la session.
+   *
+   * @param userId L&#x27;identifiant de l&#x27;utilisateur.
+   * @param sessionId L&#x27;identifiant de la session.
+   * @param bookedTime Le créneau horaire réservé.
+   * @returns Vrai si la session est déjà réservée, sinon faux.
+   */
+  alreadyBooked(userId: number, sessionId: number, bookedTime: any): boolean {
+    this.booking$.subscribe(booking &#x3D;&gt; {
+      const bookings &#x3D; booking.filter(b &#x3D;&gt; b.userId &#x3D;&#x3D;&#x3D; userId);
+
+      if (!bookings.length) {
+        return;
+      }
+      this.userBookings &#x3D; bookings;
+    });
+
+    if (this.userBookings) {
+      const sessionAlreadyBooked &#x3D; this.userBookings.find(
+        booking &#x3D;&gt;
+          booking.sessionId &#x3D;&#x3D;&#x3D; sessionId &amp;&amp;
+          isEqual(booking.timeBook, bookedTime)
+      );
+      return sessionAlreadyBooked !&#x3D;&#x3D; undefined;
+    }
+    return false;
+  }
+
+  /**
+   * Gère la logique de réservation d&#x27;une session.
+   */
+  onBooking() {
+    const user &#x3D; this.authService.getUser();
+    if (!user) {
+      this.toastr.error(
+        &#x27;Vous devez être connecté pour faire une réservation&#x27;,
+        &#x27;Erreur&#x27;
+      );
+      return;
+    }
+
+    const book: Booking &#x3D; {
+      timeBook: this.selectedDays,
+      sessionId: this.sessionId,
+      userId: user.id,
+    };
+
+    if (this.alreadyBooked(book.userId, book.sessionId, book.timeBook)) {
+      this.toastr.error(&#x27;Vous avez déjà réservé ce créneau&#x27;, &#x27;Erreur&#x27;);
+      return;
+    }
+
+    this.bookingService.insertBooking(book).subscribe(
+      () &#x3D;&gt; {
+        this.sessionService.sessionsAsObservable
+          .pipe(take(1))
+          .subscribe(sessions &#x3D;&gt; {
+            const sessionBooking &#x3D; sessions.find(
+              session &#x3D;&gt; session.id &#x3D;&#x3D;&#x3D; this.sessionId
+            );
+            if (sessionBooking) {
+              this.decreaseAvailability(book.sessionId, book.timeBook);
+              this.sessionService.updateSession(sessionBooking);
+              this.toastr.success(&#x27;Réservation réussie!&#x27;, &#x27;Succès&#x27;);
+            }
+          });
+      },
+      error &#x3D;&gt; {
+        console.error(&#x27;Erreur lors de la réservation :&#x27;, error);
+        this.toastr.error(&#x27;Erreur lors de la réservation&#x27;, &#x27;Erreur&#x27;);
+      }
+    );
+  }
+
+  isValidOpening() {
+    return (
+      this.sessionService.validOpenings(this.session.openingHours).length &gt; 0
+    );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;session-details&quot; *ngIf&#x3D;&quot;session&quot;&gt;
+  &lt;mat-card class&#x3D;&quot;session-card&quot;&gt;
+    &lt;img
+      class&#x3D;&quot;session-image&quot;
+      [src]&#x3D;&quot;sessionService.getTrainingSessionImageUrl(session.type)&quot;
+      alt&#x3D;&quot;Image de la session&quot; /&gt;
+
+    &lt;mat-card-header&gt;
+      &lt;mat-card-title&gt;{{ session.title }}&lt;/mat-card-title&gt;
+      &lt;mat-card-subtitle&gt;{{ session.description }}&lt;/mat-card-subtitle&gt;
+    &lt;/mat-card-header&gt;
+
+    &lt;h3 style&#x3D;&quot;padding-left: 16px&quot;&gt;Disponibilité(s)&lt;/h3&gt;
+    &lt;span *ngIf&#x3D;&quot;!isValidOpening()&quot; style&#x3D;&quot;padding: 16px&quot;&gt;
+      Aucune disponibilité
+    &lt;/span&gt;
+    &lt;mat-card-content class&#x3D;&quot;session-availability&quot;&gt;
+      &lt;mat-form-field *ngIf&#x3D;&quot;isValidOpening()&quot; appearance&#x3D;&quot;fill&quot;&gt;
+        &lt;mat-select multiple [(value)]&#x3D;&quot;selectedDays&quot;&gt;
+          &lt;mat-option
+            *ngFor&#x3D;&quot;let availability of session.openingHours&quot;
+            [value]&#x3D;&quot;availability&quot;&gt;
+            {{ availability.dayOfWeek }} -
+            {{ availability.fullDate | date : &#x27;dd/MM/yyyy&#x27; }} ,
+            {{ availability.startTime }} à {{ availability.endTime }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+
+      &lt;button
+        mat-raised-button
+        color&#x3D;&quot;primary&quot;
+        [disabled]&#x3D;&quot;!isValidOpening()&quot;
+        (click)&#x3D;&quot;onBooking()&quot;&gt;
+        Réserver
+      &lt;/button&gt;
+    &lt;/mat-card-content&gt;
+  &lt;/mat-card&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>session-detail.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.session-details {
+  display: flex;
+  justify-content: center;
+  .session-card {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+
+    .session-availability {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mat-form-field {
+        width: 350px;
+      }
+    }
+
+    .session-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="session-details" *ngIf="session">  <mat-card class="session-card">    <img      class="session-image"      [src]="sessionService.getTrainingSessionImageUrl(session.type)"      alt="Image de la session" />    <mat-card-header>      <mat-card-title>{{ session.title }}</mat-card-title>      <mat-card-subtitle>{{ session.description }}</mat-card-subtitle>    </mat-card-header>    <h3 style="padding-left: 16px">Disponibilité(s)</h3>    <span *ngIf="!isValidOpening()" style="padding: 16px">      Aucune disponibilité    </span>    <mat-card-content class="session-availability">      <mat-form-field *ngIf="isValidOpening()" appearance="fill">        <mat-select multiple [(value)]="selectedDays">          <mat-option            *ngFor="let availability of session.openingHours"            [value]="availability">            {{ availability.dayOfWeek }} -            {{ availability.fullDate | date : \'dd/MM/yyyy\' }} ,            {{ availability.startTime }} à {{ availability.endTime }}          </mat-option>        </mat-select>      </mat-form-field>      <button        mat-raised-button        color="primary"        [disabled]="!isValidOpening()"        (click)="onBooking()">        Réserver      </button>    </mat-card-content>  </mat-card></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingComponent', 'selector': 'app-booking'},{'name': 'EstablishmentAddComponent', 'selector': 'app-establishment-add'},{'name': 'EstablishmentComponent', 'selector': 'app-establishment'},{'name': 'EstablishmentEditComponent', 'selector': 'app-establishment-edit'},{'name': 'EstablishmentListComponent', 'selector': 'app-establishment-list'},{'name': 'EstablishmentPageComponent', 'selector': 'app-establishment-page'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SessionComponent', 'selector': 'session'},{'name': 'SessionDetailComponent', 'selector': 'session-detail'},{'name': 'SessionEstablishmentListingPageComponent', 'selector': 'session-listing'},{'name': 'SessionFilterComponent', 'selector': 'session-filter'},{'name': 'SessionsListingAllComponent', 'selector': 'app-sessions-listing-all'},{'name': 'UserDashboardComponent', 'selector': 'app-user-dashboard'},{'name': 'UserListComponent', 'selector': 'app-user-list'},{'name': 'UsersPageComponent', 'selector': 'app-users-page'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SessionDetailComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SessionDetailComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

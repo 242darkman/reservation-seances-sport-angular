@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<mat-toolbar color="primary">
+<mat-toolbar>
   <div class="info">
     <div class="logo" routerLink="/">
       FIT
@@ -7,25 +7,35 @@
         <span class="second">BOOKING</span>
       </div>
     </div>
-    <div class="welcome" *ngIf="isAuthenticated">Content de te revoir, {{ user?.firstName }} !</div>
+    <div class="welcome" *ngIf="isAuthenticated">
+      Content de te revoir, {{ user?.firstName }} !
+    </div>
   </div>
   <span class="spacer"></span>
-  <button mat-button routerLink="/item1">Item 1</button>
-  <button mat-button routerLink="/item2">Item 2</button>
-  <button mat-button routerLink="/item3">Item 3</button>
-  <button mat-button routerLink="/item4">Item 4</button>
-  <button mat-button routerLink="/users">Liste des utilisateurs</button>
+  <button mat-button routerLink="/establishments" *ngIf="isAdmin">
+    Etablissements
+  </button>
+  <button mat-button routerLink="/all-session">Sessions</button>
+  <button mat-button routerLink="/users" *ngIf="isAdmin">
+    Liste des utilisateurs
+  </button>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>account_circle</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/account" *ngIf="isAuthenticated">Mes informations</button>
+  <button mat-menu-item routerLink="/account" *ngIf="isAuthenticated">
+    Mes informations
+  </button>
   <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
     <span>Connexion</span>
   </button>
-  <button mat-menu-item class="highlight" (click)="onLogout()" *ngIf="isAuthenticated">
+  <button
+    mat-menu-item
+    class="highlight"
+    (click)="onLogout()"
+    *ngIf="isAuthenticated">
     <span class="auth">Déconnexion</span>
   </button>
 </mat-menu>
@@ -36,8 +46,8 @@
 </div>
 
 <!-- Footer -->
-<footer class="footer">
+<!---<footer class="footer">
   <mat-toolbar>
     <div class="copyright">&#169; FitBooking {{ year }}</div>
   </mat-toolbar>
-</footer>
+</footer>--->

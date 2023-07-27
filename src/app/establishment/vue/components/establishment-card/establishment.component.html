@@ -1,0 +1,43 @@
+<div class="establishment-container" *ngIf="establishment">
+  <mat-card class="establishment-card">
+    <div class="establishment-img-container">
+      <div class="image-overlay"></div>
+      <!-- Couche noire semi-transparente -->
+      <img
+        mat-card-image
+        [src]="establishment.imgUrl"
+        alt="Session Image"
+        class="establishment-image" />
+      <div class="image-text">
+        <p>{{ establishment.nom }}</p>
+        <!-- Texte à afficher (vous pouvez personnaliser le contenu ici) -->
+      </div>
+    </div>
+    <mat-card-content>
+      <div>
+        <div style="">
+          <p>LUN - VEN 07H - 22H</p>
+          <p>SAM 08H - 20H</p>
+          <p>DIM 08H - 17H</p>
+        </div>
+        <hr />
+        <div class="establishment-info">
+          <mat-icon class="icon-padding" style="color: red">pin_drop</mat-icon>
+          <p>{{ establishment.address }}</p>
+        </div>
+        <div class="establishment-info">
+          <mat-icon class="icon-padding" style="color: red">phone</mat-icon>
+          <p>{{ establishment.phoneNumber }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="action-button">
+      <button
+        [routerLink]="'establishment/' + establishment.id"
+        mat-raised-button
+        color="primary">
+        Voir session
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

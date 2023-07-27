@@ -1,0 +1,32 @@
+<div class="filter-container">
+  <mat-form-field>
+    <mat-label>Type de session</mat-label>
+    <mat-select [(ngModel)]="selectedType" (selectionChange)="filterSessions()">
+      <mat-option>Tous</mat-option>
+      <mat-option
+        *ngFor="let sessionType of sessionTypes"
+        [value]="sessionType">
+        {{ sessionType }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Titre de session"
+      [(ngModel)]="searchTitle"
+      (input)="filterSessions()" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      placeholder="Date d'ouverture"
+      [(ngModel)]="selectedDate"
+      (dateInput)="filterSessions()" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>

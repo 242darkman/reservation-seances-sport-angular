@@ -1,0 +1,54 @@
+<h2>Ajouter un établissement</h2>
+<div class="popup-wrapper">
+  <form [formGroup]="establishmentForm">
+    <!-- Add the same fields as in the edit popup -->
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Adresse</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Horaire d'ouverture</mat-label>
+      <input matInput formControlName="opening" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Horaire de fermeture</mat-label>
+      <input matInput formControlName="close" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contact</mat-label>
+      <input matInput formControlName="phoneNumber" />
+    </mat-form-field>
+
+    <!-- Champ de type "file" pour télécharger une image -->
+    <div class="file">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <div class="btn-add">
+      <button
+        color="primary"
+        class="submit-button"
+        type="button"
+        mat-raised-button
+        (click)="onCancelAdd()">
+        Annuler
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="submit-button"
+        type="button"
+        (click)="onConfirmAdd()">
+        Ajouter
+      </button>
+    </div>
+  </form>
+</div>

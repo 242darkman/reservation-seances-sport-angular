@@ -14,6 +14,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EstablishmentEditComponent } from '@/app/establishment/vue/components/establishment-edit/establishment-edit.component';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { EstablishmentAddComponent } from './vue/components/establishment-add/establishment-add.component';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
     EstablishmentListComponent,
     EstablishmentPageComponent,
     EstablishmentEditComponent,
+    EstablishmentAddComponent,
   ],
   imports: [
     EstablishmentRouting,
@@ -35,7 +39,9 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
+    
   ],
   providers: [],
   exports: [EstablishmentComponent],
